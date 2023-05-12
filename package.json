@@ -10,10 +10,13 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.1.1",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "bootstrap": "^5.3.0-alpha3",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
     "eslint-config-prettier": "^8.8.0",
@@ -23,12 +26,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
+    "styled-components": "^5.3.10",
     "typescript": "5.0.4"
   },
   "devDependencies": {
     "@types/eslint-config-prettier": "^6.11.0",
     "@types/lint-staged": "^13.2.0",
     "@types/prettier": "^2.7.2",
+    "@types/styled-components": "^5.1.26",
     "husky": "^8.0.0"
   }
 }
