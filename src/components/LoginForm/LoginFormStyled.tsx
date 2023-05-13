@@ -19,7 +19,7 @@ const LoginFormStyled = styled.div`
 
     &__title {
       position: absolute;
-      left: 20%;
+      left: 15%;
       top: 10%;
       font-size: 40px;
       letter-spacing: 2px;
@@ -27,7 +27,7 @@ const LoginFormStyled = styled.div`
 
     &__slogan {
       position: absolute;
-      left: 20%;
+      left: 15%;
       top: 16%;
     }
   }

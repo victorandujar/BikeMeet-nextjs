@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "npx jest",
+    "test:dev": "npx jest --watchAll",
+    "test:coverage": "npx jest --coverage --watchAll=false",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -30,10 +33,17 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/eslint-config-prettier": "^6.11.0",
+    "@types/jest": "^29.5.1",
     "@types/lint-staged": "^13.2.0",
     "@types/prettier": "^2.7.2",
     "@types/styled-components": "^5.1.26",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "jest-ts-webcompat-resolver": "^1.0.0",
+    "ts-jest": "^29.1.0"
   }
 }
