@@ -18,14 +18,23 @@ const LoginPageStyled = styled.main`
       display: flex;
       justify-content: space-between;
     }
+  }
 
-    &__signUp {
+  .btn-outline-primary {
+    border: 1px solid #000;
+    color: #000;
+    height: 40px;
+    font-size: 13px;
+
+    :hover {
       background-color: #000;
       color: #fff;
-      height: 30px;
-      border-radius: 10px;
-      width: 75px;
-      font-size: 13px;
+    }
+
+    :active {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #000;
     }
   }
 `;

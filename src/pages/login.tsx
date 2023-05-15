@@ -21,7 +21,10 @@ const Home = (): JSX.Element => {
             community.
           </span>
         </div>
-        <button className={`login-page__signUp ${poppins.className}`}>
+        <button
+          type="button"
+          className={`btn btn-outline-primary ${poppins.className}`}
+        >
           Sign up
         </button>
       </div>
