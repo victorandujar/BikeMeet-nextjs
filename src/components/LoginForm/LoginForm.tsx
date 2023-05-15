@@ -23,9 +23,9 @@ const LoginForm = (): JSX.Element => {
           className="login-interface__picture"
           priority
         />
-        <span className={`login-interface__title ${obidee.className}`}>
+        <h2 className={`login-interface__title ${obidee.className}`}>
           BikeMeet
-        </span>
+        </h2>
         <span className="login-interface__slogan">Never ride alone</span>
       </div>
       <form className="login-interface__form form">
@@ -82,7 +82,7 @@ const LoginForm = (): JSX.Element => {
             <FontAwesomeIcon
               icon={faStrava}
               className="footer__strava"
-              width={20}
+              width={15}
             />
             Login with Strava
           </button>
