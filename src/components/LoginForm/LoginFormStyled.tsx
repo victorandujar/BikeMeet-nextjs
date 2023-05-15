@@ -7,10 +7,12 @@ const LoginFormStyled = styled.div`
   box-shadow: 8px 5px 15px gray;
   width: 1050px;
   font-size: 15px;
+  position: absolute;
 
   .login-interface {
     &__picture {
       border-radius: 10px 0 0 10px;
+      object-fit: cover;
     }
 
     &__lef-block {
@@ -18,17 +20,21 @@ const LoginFormStyled = styled.div`
     }
 
     &__title {
-      position: absolute;
-      left: 15%;
-      top: 10%;
       font-size: 40px;
       letter-spacing: 2px;
+      color: #fff;
+      position: absolute;
+      top: 20%;
+      left: 30%;
+      transform: translate(-50%, -50%);
     }
 
     &__slogan {
+      color: #fff;
       position: absolute;
-      left: 15%;
-      top: 16%;
+      top: 25%;
+      left: 30%;
+      transform: translateX(-50%);
     }
   }
 
@@ -78,6 +84,7 @@ const LoginFormStyled = styled.div`
 
   .form-check-label {
     font-size: 12px;
+    color: #fff;
   }
 
   .footer {
