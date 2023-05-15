@@ -8,7 +8,7 @@ const obidee = Odibee_Sans({
   weight: "400",
 });
 
-const Home = (): JSX.Element => {
+const LoginPage = (): JSX.Element => {
   return (
     <LoginPageStyled className="login-page">
       <div className="login-page__heading">
@@ -35,4 +35,4 @@ const Home = (): JSX.Element => {
   );
 };
 
-export default Home;
+export default LoginPage;
