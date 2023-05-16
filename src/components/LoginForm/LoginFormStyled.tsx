@@ -72,6 +72,7 @@ const LoginFormStyled = styled.div`
 
   .form-label {
     font-size: 12px;
+    color: #fff;
   }
 
   .form-control {
