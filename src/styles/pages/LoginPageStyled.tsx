@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const LoginPageStyled = styled.main`
   color: #000;
+  padding: 50px 0;
 
   .login-page {
     height: 100%;
@@ -17,6 +18,17 @@ const LoginPageStyled = styled.main`
     &__heading {
       display: flex;
       justify-content: space-between;
+    }
+  }
+
+  .heading {
+    &__title {
+      font-weight: 900;
+    }
+
+    &__slogan {
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
     }
   }
 
