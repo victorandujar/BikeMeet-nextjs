@@ -15,8 +15,6 @@ const LoginForm = (): JSX.Element => {
         <Image
           alt="Bikers"
           src={loginImage}
-          width={600}
-          height={500}
           className="login-interface__picture"
           priority
         />
