@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import LoginForm from "./LoginForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
 import "@testing-library/jest-dom";
 
 describe("Given a LoginForm component", () => {
