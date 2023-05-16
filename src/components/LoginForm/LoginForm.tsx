@@ -3,10 +3,14 @@ import loginImage from "../../../public/image/loginImage.jpg";
 import LoginFormStyled from "./LoginFormStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
+import { Poppins, Odibee_Sans } from "next/font/google";
+
+const poppins = Poppins({ subsets: ["latin"], weight: "400" });
+const obidee = Odibee_Sans({ subsets: ["latin"], weight: "400" });
 
 const LoginForm = (): JSX.Element => {
   return (
-    <LoginFormStyled className={`login-interface `}>
+    <LoginFormStyled className={`login-interface ${poppins.className} `}>
       <div className="login-interface__left-block">
         <Image
           alt="Bikers"
@@ -16,7 +20,9 @@ const LoginForm = (): JSX.Element => {
           className="login-interface__picture"
           priority
         />
-        <h2 className={`login-interface__title`}>BikeMeet</h2>
+        <h2 className={`login-interface__title ${obidee.className}`}>
+          BikeMeet
+        </h2>
         <span className="login-interface__slogan">Never ride alone</span>
       </div>
       <form className="login-interface__form form">

@@ -22,12 +22,14 @@ const LoginPageStyled = styled.main`
   }
 
   .heading {
+    text-align: center;
+    width: 100%;
     &__title {
       font-weight: 900;
     }
 
     &__slogan {
-      border-bottom: 2px solid #000;
+      border-bottom: 4px solid blue;
       padding-bottom: 10px;
     }
   }
@@ -36,7 +38,8 @@ const LoginPageStyled = styled.main`
     border: 1px solid #000;
     color: #000;
     height: 40px;
-    font-size: 13px;
+    font-size: 12px;
+    width: 80px;
 
     :hover {
       background-color: #000;
