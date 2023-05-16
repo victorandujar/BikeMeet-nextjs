@@ -33,7 +33,21 @@ const HeaderStyled = styled.header`
       align-items: center;
       gap: 10px;
       font-size: 40px;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    }
+  }
+
+  .title {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    display: flex;
+
+    &__blue {
+      font-size: 40px;
+      color: blue;
+    }
+
+    &__black {
+      font-size: 40px;
     }
   }
 `;

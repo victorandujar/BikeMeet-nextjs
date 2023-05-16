@@ -11,7 +11,6 @@ body {
   min-height: 100vh;
   color: #ffffff;
   padding: 20px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h1,h2{
