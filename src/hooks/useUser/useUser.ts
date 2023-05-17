@@ -18,7 +18,7 @@ const useUser = () => {
         `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.login}`,
         user
       );
-      debugger;
+
       const { token } = response.data as LoginApiResponse;
 
       const tokenPayload: CustomTokenPayload = decodeToken(token);
