@@ -104,7 +104,7 @@ const LoginFormStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     padding: 20px;
     width: 100%;
 
@@ -166,6 +166,7 @@ const LoginFormStyled = styled.div`
   .signup {
     display: flex;
     gap: 5px;
+    font-size: 12px;
 
     &__text {
       color: ${(props) => props.theme.colors.secondaryColorText};

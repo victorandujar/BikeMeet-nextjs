@@ -1,7 +1,17 @@
 import LoginPage from "@/pages/login";
+import { store } from "@/store/store";
 import theme from "@/styles/Theme";
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
+
+jest.mock("next/navigation", () => jest.fn());
+
+const mockedUsedRouter = jest.fn();
+jest.mock("next/navigation", () => ({
+  ...jest.requireActual("next/navigation"),
+  useRouter: () => mockedUsedRouter,
+}));
 
 describe("Given a Login page component", () => {
   describe("When it is rendered", () => {
@@ -10,7 +20,9 @@ describe("Given a Login page component", () => {
 
       render(
         <ThemeProvider theme={theme}>
-          <LoginPage />
+          <Provider store={store}>
+            <LoginPage />
+          </Provider>
         </ThemeProvider>
       );
 
@@ -24,10 +36,11 @@ describe("Given a Login page component", () => {
 
       render(
         <ThemeProvider theme={theme}>
-          <LoginPage />
+          <Provider store={store}>
+            <LoginPage />
+          </Provider>
         </ThemeProvider>
       );
-
       const expectedButton = screen.getByRole("link", { name: linkText });
 
       expect(expectedButton).toBeInTheDocument();
