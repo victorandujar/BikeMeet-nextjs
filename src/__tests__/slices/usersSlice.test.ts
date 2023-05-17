@@ -1,7 +1,7 @@
 import {
   expectedUserState,
-  initialUserState,
-  user,
+  mockInitialUserState,
+  mockUser,
 } from "@/mocks/userMocks/userMocks";
 import {
   loginUserActionCreator,
@@ -11,9 +11,9 @@ import {
 describe("Given a userSlice and the loginUser function", () => {
   describe("When it receives a new state and the action to log in a user", () => {
     test("Then it should return the user with its isLogged property set as true", () => {
-      const loginAction = loginUserActionCreator(user);
+      const loginAction = loginUserActionCreator(mockUser);
 
-      const newUserState = userReducer(initialUserState, loginAction);
+      const newUserState = userReducer(mockInitialUserState, loginAction);
 
       expect(newUserState).toStrictEqual(expectedUserState);
     });

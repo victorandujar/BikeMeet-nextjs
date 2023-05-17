@@ -3,6 +3,16 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import "@testing-library/jest-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/Theme";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
+
+jest.mock("next/navigation", () => jest.fn());
+
+const mockedUsedRouter = jest.fn();
+jest.mock("next/navigation", () => ({
+  ...jest.requireActual("next/navigation"),
+  useRouter: () => mockedUsedRouter,
+}));
 
 describe("Given a LoginForm component", () => {
   describe("When it is rendered", () => {
@@ -11,7 +21,9 @@ describe("Given a LoginForm component", () => {
 
       render(
         <ThemeProvider theme={theme}>
-          <LoginForm />
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
         </ThemeProvider>
       );
 
@@ -25,7 +37,9 @@ describe("Given a LoginForm component", () => {
 
       render(
         <ThemeProvider theme={theme}>
-          <LoginForm />
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
         </ThemeProvider>
       );
 
@@ -39,7 +53,9 @@ describe("Given a LoginForm component", () => {
 
       render(
         <ThemeProvider theme={theme}>
-          <LoginForm />
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
         </ThemeProvider>
       );
 
