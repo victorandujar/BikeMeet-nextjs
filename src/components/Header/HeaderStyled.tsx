@@ -16,17 +16,6 @@ const HeaderStyled = styled.header`
     gap: 25px;
   }
 
-  .btn-outline-success {
-    border: 1px solid black;
-    color: ${(props) => props.theme.colors.mainColorText};
-    font-size: 12px;
-
-    :hover {
-      background-color: ${(props) => props.theme.colors.secondaryColorButton};
-      color: ${(props) => props.theme.colors.secondaryColorText};
-    }
-  }
-
   .header-page {
     &__logo {
       display: flex;

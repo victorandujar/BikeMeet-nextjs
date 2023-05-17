@@ -3,13 +3,39 @@ import loginImage from "../../../public/image/loginImage.jpg";
 import LoginFormStyled from "./LoginFormStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
-
 import { Poppins, Odibee_Sans } from "next/font/google";
+import useUser from "@/hooks/useUser/useUser";
+import { useState } from "react";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 const obidee = Odibee_Sans({ subsets: ["latin"], weight: "400" });
 
 const LoginForm = (): JSX.Element => {
+  const { loginUser } = useUser();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmail = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(value);
+  };
+
+  const handlePassword = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(value);
+  };
+
+  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    await loginUser({ email, password });
+  };
+
+  const areInputFieldsEmpty = email === "" || password === "";
+
   return (
     <LoginFormStyled className={`login-interface ${poppins.className}`}>
       <div className="login-interface__left-block">
@@ -26,7 +52,7 @@ const LoginForm = (): JSX.Element => {
         </h2>
         <span className="login-interface__slogan">Never ride alone</span>
       </div>
-      <form className="login-interface__form form">
+      <form className="login-interface__form form" onSubmit={onSubmitHandler}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
@@ -37,10 +63,15 @@ const LoginForm = (): JSX.Element => {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter a valid email"
+            onChange={handleEmail}
           />
-          <span id="emailHelp" className="form__text" hidden={false}>
-            We will never share your email with anyone else.
-          </span>
+          {areInputFieldsEmpty ? (
+            ""
+          ) : (
+            <span id="emailHelp" className="form__text" hidden={false}>
+              We will never share your email with anyone else.
+            </span>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
@@ -51,6 +82,7 @@ const LoginForm = (): JSX.Element => {
             className="form-control"
             id="exampleInputPassword1"
             placeholder="Password. Max 8 characters"
+            onChange={handlePassword}
           />
         </div>
         <div className="mb-3 form-check">
@@ -63,7 +95,11 @@ const LoginForm = (): JSX.Element => {
             Remember me
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={areInputFieldsEmpty}
+        >
           Log in
         </button>
         <div className="form__footer footer">
