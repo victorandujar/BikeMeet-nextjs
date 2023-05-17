@@ -2,6 +2,7 @@ import Image from "next/image";
 import HeaderStyled from "./HeaderStyled";
 import { useAppSelector } from "@/store/hooks";
 import { Poppins, Odibee_Sans } from "next/font/google";
+import Button from "../Button/Button";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 const obidee = Odibee_Sans({ subsets: ["latin"], weight: "400" });
@@ -67,9 +68,7 @@ const Header = (): JSX.Element => {
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
+                <Button isDisabled={false} text={"Search"} type="submit" />
               </form>
             </div>
           </div>
