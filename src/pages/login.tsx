@@ -18,12 +18,6 @@ const LoginPage = (): JSX.Element => {
             community!
           </span>
         </div>
-        <button
-          type="button"
-          className={`btn btn-outline-primary ${poppins.className}`}
-        >
-          Sign up
-        </button>
       </div>
       <div className="login-page__login-form">
         <LoginForm />

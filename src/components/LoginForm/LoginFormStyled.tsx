@@ -55,7 +55,7 @@ const LoginFormStyled = styled.div`
     &__title {
       font-size: 40px;
       letter-spacing: 2px;
-      color: #fff;
+      color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
       top: 20%;
       left: 30%;
@@ -69,7 +69,7 @@ const LoginFormStyled = styled.div`
     }
 
     &__slogan {
-      color: #fff;
+      color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
       top: 25%;
       left: 30%;
@@ -84,14 +84,15 @@ const LoginFormStyled = styled.div`
   }
 
   .btn {
-    background-color: #000;
+    background-color: ${(props) => props.theme.colors.secondaryColorButton};
   }
 
   .btn-primary {
-    background-color: #ffffff;
-    --bs-btn-border-color: #000;
+    background-color: ${(props) => props.theme.colors.mainColorButton};
+    --bs-btn-border-color: ${(props) =>
+      props.theme.colors.secondaryColorButton};
     width: 100%;
-    color: #000000;
+    color: ${(props) => props.theme.colors.mainColorText};
     font-size: 14px;
     display: flex;
     gap: 10px;
@@ -115,7 +116,7 @@ const LoginFormStyled = styled.div`
     }
 
     &__text {
-      color: #fff;
+      color: ${(props) => props.theme.colors.secondaryColorText};
 
       @media (max-width: 1070px) {
         font-size: 12px;
@@ -129,7 +130,7 @@ const LoginFormStyled = styled.div`
 
   .form-label {
     font-size: 12px;
-    color: #fff;
+    color: ${(props) => props.theme.colors.secondaryColorText};
   }
 
   .mb-3 {
@@ -147,7 +148,7 @@ const LoginFormStyled = styled.div`
 
   .form-check-label {
     font-size: 12px;
-    color: #fff;
+    color: ${(props) => props.theme.colors.secondaryColorText};
   }
 
   .footer {
@@ -159,6 +160,22 @@ const LoginFormStyled = styled.div`
 
     &__strava {
       color: orange;
+    }
+  }
+
+  .signup {
+    display: flex;
+    gap: 5px;
+
+    &__text {
+      color: ${(props) => props.theme.colors.secondaryColorText};
+    }
+
+    &__link {
+      color: ${(props) => props.theme.colors.secondaryColorText};
+      font-weight: 900;
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 `;
