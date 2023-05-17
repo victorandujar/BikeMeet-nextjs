@@ -3,6 +3,7 @@ import loginImage from "../../../public/image/loginImage.jpg";
 import LoginFormStyled from "./LoginFormStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
+
 import { Poppins, Odibee_Sans } from "next/font/google";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
@@ -10,11 +11,13 @@ const obidee = Odibee_Sans({ subsets: ["latin"], weight: "400" });
 
 const LoginForm = (): JSX.Element => {
   return (
-    <LoginFormStyled className={`login-interface ${poppins.className} `}>
+    <LoginFormStyled className={`login-interface ${poppins.className}`}>
       <div className="login-interface__left-block">
         <Image
           alt="Bikers"
           src={loginImage}
+          width={600}
+          height={500}
           className="login-interface__picture"
           priority
         />
@@ -81,6 +84,12 @@ const LoginForm = (): JSX.Element => {
             />
             Login with Strava
           </button>
+          <div className="login-interface__signup signup">
+            <span className="signup__text">Already a member?</span>
+            <a href="/signup" className="signup__link">
+              Sign up
+            </a>
+          </div>
         </div>
       </form>
     </LoginFormStyled>

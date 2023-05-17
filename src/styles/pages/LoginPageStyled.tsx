@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const LoginPageStyled = styled.main`
-  color: #000;
+  color: ${(props) => props.theme.colors.mainColorText};
   padding: 50px 0;
 
   .login-page {
@@ -36,19 +36,19 @@ const LoginPageStyled = styled.main`
 
   .btn-outline-primary {
     border: 1px solid #000;
-    color: #000;
+    color: ${(props) => props.theme.colors.secondaryColorButton};
     height: 40px;
     font-size: 12px;
     width: 80px;
 
     :hover {
-      background-color: #000;
-      color: #fff;
+      background-color: ${(props) => props.theme.colors.secondaryColorButton};
+      color: ${(props) => props.theme.colors.secondaryColorText};
     }
 
     :active {
-      background-color: #fff;
-      color: #000;
+      background-color: ${(props) => props.theme.colors.mainColorButton};
+      color: ${(props) => props.theme.colors.mainColorText};
       border: 1px solid #000;
     }
   }

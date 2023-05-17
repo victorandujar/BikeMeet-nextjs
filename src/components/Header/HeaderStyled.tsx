@@ -4,7 +4,7 @@ const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   gap: 70px;
-  color: #000;
+  color: ${(props) => props.theme.colors.mainColorText};
 
   .navbar {
     padding: 0;
@@ -18,12 +18,12 @@ const HeaderStyled = styled.header`
 
   .btn-outline-success {
     border: 1px solid black;
-    color: #000;
+    color: ${(props) => props.theme.colors.mainColorText};
     font-size: 12px;
 
     :hover {
-      background-color: #000;
-      color: #fff;
+      background-color: ${(props) => props.theme.colors.secondaryColorButton};
+      color: ${(props) => props.theme.colors.secondaryColorText};
     }
   }
 
@@ -37,13 +37,12 @@ const HeaderStyled = styled.header`
   }
 
   .title {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 900;
     display: flex;
 
     &__blue {
       font-size: 40px;
-      color: blue;
+      color: ${(props) => props.theme.colors.thirdColorText};
     }
 
     &__black {
