@@ -6,7 +6,10 @@ import theme from "@/styles/Theme";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import userEvent from "@testing-library/user-event";
-import { mockUserCredentials } from "@/mocks/userMocks/userMocks";
+import {
+  mockIsRemembered,
+  mockUserCredentials,
+} from "@/mocks/userMocks/userMocks";
 
 jest.mock("next/navigation", () => jest.fn());
 
@@ -153,7 +156,10 @@ describe("Given a LoginForm component", () => {
       );
       await act(async () => await userEvent.click(expectedSubmitButton));
 
-      expect(mockLoginUser).toHaveBeenCalledWith(mockUserCredentials);
+      expect(mockLoginUser).toHaveBeenCalledWith(
+        mockUserCredentials,
+        mockIsRemembered
+      );
     });
   });
 });
