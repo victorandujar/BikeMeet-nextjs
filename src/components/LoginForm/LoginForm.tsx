@@ -54,13 +54,13 @@ const LoginForm = (): JSX.Element => {
       </div>
       <form className="login-interface__form form" onSubmit={onSubmitHandler}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="email" className="form-label">
             Email address
           </label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="email"
             aria-describedby="emailHelp"
             placeholder="Enter a valid email"
             onChange={handleEmail}
@@ -74,13 +74,13 @@ const LoginForm = (): JSX.Element => {
           )}
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
+          <label htmlFor="password" className="form-label">
             Password
           </label>
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
+            id="password"
             placeholder="Password. Max 8 characters"
             onChange={handlePassword}
           />
