@@ -1,4 +1,4 @@
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { CustomTokenPayload, LoginApiResponse, UserCredentials } from "./types";
 import axios from "axios";
 import userEndpoints from "@/utils/userEndpoints/userEndpoints";
@@ -13,7 +13,7 @@ const useUser = () => {
   const router = useRouter();
 
   const loginUser = useCallback(
-    async (user: UserCredentials) => {
+    async (user: UserCredentials, isRemembered: boolean) => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.login}`,
         user
@@ -33,7 +33,9 @@ const useUser = () => {
 
       dispatch(loginUserActionCreator(userToLogin));
 
-      localStorage.setItem("token", token);
+      if (isRemembered) {
+        localStorage.setItem("token", token);
+      }
       router.push("/home");
     },
     [dispatch, router]
