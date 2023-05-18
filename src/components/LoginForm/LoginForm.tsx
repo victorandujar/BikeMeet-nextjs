@@ -15,6 +15,7 @@ const LoginForm = (): JSX.Element => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isRemembered, setIsRemembered] = useState(false);
 
   const handleEmail = ({
     target: { value },
@@ -28,10 +29,14 @@ const LoginForm = (): JSX.Element => {
     setPassword(value);
   };
 
+  const toogleRememberUser = () => {
+    !isRemembered ? setIsRemembered(true) : setIsRemembered(false);
+  };
+
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    await loginUser({ email, password });
+    await loginUser({ email, password }, isRemembered);
   };
 
   const areInputFieldsEmpty = email === "" || password === "";
@@ -90,6 +95,7 @@ const LoginForm = (): JSX.Element => {
             type="checkbox"
             className="form-check-input"
             id="exampleCheck1"
+            onChange={toogleRememberUser}
           />
           <label className="form-check-label" htmlFor="exampleCheck1">
             Remember me
