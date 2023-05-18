@@ -1,6 +1,7 @@
 import useUser from "@/hooks/useUser/useUser";
 import Wrapper from "@/mocks/Wrapper";
 import {
+  mockIsRemembered,
   mockLoginUser,
   mockTokenPayload,
   mockUserCredentials,
@@ -45,7 +46,7 @@ describe("Given a useUser custom hook", () => {
         mockTokenPayload
       );
 
-      await loginUser(mockUserCredentials);
+      await loginUser(mockUserCredentials, mockIsRemembered);
 
       expect(spyDispatch).toHaveBeenCalledWith(
         loginUserActionCreator(mockLoginUser)

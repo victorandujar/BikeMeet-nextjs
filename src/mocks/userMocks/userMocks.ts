@@ -34,7 +34,8 @@ export const mockTokenPayload: CustomTokenPayload = {
   sub: "dsfhjnasdjkfhdsk",
 };
 
-export const mockToken = "vik27634fvj";
+export const mockToken: string = "vik27634fvj";
+export const mockIsRemembered: boolean = false;
 
 export const mockLoginUser: UserStructure = {
   email: mockTokenPayload.email,
