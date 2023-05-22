@@ -3,6 +3,7 @@ import {
   UserState,
   UserStructure,
 } from "@/store/features/usersSlice/types/types";
+import { Session } from "next-auth";
 
 export const mockInitialUserState: UserState = {
   email: "",
@@ -41,4 +42,13 @@ export const mockLoginUser: UserStructure = {
   email: mockTokenPayload.email,
   id: mockTokenPayload.sub,
   token: mockToken,
+};
+
+export const mockSession: Session = {
+  user: {
+    email: "victor@andujar.org",
+    image: "/image",
+    name: "Victor A.",
+  },
+  expires: "",
 };
