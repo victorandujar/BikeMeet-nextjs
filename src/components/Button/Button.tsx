@@ -1,3 +1,5 @@
+import ButtonStyled from "./ButtonStyled";
+
 interface ButtonProps {
   text: string;
   isDisabled: boolean;
@@ -12,13 +14,13 @@ const Button = ({
   type,
 }: ButtonProps): JSX.Element => {
   return (
-    <button
+    <ButtonStyled
       disabled={isDisabled}
       onClick={actionOnClick}
       className="btn btn-outline-success"
     >
       {text}
-    </button>
+    </ButtonStyled>
   );
 };
 

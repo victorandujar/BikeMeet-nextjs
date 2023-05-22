@@ -7,8 +7,12 @@ import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/Theme";
+import { SessionProvider } from "next-auth/react";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
     <>
       <Head>
@@ -20,7 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <Header />
-          <Component {...pageProps} />
+          <SessionProvider session={session}>
+            <Component {...pageProps} />
+          </SessionProvider>
           <GlobalStyles />
         </Provider>
       </ThemeProvider>

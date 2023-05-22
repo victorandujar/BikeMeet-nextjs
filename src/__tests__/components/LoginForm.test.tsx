@@ -10,6 +10,7 @@ import {
   mockIsRemembered,
   mockUserCredentials,
 } from "@/mocks/userMocks/userMocks";
+import { SessionProvider } from "next-auth/react";
 
 jest.mock("next/navigation", () => jest.fn());
 
@@ -17,6 +18,12 @@ const mockedUsedRouter = jest.fn();
 jest.mock("next/navigation", () => ({
   ...jest.requireActual("next/navigation"),
   useRouter: () => mockedUsedRouter,
+}));
+
+const mockedUseSession = jest.fn();
+jest.mock("next-auth/react", () => ({
+  ...jest.requireActual("next-auth/react"),
+  useSession: () => mockedUseSession,
 }));
 
 const mockLoginUser = jest.fn();
