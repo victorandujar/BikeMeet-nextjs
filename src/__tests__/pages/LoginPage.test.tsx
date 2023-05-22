@@ -13,6 +13,12 @@ jest.mock("next/navigation", () => ({
   useRouter: () => mockedUsedRouter,
 }));
 
+const mockedUseSession = jest.fn();
+jest.mock("next-auth/react", () => ({
+  ...jest.requireActual("next-auth/react"),
+  useSession: () => mockedUseSession,
+}));
+
 describe("Given a Login page component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a header with the text 'Welcome to BikeMeet'", () => {
