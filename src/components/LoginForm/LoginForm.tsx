@@ -7,15 +7,13 @@ import { Poppins, Odibee_Sans } from "next/font/google";
 import useUser from "@/hooks/useUser/useUser";
 import { useState } from "react";
 import { useSession, signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import GoogleWelcomePage from "../GoogleWelcomePage/GoogleWelcomePage";
+import GoogleWelcomePage from "../AuthWelcomePage/AuthWelcomePage";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 const obidee = Odibee_Sans({ subsets: ["latin"], weight: "400" });
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
-  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -132,7 +130,11 @@ const LoginForm = (): JSX.Element => {
             />
             Log in with Google
           </button>
-          <button type="button" className="btn btn-primary">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => signIn()}
+          >
             <FontAwesomeIcon
               icon={faStrava}
               className="footer__strava"

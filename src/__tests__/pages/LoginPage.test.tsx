@@ -5,8 +5,6 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
-jest.mock("next/navigation", () => jest.fn());
-
 const mockedUsedRouter = jest.fn();
 jest.mock("next/navigation", () => ({
   ...jest.requireActual("next/navigation"),
