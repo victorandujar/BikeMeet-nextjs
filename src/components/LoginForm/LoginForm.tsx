@@ -6,12 +6,16 @@ import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
 import { Poppins, Odibee_Sans } from "next/font/google";
 import useUser from "@/hooks/useUser/useUser";
 import { useState } from "react";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import GoogleWelcomePage from "../GoogleWelcomePage/GoogleWelcomePage";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 const obidee = Odibee_Sans({ subsets: ["latin"], weight: "400" });
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +42,12 @@ const LoginForm = (): JSX.Element => {
 
     await loginUser({ email, password }, isRemembered);
   };
+
+  const { data: session } = useSession();
+
+  if (session) {
+    return <GoogleWelcomePage session={session} />;
+  }
 
   const areInputFieldsEmpty = email === "" || password === "";
 
@@ -110,7 +120,11 @@ const LoginForm = (): JSX.Element => {
         </button>
         <div className="form__footer footer">
           <span>OR</span>
-          <button type="button" className="btn btn-primary">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => signIn()}
+          >
             <FontAwesomeIcon
               icon={faGoogle}
               className="footer__google"
