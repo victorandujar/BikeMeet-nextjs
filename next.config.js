@@ -18,6 +18,9 @@ const nextConfig = {
       {
         hostname: "lh3.googleusercontent.com",
       },
+      {
+        hostname: "dgalywyr863hv.cloudfront.net",
+      },
     ],
   },
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const GoogleWelcomePageStyled = styled.div`
+const AuthWelcomePageStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -14,4 +14,4 @@ const GoogleWelcomePageStyled = styled.div`
   }
 `;
 
-export default GoogleWelcomePageStyled;
+export default AuthWelcomePageStyled;

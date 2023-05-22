@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
-import GoogleWelcomePageStyled from "./GoogleWelcomePageStyled";
+import AuthWelcomePageStyled from "./AuthWelcomePageStyled";
 import { Poppins } from "next/font/google";
 import { signOut } from "next-auth/react";
 
@@ -17,7 +17,7 @@ const GoogleWelcomePage = ({
 }: GoggleWelcomePageProps): JSX.Element => {
   const router = useRouter();
   return (
-    <GoogleWelcomePageStyled
+    <AuthWelcomePageStyled
       className={`google-welcomePage ${poppins.className}`}
     >
       <Image
@@ -38,7 +38,7 @@ const GoogleWelcomePage = ({
         text="Log out"
         actionOnClick={() => signOut()}
       />
-    </GoogleWelcomePageStyled>
+    </AuthWelcomePageStyled>
   );
 };
 
