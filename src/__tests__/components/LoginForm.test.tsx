@@ -1,15 +1,12 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/Theme";
-import { Provider } from "react-redux";
-import { store } from "@/store/store";
 import userEvent from "@testing-library/user-event";
 import {
   mockIsRemembered,
   mockUserCredentials,
 } from "@/mocks/userMocks/userMocks";
+import renderWithProviders from "@/utils/testUtils/testUtils";
 
 const mockedUsedRouter = jest.fn();
 jest.mock("next/navigation", () => ({
@@ -33,13 +30,7 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a button with the text 'Log in'", () => {
       const buttonText = "Log in";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginForm />);
 
       const expectedButton = screen.getByRole("button", { name: buttonText });
 
@@ -49,13 +40,7 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a label with the text 'Password'", () => {
       const labelText = "Password";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginForm />);
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -65,13 +50,7 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a button with the text 'Log in with Goggle'", () => {
       const buttonText = "Log in with Google";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginForm />);
 
       const expectedButton = screen.getByRole("button", { name: buttonText });
 
@@ -84,13 +63,7 @@ describe("Given a LoginForm component", () => {
       const emailLabel = "Email address";
       const emailText = "victor@andujar.org";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginForm />);
 
       const emailInput = screen.getByLabelText(emailLabel);
 
@@ -105,13 +78,7 @@ describe("Given a LoginForm component", () => {
       const passwordLabel = "Password";
       const passwordText = "12345678";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginForm />);
 
       const passwordInput = screen.getByLabelText(passwordLabel);
 
@@ -127,13 +94,7 @@ describe("Given a LoginForm component", () => {
       const passwordInputPlaceholderText = "Password. Max 8 characters";
       const buttonText = "Log in";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <LoginForm />
-          </Provider>
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginForm />);
 
       const expectedEmailInput = screen.getByPlaceholderText(
         emailInputPlaceholderText
