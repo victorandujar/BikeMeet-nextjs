@@ -1,11 +1,8 @@
 import Image from "next/image";
 import HeaderStyled from "./HeaderStyled";
 import { useAppSelector } from "@/store/hooks";
-import { Poppins, Odibee_Sans } from "next/font/google";
 import Button from "../Button/Button";
-
-const poppins = Poppins({ subsets: ["latin"], weight: "400" });
-const obidee = Odibee_Sans({ subsets: ["latin"], weight: "400" });
+import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 
 const Header = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
@@ -15,12 +12,12 @@ const Header = (): JSX.Element => {
       <div className={`header-page__logo`}>
         <Image src={"/image/favicon.ico"} alt={""} width={50} height={45} />
         <div className={`header-page__title title`}>
-          <h2 className={`title__black ${obidee.className}`}>Bike</h2>
-          <h2 className={`title__blue ${obidee.className}`}>Meet</h2>
+          <h2 className={`title__black ${secondaryFont.className}`}>Bike</h2>
+          <h2 className={`title__blue ${secondaryFont.className}`}>Meet</h2>
         </div>
       </div>
       {isLogged && (
-        <nav className={`navbar navbar-expand-lg ${poppins.className}`}>
+        <nav className={`navbar navbar-expand-lg ${primaryFont.className}`}>
           <div className="container-fluid">
             <button
               className="navbar-toggler"

@@ -1,9 +1,8 @@
 import GoogleWelcomePage from "@/components/AuthWelcomePage/AuthWelcomePage";
 import { mockSession } from "@/mocks/userMocks/userMocks";
-import theme from "@/styles/Theme";
-import { act, render, screen } from "@testing-library/react";
+import renderWithProviders from "@/utils/testUtils/testUtils";
+import { act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ThemeProvider } from "styled-components";
 
 const mockedUseRouter = {
   push: jest.fn(),
@@ -31,11 +30,7 @@ describe("Given a GoogleWelcomePageTest", () => {
     test("Then it should show heading with the text 'Welcome Victor A.'", () => {
       const headingText = `Welcome ${mockSession.user?.name}`;
 
-      render(
-        <ThemeProvider theme={theme}>
-          <GoogleWelcomePage session={mockSession} />
-        </ThemeProvider>
-      );
+      renderWithProviders(<GoogleWelcomePage session={mockSession} />);
 
       const expectedHeading = screen.getByRole("heading", {
         name: headingText,
@@ -47,11 +42,7 @@ describe("Given a GoogleWelcomePageTest", () => {
     test("Then it should show a Button with the text 'Continue'", async () => {
       const buttonText = "Continue";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <GoogleWelcomePage session={mockSession} />
-        </ThemeProvider>
-      );
+      renderWithProviders(<GoogleWelcomePage session={mockSession} />);
 
       const expectedButton = screen.getByRole("button", { name: buttonText });
 
@@ -63,11 +54,7 @@ describe("Given a GoogleWelcomePageTest", () => {
     test("Then it should show a Button with the text 'Log out", async () => {
       const buttonText = "Log out";
 
-      render(
-        <ThemeProvider theme={theme}>
-          <GoogleWelcomePage session={mockSession} />
-        </ThemeProvider>
-      );
+      renderWithProviders(<GoogleWelcomePage session={mockSession} />);
 
       const expectedButton = screen.getByRole("button", { name: buttonText });
 

@@ -3,14 +3,12 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
 import AuthWelcomePageStyled from "./AuthWelcomePageStyled";
-import { Poppins } from "next/font/google";
 import { signOut } from "next-auth/react";
+import { primaryFont } from "@/utils/fonts/fonts";
 
 interface GoggleWelcomePageProps {
   session: Session;
 }
-
-const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
 const GoogleWelcomePage = ({
   session,
@@ -18,7 +16,7 @@ const GoogleWelcomePage = ({
   const router = useRouter();
   return (
     <AuthWelcomePageStyled
-      className={`google-welcomePage ${poppins.className}`}
+      className={`google-welcomePage ${primaryFont.className}`}
     >
       <Image
         src={session.user?.image!}

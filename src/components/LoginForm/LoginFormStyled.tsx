@@ -13,7 +13,7 @@ const LoginFormStyled = styled.div`
     width: 800px;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 860px) {
     width: 500px;
     flex-direction: column;
   }
@@ -35,7 +35,7 @@ const LoginFormStyled = styled.div`
         object-position: 25%;
       }
 
-      @media (max-width: 800px) {
+      @media (max-width: 860px) {
         width: 500px;
         height: 300px;
         border-radius: 10px 10px 0 0;
@@ -61,7 +61,7 @@ const LoginFormStyled = styled.div`
       left: 30%;
       transform: translate(-50%, -50%);
 
-      @media (max-width: 800px) {
+      @media (max-width: 860px) {
         top: 7%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -72,10 +72,10 @@ const LoginFormStyled = styled.div`
       color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
       top: 25%;
-      left: 30%;
+      left: 29.8%;
       transform: translateX(-50%);
 
-      @media (max-width: 800px) {
+      @media (max-width: 860px) {
         top: 10%;
         left: 50%;
         transform: translateX(-50%);
