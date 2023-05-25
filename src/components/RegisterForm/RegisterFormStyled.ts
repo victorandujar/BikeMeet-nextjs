@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.div`
+const RegisterFormStyled = styled.div`
   display: flex;
+  color: ${(props) => props.theme.colors.mainColorText};
   background-color: #0c0c0c;
   border-radius: 10px;
   box-shadow: 8px 5px 15px gray;
-  width: 1050px;
+  width: 1100px;
   font-size: 15px;
   position: absolute;
 
-  @media (max-width: 1070px) {
+  @media (max-width: 1130px) {
     width: 800px;
   }
 
@@ -23,14 +24,14 @@ const LoginFormStyled = styled.div`
     flex-direction: column;
   }
 
-  .login-interface {
+  .register-interface {
     &__picture {
       border-radius: 10px 0 0 10px;
       object-fit: cover;
-      width: 600px;
+      width: 550px;
       height: 500px;
 
-      @media (max-width: 1070px) {
+      @media (max-width: 1130px) {
         width: 450px;
         object-position: 25%;
       }
@@ -58,7 +59,7 @@ const LoginFormStyled = styled.div`
       color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
       top: 20%;
-      left: 30%;
+      left: 25%;
       transform: translate(-50%, -50%);
 
       @media (max-width: 860px) {
@@ -72,7 +73,7 @@ const LoginFormStyled = styled.div`
       color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
       top: 25%;
-      left: 29.8%;
+      left: 24.8%;
       transform: translateX(-50%);
 
       @media (max-width: 860px) {
@@ -80,6 +81,58 @@ const LoginFormStyled = styled.div`
         left: 50%;
         transform: translateX(-50%);
       }
+    }
+  }
+
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    width: 100%;
+
+    &__in-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+
+      @media (max-width: 860px) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .form-label {
+    font-size: 12px;
+    color: ${(props) => props.theme.colors.secondaryColorText};
+  }
+
+  .mb-3 {
+    width: 100%;
+  }
+
+  .row-2 {
+    width: 240px;
+
+    @media (max-width: 1130px) {
+      width: 150px;
+    }
+
+    @media (max-width: 860px) {
+      width: 100%;
+    }
+  }
+
+  .form-control {
+    font-size: 14px;
+    width: 100%;
+
+    ::placeholder {
+      font-size: 12px;
     }
   }
 
@@ -101,70 +154,19 @@ const LoginFormStyled = styled.div`
     justify-content: center;
   }
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    padding: 20px;
-    width: 100%;
+  .field-names {
+    width: 240px;
 
-    &__footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    @media (max-width: 1130px) {
+      width: 150px;
     }
 
-    &__text {
-      color: ${(props) => props.theme.colors.secondaryColorText};
-
-      @media (max-width: 1070px) {
-        font-size: 12px;
-      }
-
-      @media (max-width: 530px) {
-        font-size: 10px;
-      }
+    @media (max-width: 860px) {
+      width: 100%;
     }
   }
 
-  .form-label {
-    font-size: 12px;
-    color: ${(props) => props.theme.colors.secondaryColorText};
-  }
-
-  .mb-3 {
-    width: 100%;
-  }
-
-  .form-control {
-    font-size: 14px;
-    width: 100%;
-
-    ::placeholder {
-      font-size: 12px;
-    }
-  }
-
-  .form-check-label {
-    font-size: 12px;
-    color: ${(props) => props.theme.colors.secondaryColorText};
-  }
-
-  .footer {
-    width: 100%;
-
-    &__google {
-      color: #ef0000;
-    }
-
-    &__strava {
-      color: orange;
-    }
-  }
-
-  .signup {
+  .login {
     display: flex;
     gap: 5px;
     font-size: 12px;
@@ -182,4 +184,4 @@ const LoginFormStyled = styled.div`
   }
 `;
 
-export default LoginFormStyled;
+export default RegisterFormStyled;
