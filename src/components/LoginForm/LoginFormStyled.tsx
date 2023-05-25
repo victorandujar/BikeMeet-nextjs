@@ -94,6 +94,7 @@ const LoginFormStyled = styled.div`
     width: 100%;
     color: ${(props) => props.theme.colors.mainColorText};
     font-size: 14px;
+    font-weight: 900;
     display: flex;
     gap: 10px;
     align-items: center;

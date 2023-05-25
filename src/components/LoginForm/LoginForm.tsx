@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import GoogleWelcomePage from "../AuthWelcomePage/AuthWelcomePage";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
+import Link from "next/link";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -140,10 +141,10 @@ const LoginForm = (): JSX.Element => {
             Login with Strava
           </button>
           <div className="login-interface__signup signup">
-            <span className="signup__text">Already a member?</span>
-            <a href="/signup" className="signup__link">
+            <span className="signup__text">Not a member?</span>
+            <Link href="/sign-up" className="signup__link">
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
       </form>
