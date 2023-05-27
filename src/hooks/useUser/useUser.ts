@@ -1,5 +1,10 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { CustomTokenPayload, LoginApiResponse, UserCredentials } from "./types";
+import {
+  CustomTokenPayload,
+  LoginApiResponse,
+  UserCredentials,
+  UserRegisterCredentials,
+} from "./types";
 import axios from "axios";
 import userEndpoints from "@/utils/userEndpoints/userEndpoints";
 import { useCallback } from "react";
@@ -41,7 +46,19 @@ const useUser = () => {
     [dispatch, router]
   );
 
-  return { loginUser };
+  const registerUser = useCallback(
+    async (userCredentials: UserRegisterCredentials) => {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.register}`,
+        userCredentials
+      );
+
+      router.push("/login");
+    },
+    [router]
+  );
+
+  return { loginUser, registerUser };
 };
 
 export default useUser;

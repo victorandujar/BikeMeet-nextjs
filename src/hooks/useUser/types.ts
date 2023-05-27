@@ -13,3 +13,13 @@ export interface CustomTokenPayload extends JwtPayload {
   sub: string;
   email: string;
 }
+
+export interface UserRegisterCredentials extends UserCredentials {
+  name: string;
+  surname: string;
+  username: string;
+}
+
+export interface UserRegisterCredentialsForm extends UserRegisterCredentials {
+  repeat: string;
+}
