@@ -1,6 +1,5 @@
 import { act, screen } from "@testing-library/react";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import {
   mockIsRemembered,
@@ -88,7 +87,7 @@ describe("Given a LoginForm component", () => {
     });
   });
 
-  describe("When te user submits de form information to log in", () => {
+  describe("When te user submits e form information to log in", () => {
     test("Then the loginUser function should be called", async () => {
       const emailInputPlaceholderText = "Enter a valid email";
       const passwordInputPlaceholderText = "Password. Max 8 characters";

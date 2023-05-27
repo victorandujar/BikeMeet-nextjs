@@ -1,4 +1,9 @@
-import { CustomTokenPayload, UserCredentials } from "@/hooks/useUser/types";
+import {
+  CustomTokenPayload,
+  UserCredentials,
+  UserRegisterCredentials,
+  UserRegisterCredentialsForm,
+} from "@/hooks/useUser/types";
 import {
   UserState,
   UserStructure,
@@ -51,4 +56,21 @@ export const mockSession: Session = {
     name: "Victor A.",
   },
   expires: "",
+};
+
+export const mockUserRegisterCredentialsForm: UserRegisterCredentialsForm = {
+  email: "victor@andujar.org",
+  name: "Víctor",
+  surname: "Andújar",
+  username: "Ammavaru",
+  password: "Vik27634_",
+  repeat: "Vik27634_",
+};
+
+export const mockUserRegisterCredentials: UserRegisterCredentials = {
+  name: "Víctor",
+  surname: "Andújar",
+  username: "Ammavaru",
+  email: "victor@andujar.org",
+  password: "Vik27634_",
 };

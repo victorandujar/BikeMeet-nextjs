@@ -182,6 +182,16 @@ const RegisterFormStyled = styled.div`
       cursor: pointer;
     }
   }
+
+  .no-match {
+    color: red;
+    font-size: 11px;
+  }
+
+  .check-password {
+    color: ${(props) => props.theme.colors.secondaryColorText};
+    font-size: 10px;
+  }
 `;
 
 export default RegisterFormStyled;
