@@ -3,8 +3,61 @@ import registerImage from "../../../public/image/registerImage.jpg";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import RegisterFormStyled from "./RegisterFormStyled";
 import Link from "next/link";
+import { useState } from "react";
+import { UserRegisterCredentialsForm } from "@/hooks/useUser/types";
+import useUser from "@/hooks/useUser/useUser";
 
 const RegisterForm = (): JSX.Element => {
+  const { registerUser } = useUser();
+
+  const initialValues: UserRegisterCredentialsForm = {
+    name: "",
+    surname: "",
+    username: "",
+    email: "",
+    password: "",
+    repeat: "",
+  };
+  const [formData, setFormData] = useState(initialValues);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const checkPasswords = formData.password === formData.repeat;
+
+  const isEmptyField =
+    formData.name === "" ||
+    formData.email === "" ||
+    formData.password === "" ||
+    formData.surname === "" ||
+    formData.username === "";
+
+  const uppercasePassword = /[A-Z]/;
+  const specialCharactersPassword = /[!@#$%^&*(),.?":{}|<>_-]/;
+
+  const hasUppercase = uppercasePassword.test(formData.password);
+  const hasSpecialCharacter = specialCharactersPassword.test(formData.password);
+
+  const isPasswordEmpty = formData.password === "";
+  const isRepeatedPasswordEmpty = formData.repeat === "";
+
+  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    await registerUser({
+      name: formData.name,
+      surname: formData.surname,
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    });
+  };
+
   return (
     <RegisterFormStyled
       className={`register-interface ${primaryFont.className} `}
@@ -14,13 +67,14 @@ const RegisterForm = (): JSX.Element => {
           src={registerImage}
           alt="Biker in a sunset"
           className="register-interface__picture"
+          priority
         />
         <h2 className={`register-interface__title ${secondaryFont.className}`}>
           BikeMeet
         </h2>
         <span className="register-interface__slogan">Never ride alone</span>
       </div>
-      <form className="register-form">
+      <form className="register-form" onSubmit={onSubmitHandler}>
         <div className="register-form__in-row">
           <div className="mb-3 row-2">
             <label htmlFor="name" className="form-label">
@@ -30,6 +84,9 @@ const RegisterForm = (): JSX.Element => {
               type="text"
               placeholder="Enter your first name"
               className="form-control field-names"
+              id="name"
+              name="name"
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-3 row-2">
@@ -40,6 +97,9 @@ const RegisterForm = (): JSX.Element => {
               type="text"
               placeholder="Enter your surname"
               className="form-control field-names"
+              id="surname"
+              name="surname"
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -51,6 +111,9 @@ const RegisterForm = (): JSX.Element => {
             type="text"
             placeholder="Create a username"
             className="form-control"
+            id="username"
+            name="username"
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-3">
@@ -61,6 +124,9 @@ const RegisterForm = (): JSX.Element => {
             type="text"
             placeholder="Enter a valid email"
             className="form-control"
+            id="email"
+            name="email"
+            onChange={handleInputChange}
           />
         </div>
         <div className="register-form__in-row">
@@ -69,23 +135,48 @@ const RegisterForm = (): JSX.Element => {
               Password
             </label>
             <input
-              type="text"
+              type="password"
               placeholder="Password. 10 characters"
               className="form-control"
+              id="password"
+              name="password"
+              onChange={handleInputChange}
             />
+            {(!hasUppercase || !hasSpecialCharacter) && (
+              <span className="check-password" hidden={isPasswordEmpty}>
+                Must have an upper case and an special character.
+              </span>
+            )}
           </div>
           <div className="mb-3 row-2">
             <label htmlFor="repeat" className="form-label">
               Repeat password
             </label>
             <input
-              type="text"
+              type="password"
               placeholder="Repeat password"
               className="form-control"
+              id="repeat"
+              name="repeat"
+              onChange={handleInputChange}
             />
+            {!checkPasswords && (
+              <span className="no-match" hidden={isRepeatedPasswordEmpty}>
+                Passwords do not match!
+              </span>
+            )}
           </div>
         </div>
-        <button type="submit" className="btn btn-primary" disabled={false}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={
+            !checkPasswords ||
+            isEmptyField ||
+            !hasUppercase ||
+            !hasSpecialCharacter
+          }
+        >
           Join us!
         </button>
         <div className="register-interface__login login">
