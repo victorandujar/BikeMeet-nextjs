@@ -23,3 +23,7 @@ export interface UserRegisterCredentials extends UserCredentials {
 export interface UserRegisterCredentialsForm extends UserRegisterCredentials {
   repeat: string;
 }
+
+export interface UserVerifyEmailStructure {
+  confirmationCode: string;
+}
