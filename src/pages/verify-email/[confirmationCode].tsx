@@ -1,15 +1,17 @@
+import { NextPage } from "next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { primaryFont, secondaryFont } from "@/utils/fonts/fonts";
 import VerifyEmailStyled from "@/styles/pages/VerifyEmailStyled";
 import useUser from "@/hooks/useUser/useUser";
-import { useAppSelector } from "@/store/hooks";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-const VerifyEmailPage = (): JSX.Element => {
+const VerifyEmailPage: NextPage = (): JSX.Element => {
   const { verifyEmail } = useUser();
-  const { confirmationCode } = useAppSelector((state) => state.user);
+  const router = useRouter();
+  const { confirmationCode } = router.query;
 
   useEffect(() => {
     if (confirmationCode) {
@@ -19,9 +21,9 @@ const VerifyEmailPage = (): JSX.Element => {
 
   return (
     <VerifyEmailStyled className="verify-page">
-      <span className={`verify-page__success ${primaryFont.className}`}>
+      <h2 className={`verify-page__success ${primaryFont.className}`}>
         The email has been verified!
-      </span>
+      </h2>
       <FontAwesomeIcon
         icon={faCircleCheck}
         className="verify-page__check-icon"

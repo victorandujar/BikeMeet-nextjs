@@ -1,8 +1,9 @@
 import RegisterForm from "@/components/RegisterForm/RegisterForm";
 import RegisterPageStyled from "@/styles/pages/RegisterPageStyled";
 import { primaryFont, secondaryFont } from "@/utils/fonts/fonts";
+import { NextPage } from "next";
 
-const SignUpPage = (): JSX.Element => {
+const SignUpPage: NextPage = (): JSX.Element => {
   return (
     <RegisterPageStyled className="register-page">
       <div className="register-page__heading heading">

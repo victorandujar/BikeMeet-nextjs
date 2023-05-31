@@ -1,16 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import {
-  UserRegistrationStateStructure,
-  UserState,
-  UserStructure,
-} from "./types/types";
+import { UserState, UserStructure } from "./types/types";
 
-const initialState: UserRegistrationStateStructure = {
+const initialState: UserState = {
   email: "",
   id: "",
   token: "",
   isLogged: false,
-  confirmationCode: "",
 };
 
 const usersSlice = createSlice({
@@ -20,25 +15,15 @@ const usersSlice = createSlice({
     loginUser: (
       currentUserState,
       action: PayloadAction<UserStructure>
-    ): UserRegistrationStateStructure => ({
+    ): UserState => ({
       ...currentUserState,
       email: action.payload.email,
       id: action.payload.id,
       token: action.payload.token,
       isLogged: true,
     }),
-    registerUser: (
-      currentUserState,
-      action: PayloadAction<UserRegistrationStateStructure>
-    ): UserRegistrationStateStructure => ({
-      ...currentUserState,
-      confirmationCode: action.payload.confirmationCode,
-    }),
   },
 });
 
-export const {
-  loginUser: loginUserActionCreator,
-  registerUser: registerUserActionCreator,
-} = usersSlice.actions;
+export const { loginUser: loginUserActionCreator } = usersSlice.actions;
 export const userReducer = usersSlice.reducer;

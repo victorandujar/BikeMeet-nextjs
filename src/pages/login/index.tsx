@@ -1,8 +1,9 @@
 import LoginForm from "@/components/LoginForm/LoginForm";
 import LoginPageStyled from "@/styles/pages/LoginPageStyled";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
+import { NextPage } from "next";
 
-const LoginPage = (): JSX.Element => {
+const LoginPage: NextPage = (): JSX.Element => {
   return (
     <LoginPageStyled className="login-page">
       <div className="login-page__heading">
