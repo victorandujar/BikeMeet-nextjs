@@ -25,5 +25,5 @@ export interface UserRegisterCredentialsForm extends UserRegisterCredentials {
 }
 
 export interface UserVerifyEmailStructure {
-  confirmationCode: string;
+  confirmationCode: string | string[];
 }
