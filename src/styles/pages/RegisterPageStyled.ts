@@ -12,7 +12,7 @@ const RegisterPageStyled = styled.main`
       align-items: flex-start;
       justify-content: center;
       height: 100%;
-      padding: 70px 0;
+      padding: 70px 0 20px 0;
     }
   }
 

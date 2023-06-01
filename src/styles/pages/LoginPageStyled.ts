@@ -12,7 +12,7 @@ const LoginPageStyled = styled.main`
       align-items: flex-start;
       justify-content: center;
       height: 100%;
-      padding: 70px 0;
+      padding: 70px 0 20px 0;
     }
 
     &__heading {
@@ -31,6 +31,10 @@ const LoginPageStyled = styled.main`
     &__slogan {
       border-bottom: 4px solid blue;
       padding-bottom: 10px;
+
+      @media (max-width: 670px) {
+        border-bottom: none;
+      }
     }
   }
 

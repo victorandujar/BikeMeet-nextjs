@@ -8,7 +8,6 @@ const RegisterFormStyled = styled.div`
   box-shadow: 8px 5px 15px gray;
   width: 1100px;
   font-size: 15px;
-  position: absolute;
 
   @media (max-width: 1130px) {
     width: 800px;
@@ -49,7 +48,7 @@ const RegisterFormStyled = styled.div`
       }
     }
 
-    &__lef-block {
+    &__left-block {
       position: relative;
     }
 
@@ -59,11 +58,11 @@ const RegisterFormStyled = styled.div`
       color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
       top: 20%;
-      left: 25%;
+      left: 50%;
       transform: translate(-50%, -50%);
 
       @media (max-width: 860px) {
-        top: 7%;
+        top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
       }
@@ -72,14 +71,14 @@ const RegisterFormStyled = styled.div`
     &__slogan {
       color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
-      top: 25%;
-      left: 24.8%;
-      transform: translateX(-50%);
+      top: 26%;
+      left: 50%;
+      transform: translate(-50%, -50%);
 
       @media (max-width: 860px) {
-        top: 10%;
+        top: 30%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
       }
     }
   }
@@ -152,6 +151,11 @@ const RegisterFormStyled = styled.div`
     gap: 10px;
     align-items: center;
     justify-content: center;
+
+    &-accent {
+      background-color: ${(props) => props.theme.colors.thirdColorText};
+      color: ${(props) => props.theme.colors.mainColorButton};
+    }
   }
 
   .field-names {

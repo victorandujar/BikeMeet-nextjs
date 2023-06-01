@@ -20,11 +20,11 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
       </Head>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
+          <GlobalStyles />
           <Header />
           <SessionProvider session={session}>
             <Component {...pageProps} />
           </SessionProvider>
-          <GlobalStyles />
         </Provider>
       </ThemeProvider>
     </>
