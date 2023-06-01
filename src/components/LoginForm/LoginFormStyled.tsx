@@ -82,10 +82,6 @@ const LoginFormStyled = styled.div`
     }
   }
 
-  .btn {
-    background-color: ${(props) => props.theme.colors.secondaryColorButton};
-  }
-
   .btn-primary {
     background-color: ${(props) => props.theme.colors.mainColorButton};
     --bs-btn-border-color: ${(props) =>
@@ -98,6 +94,11 @@ const LoginFormStyled = styled.div`
     gap: 10px;
     align-items: center;
     justify-content: center;
+
+    &-accent {
+      background-color: ${(props) => props.theme.colors.thirdColorText};
+      color: ${(props) => props.theme.colors.mainColorButton};
+    }
   }
 
   .form {

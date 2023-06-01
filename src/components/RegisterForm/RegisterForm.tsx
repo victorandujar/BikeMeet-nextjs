@@ -169,7 +169,7 @@ const RegisterForm = (): JSX.Element => {
         </div>
         <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-primary btn-primary-accent"
           disabled={
             !checkPasswords ||
             isEmptyField ||

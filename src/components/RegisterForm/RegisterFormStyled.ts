@@ -151,6 +151,11 @@ const RegisterFormStyled = styled.div`
     gap: 10px;
     align-items: center;
     justify-content: center;
+
+    &-accent {
+      background-color: ${(props) => props.theme.colors.thirdColorText};
+      color: ${(props) => props.theme.colors.mainColorButton};
+    }
   }
 
   .field-names {
