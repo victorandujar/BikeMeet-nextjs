@@ -31,6 +31,10 @@ const LoginPageStyled = styled.main`
     &__slogan {
       border-bottom: 4px solid blue;
       padding-bottom: 10px;
+
+      @media (max-width: 670px) {
+        border-bottom: none;
+      }
     }
   }
 
