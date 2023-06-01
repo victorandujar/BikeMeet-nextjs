@@ -28,7 +28,7 @@ const RegisterFormStyled = styled.div`
       border-radius: 10px 0 0 10px;
       object-fit: cover;
       width: 550px;
-      height: 500px;
+      height: 505px;
 
       @media (max-width: 1130px) {
         width: 450px;
@@ -101,6 +101,7 @@ const RegisterFormStyled = styled.div`
       @media (max-width: 860px) {
         display: flex;
         flex-direction: column;
+        gap: 5px;
       }
     }
   }
@@ -114,15 +115,17 @@ const RegisterFormStyled = styled.div`
     width: 100%;
   }
 
-  .row-2 {
-    width: 240px;
+  .password {
+    &__row-2 {
+      width: 240px;
 
-    @media (max-width: 1130px) {
-      width: 150px;
-    }
+      @media (max-width: 1130px) {
+        width: 150px;
+      }
 
-    @media (max-width: 860px) {
-      width: 100%;
+      @media (max-width: 860px) {
+        width: 100%;
+      }
     }
   }
 
@@ -192,9 +195,15 @@ const RegisterFormStyled = styled.div`
     font-size: 11px;
   }
 
-  .check-password {
-    color: ${(props) => props.theme.colors.secondaryColorText};
-    font-size: 10px;
+  .messages {
+    display: flex;
+    flex-direction: column;
+    height: 10px;
+
+    &__check {
+      color: ${(props) => props.theme.colors.secondaryColorText};
+      font-size: 10px;
+    }
   }
 `;
 

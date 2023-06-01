@@ -129,8 +129,8 @@ const RegisterForm = (): JSX.Element => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="register-form__in-row">
-          <div className="mb-3 row-2">
+        <div className="register-form__in-row password">
+          <div className="mb-3 password__row-2">
             <label htmlFor="password" className="form-label">
               Password
             </label>
@@ -142,13 +142,20 @@ const RegisterForm = (): JSX.Element => {
               name="password"
               onChange={handleInputChange}
             />
-            {(!hasUppercase || !hasSpecialCharacter) && (
-              <span className="check-password" hidden={isPasswordEmpty}>
-                Must have an upper case and an special character.
-              </span>
-            )}
+            <div className="password__messages messages">
+              {!hasUppercase && (
+                <span className="messages__check" hidden={isPasswordEmpty}>
+                  It must have a capital letter.
+                </span>
+              )}
+              {!hasSpecialCharacter && (
+                <span className="messages__check" hidden={isPasswordEmpty}>
+                  It must have an special character.
+                </span>
+              )}
+            </div>
           </div>
-          <div className="mb-3 row-2">
+          <div className="mb-3 password__row-2">
             <label htmlFor="repeat" className="form-label">
               Repeat password
             </label>
