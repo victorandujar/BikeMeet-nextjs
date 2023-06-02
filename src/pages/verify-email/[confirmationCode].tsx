@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { primaryFont, secondaryFont } from "@/utils/fonts/fonts";
-import VerifyEmailStyled from "@/styles/pages/VerifyEmailStyled";
+import VerifyEmailStyled from "@/pages/verify-email/VerifyEmailStyled";
 import useUser from "@/hooks/useUser/useUser";
 import { useEffect } from "react";
 import { useRouter } from "next/router";

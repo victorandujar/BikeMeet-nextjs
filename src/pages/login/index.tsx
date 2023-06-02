@@ -1,5 +1,5 @@
 import LoginForm from "@/components/LoginForm/LoginForm";
-import LoginPageStyled from "@/styles/pages/LoginPageStyled";
+import LoginPageStyled from "@/pages/login/LoginPageStyled";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import { NextPage } from "next";
 
