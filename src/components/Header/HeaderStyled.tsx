@@ -30,12 +30,12 @@ const HeaderStyled = styled.header`
     display: flex;
 
     &__blue {
-      font-size: 40px;
+      font-size: 30px;
       color: ${(props) => props.theme.colors.thirdColorText};
     }
 
     &__black {
-      font-size: 40px;
+      font-size: 30px;
     }
   }
 `;

@@ -120,7 +120,7 @@ const LoginForm = (): JSX.Element => {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => signIn()}
+            onClick={() => signIn("google")}
           >
             <FontAwesomeIcon
               icon={faGoogle}
@@ -132,7 +132,7 @@ const LoginForm = (): JSX.Element => {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => signIn()}
+            onClick={() => signIn("strava")}
           >
             <FontAwesomeIcon
               icon={faStrava}

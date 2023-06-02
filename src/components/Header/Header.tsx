@@ -1,4 +1,3 @@
-import Image from "next/image";
 import HeaderStyled from "./HeaderStyled";
 import { useAppSelector } from "@/store/hooks";
 import Button from "../Button/Button";
@@ -10,7 +9,6 @@ const Header = (): JSX.Element => {
   return (
     <HeaderStyled className="header-page">
       <div className={`header-page__logo`}>
-        <Image src={"/image/favicon.ico"} alt={""} width={50} height={45} />
         <div className={`header-page__title title`}>
           <h2 className={`title__black ${secondaryFont.className}`}>Bike</h2>
           <h2 className={`title__blue ${secondaryFont.className}`}>Meet</h2>
