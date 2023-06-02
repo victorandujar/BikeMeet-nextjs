@@ -28,7 +28,7 @@ const RegisterFormStyled = styled.div`
       border-radius: 10px 0 0 10px;
       object-fit: cover;
       width: 550px;
-      height: 505px;
+      height: 100%;
 
       @media (max-width: 1130px) {
         width: 450px;
@@ -97,6 +97,7 @@ const RegisterFormStyled = styled.div`
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
+      gap: 10px;
 
       @media (max-width: 860px) {
         display: flex;
@@ -204,6 +205,10 @@ const RegisterFormStyled = styled.div`
       color: ${(props) => props.theme.colors.secondaryColorText};
       font-size: 10px;
     }
+  }
+
+  .loader__container {
+    height: 40px;
   }
 `;
 

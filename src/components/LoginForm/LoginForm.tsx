@@ -9,6 +9,7 @@ import { useSession, signIn } from "next-auth/react";
 import GoogleWelcomePage from "../AuthWelcomePage/AuthWelcomePage";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import Link from "next/link";
+import { CircularProgress } from "@mui/material";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -16,6 +17,7 @@ const LoginForm = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRemembered, setIsRemembered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmail = ({
     target: { value },
@@ -36,7 +38,15 @@ const LoginForm = (): JSX.Element => {
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    await loginUser({ email, password }, isRemembered);
+    setIsLoading(true);
+
+    try {
+      await loginUser({ email, password }, isRemembered);
+
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
   };
 
   const { data: session } = useSession();
@@ -116,7 +126,9 @@ const LoginForm = (): JSX.Element => {
           Log in
         </button>
         <div className="form__footer footer">
-          <span>OR</span>
+          <div className="loader__container">
+            {isLoading && <CircularProgress />}
+          </div>
           <button
             type="button"
             className="btn btn-primary"
