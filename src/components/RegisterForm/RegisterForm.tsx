@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { UserRegisterCredentialsForm } from "@/hooks/useUser/types";
 import useUser from "@/hooks/useUser/useUser";
+import { CircularProgress } from "@mui/material";
 
 const RegisterForm = (): JSX.Element => {
   const { registerUser } = useUser();
@@ -19,6 +20,7 @@ const RegisterForm = (): JSX.Element => {
     repeat: "",
   };
   const [formData, setFormData] = useState(initialValues);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -49,13 +51,21 @@ const RegisterForm = (): JSX.Element => {
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    await registerUser({
-      name: formData.name,
-      surname: formData.surname,
-      username: formData.username,
-      email: formData.email,
-      password: formData.password,
-    });
+    setIsLoading(true);
+
+    try {
+      await registerUser({
+        name: formData.name,
+        surname: formData.surname,
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -130,7 +140,7 @@ const RegisterForm = (): JSX.Element => {
           />
         </div>
         <div className="register-form__in-row password">
-          <div className="mb-3 password__row-2">
+          <div className="password__row-2">
             <label htmlFor="password" className="form-label">
               Password
             </label>
@@ -155,7 +165,7 @@ const RegisterForm = (): JSX.Element => {
               )}
             </div>
           </div>
-          <div className="mb-3 password__row-2">
+          <div className="password__row-2">
             <label htmlFor="repeat" className="form-label">
               Repeat password
             </label>
@@ -177,6 +187,7 @@ const RegisterForm = (): JSX.Element => {
             )}
           </div>
         </div>
+
         <button
           type="submit"
           className="btn btn-primary btn-primary-accent"
@@ -189,6 +200,9 @@ const RegisterForm = (): JSX.Element => {
         >
           Join us!
         </button>
+        <div className="loader__container">
+          {isLoading && <CircularProgress />}
+        </div>
         <div className="register-interface__login login">
           <span className="login__text">Already a member?</span>
           <Link href="/login" className="login__link">
