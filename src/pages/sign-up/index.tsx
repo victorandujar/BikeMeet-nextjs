@@ -1,5 +1,5 @@
 import RegisterForm from "@/components/RegisterForm/RegisterForm";
-import RegisterPageStyled from "@/styles/pages/RegisterPageStyled";
+import RegisterPageStyled from "@/pages/sign-up/RegisterPageStyled";
 import { primaryFont, secondaryFont } from "@/utils/fonts/fonts";
 import { NextPage } from "next";
 
