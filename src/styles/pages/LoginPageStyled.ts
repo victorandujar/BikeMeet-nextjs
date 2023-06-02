@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LoginPageStyled = styled.main`
   color: ${(props) => props.theme.colors.mainColorText};
-  padding: 50px 0;
+  padding: 10px 0 50px 0;
 
   .login-page {
     height: 100%;

@@ -155,7 +155,7 @@ const RegisterForm = (): JSX.Element => {
               )}
             </div>
           </div>
-          <div className="mb-3 password__row-2 messages">
+          <div className="mb-3 password__row-2">
             <label htmlFor="repeat" className="form-label">
               Repeat password
             </label>
@@ -168,7 +168,10 @@ const RegisterForm = (): JSX.Element => {
               onChange={handleInputChange}
             />
             {!checkPasswords && (
-              <span className="no-match" hidden={isRepeatedPasswordEmpty}>
+              <span
+                className="no-match messages"
+                hidden={isRepeatedPasswordEmpty}
+              >
                 Passwords do not match!
               </span>
             )}
