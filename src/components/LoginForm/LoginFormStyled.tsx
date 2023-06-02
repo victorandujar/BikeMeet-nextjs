@@ -185,6 +185,10 @@ const LoginFormStyled = styled.div`
       cursor: pointer;
     }
   }
+
+  .loader__container {
+    height: 40px;
+  }
 `;
 
 export default LoginFormStyled;
