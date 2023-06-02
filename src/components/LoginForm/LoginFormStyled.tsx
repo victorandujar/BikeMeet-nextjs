@@ -116,8 +116,9 @@ const LoginFormStyled = styled.div`
       gap: 10px;
     }
 
-    &__text {
+    &__email-text {
       color: ${(props) => props.theme.colors.secondaryColorText};
+      font-size: 12px;
 
       @media (max-width: 1070px) {
         font-size: 12px;
@@ -127,6 +128,10 @@ const LoginFormStyled = styled.div`
         font-size: 10px;
       }
     }
+  }
+
+  .email {
+    height: 70px;
   }
 
   .form-label {

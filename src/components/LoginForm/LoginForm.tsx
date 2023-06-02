@@ -46,6 +46,7 @@ const LoginForm = (): JSX.Element => {
   }
 
   const areInputFieldsEmpty = email === "" || password === "";
+  const isEmailInputEmpty = email === "";
 
   return (
     <LoginFormStyled className={`login-interface ${primaryFont.className}`}>
@@ -64,7 +65,7 @@ const LoginForm = (): JSX.Element => {
         <span className="login-interface__slogan">Never ride alone</span>
       </div>
       <form className="login-interface__form form" onSubmit={onSubmitHandler}>
-        <div className="mb-3">
+        <div className="mb-3 email">
           <label htmlFor="email" className="form-label">
             Email address
           </label>
@@ -76,11 +77,11 @@ const LoginForm = (): JSX.Element => {
             placeholder="Enter a valid email"
             onChange={handleEmail}
           />
-          {areInputFieldsEmpty ? (
+          {isEmailInputEmpty ? (
             ""
           ) : (
-            <span id="emailHelp" className="form__text" hidden={false}>
-              We will never share your email with anyone else.
+            <span id="emailHelp" className="form__email-text" hidden={false}>
+              We will never share your email with anyone else
             </span>
           )}
         </div>
@@ -119,7 +120,7 @@ const LoginForm = (): JSX.Element => {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => signIn()}
+            onClick={() => signIn("google")}
           >
             <FontAwesomeIcon
               icon={faGoogle}
@@ -131,7 +132,7 @@ const LoginForm = (): JSX.Element => {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => signIn()}
+            onClick={() => signIn("strava")}
           >
             <FontAwesomeIcon
               icon={faStrava}

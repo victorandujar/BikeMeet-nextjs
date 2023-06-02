@@ -155,7 +155,7 @@ const RegisterForm = (): JSX.Element => {
               )}
             </div>
           </div>
-          <div className="mb-3 password__row-2">
+          <div className="mb-3 password__row-2 messages">
             <label htmlFor="repeat" className="form-label">
               Repeat password
             </label>
