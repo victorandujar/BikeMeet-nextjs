@@ -24,8 +24,21 @@ const LoginPageStyled = styled.main`
   .heading {
     text-align: center;
     width: 100%;
+    padding-bottom: 10px;
+
+    &__welcome {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
     &__title {
       font-weight: 900;
+    }
+
+    &__title-blue {
+      color: ${(props) => props.theme.colors.thirdColorText};
     }
 
     &__slogan {

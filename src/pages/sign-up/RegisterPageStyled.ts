@@ -19,6 +19,8 @@ const RegisterPageStyled = styled.main`
   .heading {
     text-align: center;
     width: 100%;
+    padding-bottom: 10px;
+
     &__title {
       font-weight: 900;
     }

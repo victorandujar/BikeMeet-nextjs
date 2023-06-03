@@ -86,27 +86,27 @@ const RegisterForm = (): JSX.Element => {
       </div>
       <form className="register-form" onSubmit={onSubmitHandler}>
         <div className="register-form__in-row">
-          <div className="mb-3 row-2">
+          <div className="mb-3 fields__row-2">
             <label htmlFor="name" className="form-label">
               Name
             </label>
             <input
               type="text"
               placeholder="Enter your first name"
-              className="form-control field-names"
+              className="form-control "
               id="name"
               name="name"
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-3 row-2">
+          <div className="mb-3 fields__row-2">
             <label htmlFor="surname" className="form-label">
               Surname
             </label>
             <input
               type="text"
               placeholder="Enter your surname"
-              className="form-control field-names"
+              className="form-control"
               id="surname"
               name="surname"
               onChange={handleInputChange}
@@ -140,7 +140,7 @@ const RegisterForm = (): JSX.Element => {
           />
         </div>
         <div className="register-form__in-row password">
-          <div className="password__row-2">
+          <div className="fields__row-2">
             <label htmlFor="password" className="form-label">
               Password
             </label>
@@ -165,7 +165,7 @@ const RegisterForm = (): JSX.Element => {
               )}
             </div>
           </div>
-          <div className="password__row-2">
+          <div className="fields__row-2">
             <label htmlFor="repeat" className="form-label">
               Repeat password
             </label>
@@ -177,17 +177,15 @@ const RegisterForm = (): JSX.Element => {
               name="repeat"
               onChange={handleInputChange}
             />
-            {!checkPasswords && (
-              <span
-                className="no-match messages"
-                hidden={isRepeatedPasswordEmpty}
-              >
-                Passwords do not match!
-              </span>
-            )}
+            <div className="messages">
+              {!checkPasswords && (
+                <span className="no-match" hidden={isRepeatedPasswordEmpty}>
+                  Passwords do not match!
+                </span>
+              )}
+            </div>
           </div>
         </div>
-
         <button
           type="submit"
           className="btn btn-primary btn-primary-accent"

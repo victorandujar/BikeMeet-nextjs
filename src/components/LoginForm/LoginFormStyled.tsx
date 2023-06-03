@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LoginFormStyled = styled.div`
   display: flex;
-  background-color: #0c0c0c;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 8px 5px 15px gray;
   width: 1050px;
@@ -71,7 +71,7 @@ const LoginFormStyled = styled.div`
       color: ${(props) => props.theme.colors.secondaryColorText};
       position: absolute;
       top: 26%;
-      left: 50%;
+      left: 49.7%;
       transform: translate(-50%, -50%);
 
       @media (max-width: 860px) {
@@ -83,11 +83,11 @@ const LoginFormStyled = styled.div`
   }
 
   .btn-primary {
-    background-color: ${(props) => props.theme.colors.mainColorButton};
+    background-color: ${(props) => props.theme.colors.secondaryColorButton};
     --bs-btn-border-color: ${(props) =>
       props.theme.colors.secondaryColorButton};
     width: 100%;
-    color: ${(props) => props.theme.colors.mainColorText};
+    color: ${(props) => props.theme.colors.secondaryColorText};
     font-size: 14px;
     font-weight: 900;
     display: flex;
@@ -117,7 +117,7 @@ const LoginFormStyled = styled.div`
     }
 
     &__email-text {
-      color: ${(props) => props.theme.colors.secondaryColorText};
+      color: ${(props) => props.theme.colors.mainColorText};
       font-size: 12px;
 
       @media (max-width: 1070px) {
@@ -136,7 +136,7 @@ const LoginFormStyled = styled.div`
 
   .form-label {
     font-size: 12px;
-    color: ${(props) => props.theme.colors.secondaryColorText};
+    color: ${(props) => props.theme.colors.mainColorText};
   }
 
   .mb-3 {
@@ -154,7 +154,7 @@ const LoginFormStyled = styled.div`
 
   .form-check-label {
     font-size: 12px;
-    color: ${(props) => props.theme.colors.secondaryColorText};
+    color: ${(props) => props.theme.colors.mainColorText};
   }
 
   .footer {
@@ -175,11 +175,11 @@ const LoginFormStyled = styled.div`
     font-size: 12px;
 
     &__text {
-      color: ${(props) => props.theme.colors.secondaryColorText};
+      color: ${(props) => props.theme.colors.mainColorText};
     }
 
     &__link {
-      color: ${(props) => props.theme.colors.secondaryColorText};
+      color: ${(props) => props.theme.colors.mainColorText};
       font-weight: 900;
       text-decoration: underline;
       cursor: pointer;

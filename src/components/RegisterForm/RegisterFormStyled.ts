@@ -3,7 +3,7 @@ import styled from "styled-components";
 const RegisterFormStyled = styled.div`
   display: flex;
   color: ${(props) => props.theme.colors.mainColorText};
-  background-color: #0c0c0c;
+  background-color: ${(props) => props.theme.backgroundColors.mainBackGround};
   border-radius: 10px;
   box-shadow: 8px 5px 15px gray;
   width: 1100px;
@@ -31,7 +31,7 @@ const RegisterFormStyled = styled.div`
       height: 100%;
 
       @media (max-width: 1130px) {
-        width: 450px;
+        width: 380px;
         object-position: 25%;
       }
 
@@ -102,26 +102,26 @@ const RegisterFormStyled = styled.div`
       @media (max-width: 860px) {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 8px;
       }
     }
   }
 
   .form-label {
     font-size: 12px;
-    color: ${(props) => props.theme.colors.secondaryColorText};
+    color: ${(props) => props.theme.colors.mainColorText};
   }
 
   .mb-3 {
     width: 100%;
   }
 
-  .password {
+  .fields {
     &__row-2 {
       width: 240px;
 
       @media (max-width: 1130px) {
-        width: 150px;
+        width: 180px;
       }
 
       @media (max-width: 860px) {
@@ -162,29 +162,17 @@ const RegisterFormStyled = styled.div`
     }
   }
 
-  .field-names {
-    width: 240px;
-
-    @media (max-width: 1130px) {
-      width: 150px;
-    }
-
-    @media (max-width: 860px) {
-      width: 100%;
-    }
-  }
-
   .login {
     display: flex;
     gap: 5px;
     font-size: 12px;
 
     &__text {
-      color: ${(props) => props.theme.colors.secondaryColorText};
+      color: ${(props) => props.theme.colors.mainColorText};
     }
 
     &__link {
-      color: ${(props) => props.theme.colors.secondaryColorText};
+      color: ${(props) => props.theme.colors.mainColorText};
       font-weight: 900;
       text-decoration: underline;
       cursor: pointer;
@@ -199,10 +187,17 @@ const RegisterFormStyled = styled.div`
   .messages {
     display: flex;
     flex-direction: column;
-    height: 10px;
+    height: 25px;
+    padding-top: 2px;
+    font-weight: 800;
+
+    @media (max-width: 860px) {
+      padding-top: 5px;
+      height: 25px;
+    }
 
     &__check {
-      color: ${(props) => props.theme.colors.secondaryColorText};
+      color: ${(props) => props.theme.colors.mainColorText};
       font-size: 10px;
     }
   }

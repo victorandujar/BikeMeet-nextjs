@@ -8,9 +8,14 @@ const LoginPage: NextPage = (): JSX.Element => {
     <LoginPageStyled className="login-page">
       <div className="login-page__heading">
         <div className="heading">
-          <h2 className={`heading__title ${secondaryFont.className}`}>
-            Welcome to BikeMeet
-          </h2>
+          <div className="heading__welcome">
+            <h2 className={`heading__title ${secondaryFont.className}`}>
+              Welcome to
+            </h2>
+            <h2 className={`heading__title-blue ${secondaryFont.className}`}>
+              BikeMeet
+            </h2>
+          </div>
           <span className={`heading__slogan  ${primaryFont.className}`}>
             Share your rides with others and be part of the greatest cycling
             community!

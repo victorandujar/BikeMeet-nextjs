@@ -16,8 +16,8 @@ jest.mock("next-auth/react", () => ({
 
 describe("Given a Login page component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a header with the text 'Welcome to BikeMeet'", () => {
-      const headerText = "Welcome to BikeMeet";
+    test("Then it should show a header with the text 'Welcome to'", () => {
+      const headerText = "Welcome to";
 
       renderWithProviders(<LoginPage />);
 
