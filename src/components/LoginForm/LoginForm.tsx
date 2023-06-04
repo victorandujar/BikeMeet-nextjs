@@ -10,7 +10,8 @@ import GoogleWelcomePage from "../AuthWelcomePage/AuthWelcomePage";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
-import { errorMessages } from "@/utils/errorMessages/errorMessages";
+import { AxiosError } from "axios";
+import { errorsCodeStatus } from "@/utils/errorsCodeStatus/errorsCodeStatus";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser, checkUserIsVerified } = useUser();
@@ -59,12 +60,13 @@ const LoginForm = (): JSX.Element => {
 
       setIsLoading(false);
     } catch (error) {
-      const checkEmailError =
-        (error as Error).message === errorMessages.notFound;
+      const { response } = error as AxiosError;
+      const checkEmailError = response?.status === errorsCodeStatus.notFound;
       const checkWrongCredentialsError =
-        (error as Error).message === errorMessages.wrongCredentials;
+        response?.status === errorsCodeStatus.wrongCredentials;
 
       setIsLoading(false);
+
       setIsEmail(checkEmailError);
       setWrongCredentials(checkWrongCredentialsError);
     }
@@ -162,7 +164,7 @@ const LoginForm = (): JSX.Element => {
               {wrongCredentials && (
                 <span
                   className="modals-messages__error"
-                  hidden={!wrongCredentials}
+                  hidden={!wrongCredentials || emailInputEmpty}
                 >
                   Wrong credentials.
                 </span>
