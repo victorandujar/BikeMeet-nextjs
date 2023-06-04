@@ -5,6 +5,7 @@ const userEndpoints: UserEndpointsStructure = {
   login: "/login",
   register: "/register",
   verifyEmail: "/verify-email",
+  getUserIsVerified: "/user-verify",
 };
 
 export default userEndpoints;

@@ -27,3 +27,15 @@ export interface UserRegisterCredentialsForm extends UserRegisterCredentials {
 export interface UserVerifyEmailStructure {
   confirmationCode: string | string[];
 }
+
+export interface UserIsVerifiedEmailStructure {
+  email: string;
+}
+
+export interface isUserVerifiedResponse {
+  isVerified: boolean;
+}
+
+export interface ResponseApiErrorStructure {
+  error: number;
+}
