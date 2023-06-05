@@ -205,6 +205,20 @@ const RegisterFormStyled = styled.div`
   .loader__container {
     height: 40px;
   }
+
+  .modals-messages {
+    &__error {
+      color: #ff0202;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    &__success {
+      color: green;
+      font-size: 12px;
+      font-weight: 900;
+    }
+  }
 `;
 
 export default RegisterFormStyled;
