@@ -2,9 +2,12 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   CustomTokenPayload,
   LoginApiResponse,
+  ResponseApiErrorStructure,
   UserCredentials,
+  UserIsVerifiedEmailStructure,
   UserRegisterCredentials,
   UserVerifyEmailStructure,
+  isUserVerifiedResponse,
 } from "./types";
 import axios from "axios";
 import userEndpoints from "@/utils/userEndpoints/userEndpoints";
@@ -66,7 +69,18 @@ const useUser = () => {
     );
   };
 
-  return { loginUser, registerUser, verifyEmail };
+  const checkUserIsVerified = async (email: UserIsVerifiedEmailStructure) => {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.getUserIsVerified}`,
+      email
+    );
+
+    const isUserVerified = response.data as isUserVerifiedResponse;
+
+    return { isUserVerified };
+  };
+
+  return { loginUser, registerUser, verifyEmail, checkUserIsVerified };
 };
 
 export default useUser;

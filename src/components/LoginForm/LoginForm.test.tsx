@@ -1,10 +1,7 @@
 import { act, screen } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
-import {
-  mockIsRemembered,
-  mockUserCredentials,
-} from "@/mocks/userMocks/userMocks";
+import { mockUserCredentials } from "@/mocks/userMocks/userMocks";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 
 const mockedUsedRouter = jest.fn();
@@ -20,8 +17,10 @@ jest.mock("next-auth/react", () => ({
 }));
 
 const mockLoginUser = jest.fn();
+const mockCheckEmail = jest.fn();
 jest.mock("../../hooks/useUser/useUser", () => () => ({
   loginUser: mockLoginUser,
+  checkUserIsVerified: mockCheckEmail,
 }));
 
 describe("Given a LoginForm component", () => {
@@ -90,7 +89,7 @@ describe("Given a LoginForm component", () => {
   describe("When te user submits e form information to log in", () => {
     test("Then the loginUser function should be called", async () => {
       const emailInputPlaceholderText = "Enter a valid email";
-      const passwordInputPlaceholderText = "Password. Max 8 characters";
+      const passwordInputPlaceholderText = "Password. Max 10 characters";
       const buttonText = "Log in";
 
       renderWithProviders(<LoginForm />);
@@ -117,12 +116,10 @@ describe("Given a LoginForm component", () => {
             mockUserCredentials.password
           )
       );
+
       await act(async () => await userEvent.click(expectedSubmitButton));
 
-      expect(mockLoginUser).toHaveBeenCalledWith(
-        mockUserCredentials,
-        mockIsRemembered
-      );
+      expect(mockCheckEmail).toHaveBeenCalled();
     });
   });
 });
