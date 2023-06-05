@@ -11,7 +11,10 @@ import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
-import { errorsCodeStatus } from "@/utils/errorsCodeStatus/errorsCodeStatus";
+import {
+  errorsCodeStatus,
+  errorsMessages,
+} from "@/utils/userFeedback/errorsManager";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser, checkUserIsVerified } = useUser();
@@ -22,7 +25,8 @@ const LoginForm = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUserVerified, setIsVerified] = useState(true);
   const [isEmailIncorrect, setIsEmail] = useState(false);
-  const [wrongCredentials, setWrongCredentials] = useState(false);
+  const [isWrongCredentials, setWrongCredentials] = useState(false);
+  const [isNetworkFail, setIsNetworkFail] = useState(false);
 
   const handleEmail = ({
     target: { value },
@@ -60,13 +64,15 @@ const LoginForm = (): JSX.Element => {
 
       setIsLoading(false);
     } catch (error) {
-      const { response } = error as AxiosError;
+      const { response, message } = error as AxiosError;
       const checkEmailError = response?.status === errorsCodeStatus.notFound;
       const checkWrongCredentialsError =
         response?.status === errorsCodeStatus.wrongCredentials;
+      const checkNetworkFail = message === errorsMessages.networkFail;
 
       setIsLoading(false);
 
+      setIsNetworkFail(checkNetworkFail);
       setIsEmail(checkEmailError);
       setWrongCredentials(checkWrongCredentialsError);
     }
@@ -158,15 +164,23 @@ const LoginForm = (): JSX.Element => {
                   className="modals-messages__error"
                   hidden={!isEmailIncorrect || emailInputEmpty}
                 >
-                  The email you are trying to Log in does not exists.
+                  Wrong credentials.
                 </span>
               )}
-              {wrongCredentials && (
+              {isWrongCredentials && (
                 <span
                   className="modals-messages__error"
-                  hidden={!wrongCredentials || emailInputEmpty}
+                  hidden={!isWrongCredentials || emailInputEmpty}
                 >
                   Wrong credentials.
+                </span>
+              )}
+              {isNetworkFail && (
+                <span
+                  className="modals-messages__error"
+                  hidden={!isNetworkFail}
+                >
+                  Ooops. Something went wrong. Try again!
                 </span>
               )}
             </div>
