@@ -52,12 +52,13 @@ const useUser = () => {
 
   const registerUser = useCallback(
     async (userCredentials: UserRegisterCredentials) => {
-      await axios.post(
+      const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.register}`,
         userCredentials
       );
+      setTimeout(() => router.push("/login"), 2000);
 
-      router.push("/login");
+      return { response };
     },
     [router]
   );

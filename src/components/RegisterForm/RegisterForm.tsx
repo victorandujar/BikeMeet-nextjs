@@ -7,6 +7,12 @@ import { useState } from "react";
 import { UserRegisterCredentialsForm } from "@/hooks/useUser/types";
 import useUser from "@/hooks/useUser/useUser";
 import { CircularProgress } from "@mui/material";
+import { AxiosError } from "axios";
+import {
+  errorsCodeStatus,
+  errorsMessages,
+} from "@/utils/userFeedback/errorsManager";
+import { sucessManagerStatusCodes } from "@/utils/userFeedback/successManager";
 
 const RegisterForm = (): JSX.Element => {
   const { registerUser } = useUser();
@@ -21,6 +27,9 @@ const RegisterForm = (): JSX.Element => {
   };
   const [formData, setFormData] = useState(initialValues);
   const [isLoading, setIsLoading] = useState(false);
+  const [isConflict, setIsConflict] = useState(false);
+  const [isNetworkFail, setIsNetworkFail] = useState(false);
+  const [isUserRegistered, setIsUserRegistered] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -54,16 +63,25 @@ const RegisterForm = (): JSX.Element => {
     setIsLoading(true);
 
     try {
-      await registerUser({
+      const { response } = await registerUser({
         name: formData.name,
         surname: formData.surname,
         username: formData.username,
         email: formData.email,
         password: formData.password,
       });
+      const checkRegisterResponse =
+        response.status === sucessManagerStatusCodes.created;
 
       setIsLoading(false);
+      setIsUserRegistered(checkRegisterResponse);
     } catch (error) {
+      const { response, message } = error as AxiosError;
+      const checkIsConflict = response?.status === errorsCodeStatus.conflict;
+      const checkNetworkFail = message === errorsMessages.networkFail;
+
+      setIsConflict(checkIsConflict);
+      setIsNetworkFail(checkNetworkFail);
       setIsLoading(false);
     }
   };
@@ -198,8 +216,28 @@ const RegisterForm = (): JSX.Element => {
         >
           Join us!
         </button>
-        <div className="loader__container">
+        <div className="loader__container  modals-messages">
           {isLoading && <CircularProgress />}
+          <div className={`${primaryFont.className}`}>
+            {isConflict && (
+              <span className="modals-messages__error" hidden={!isConflict}>
+                Seems this user already exists.
+              </span>
+            )}
+            {isNetworkFail && (
+              <span className="modals-messages__error" hidden={!isNetworkFail}>
+                Ooops. Something went wrong. Try again!
+              </span>
+            )}
+            {isUserRegistered && (
+              <span
+                className="modals-messages__success"
+                hidden={!isUserRegistered}
+              >
+                You have been registered to BikeMeet. Welcome!
+              </span>
+            )}
+          </div>
         </div>
         <div className="register-interface__login login">
           <span className="login__text">Already a member?</span>
