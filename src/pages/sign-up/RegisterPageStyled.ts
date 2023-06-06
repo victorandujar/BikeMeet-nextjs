@@ -12,7 +12,11 @@ const RegisterPageStyled = styled.main`
       align-items: flex-start;
       justify-content: center;
       height: 100%;
-      padding: 90px 0 20px 0;
+      padding: 80px 0 20px 0;
+
+      @media (max-width: 670px) {
+        padding: 40px 0 20px 0;
+      }
     }
   }
 
@@ -20,6 +24,7 @@ const RegisterPageStyled = styled.main`
     text-align: center;
     width: 100%;
     padding-bottom: 10px;
+    padding-top: 20px;
 
     &__title {
       font-weight: 900;

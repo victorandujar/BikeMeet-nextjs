@@ -12,12 +12,17 @@ const LoginPageStyled = styled.main`
       align-items: flex-start;
       justify-content: center;
       height: 100%;
-      padding: 90px 0 20px 0;
+      padding: 80px 0 20px 0;
+
+      @media (max-width: 670px) {
+        padding: 40px 0 20px 0;
+      }
     }
 
     &__heading {
       display: flex;
       justify-content: space-between;
+      padding-top: 20px;
     }
   }
 
