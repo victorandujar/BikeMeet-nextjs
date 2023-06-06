@@ -115,6 +115,7 @@ const RegisterForm = (): JSX.Element => {
               id="name"
               name="name"
               onChange={handleInputChange}
+              disabled={isLoading}
             />
           </div>
           <div className="mb-3 fields__row-2">
@@ -128,6 +129,7 @@ const RegisterForm = (): JSX.Element => {
               id="surname"
               name="surname"
               onChange={handleInputChange}
+              disabled={isLoading}
             />
           </div>
         </div>
@@ -142,6 +144,7 @@ const RegisterForm = (): JSX.Element => {
             id="username"
             name="username"
             onChange={handleInputChange}
+            disabled={isLoading}
           />
         </div>
         <div className="mb-3">
@@ -155,6 +158,7 @@ const RegisterForm = (): JSX.Element => {
             id="email"
             name="email"
             onChange={handleInputChange}
+            disabled={isLoading}
           />
         </div>
         <div className="register-form__in-row password">
@@ -169,6 +173,7 @@ const RegisterForm = (): JSX.Element => {
               id="password"
               name="password"
               onChange={handleInputChange}
+              disabled={isLoading}
             />
             <div className="password__messages messages">
               {!hasUppercase && (
@@ -194,6 +199,7 @@ const RegisterForm = (): JSX.Element => {
               id="repeat"
               name="repeat"
               onChange={handleInputChange}
+              disabled={isLoading}
             />
             <div className="messages">
               {!checkPasswords && (
@@ -211,7 +217,8 @@ const RegisterForm = (): JSX.Element => {
             !checkPasswords ||
             isEmptyField ||
             !hasUppercase ||
-            !hasSpecialCharacter
+            !hasSpecialCharacter ||
+            isLoading
           }
         >
           Join us!
