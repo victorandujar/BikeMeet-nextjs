@@ -142,7 +142,7 @@ const LoginForm = (): JSX.Element => {
         <button
           type="submit"
           className="btn btn-primary btn-primary-accent"
-          disabled={areInputFieldsEmpty}
+          disabled={areInputFieldsEmpty || isLoading}
         >
           Log in
         </button>
@@ -155,7 +155,7 @@ const LoginForm = (): JSX.Element => {
                   className="modals-messages__error"
                   hidden={isUserVerified}
                 >
-                  Before you Log in, you must verify your account. Chek your
+                  Before you Log in, you must verify your account. Check your
                   email.
                 </span>
               )}
@@ -189,6 +189,7 @@ const LoginForm = (): JSX.Element => {
             type="button"
             className="btn btn-primary"
             onClick={() => signIn("google")}
+            disabled={isLoading}
           >
             <FontAwesomeIcon
               icon={faGoogle}
@@ -201,6 +202,7 @@ const LoginForm = (): JSX.Element => {
             type="button"
             className="btn btn-primary"
             onClick={() => signIn("strava")}
+            disabled={isLoading}
           >
             <FontAwesomeIcon
               icon={faStrava}
