@@ -114,6 +114,7 @@ const LoginForm = (): JSX.Element => {
             id="email"
             placeholder="Enter a valid email"
             onChange={handleEmail}
+            disabled={isLoading}
           />
         </div>
         <div className="mb-3">
@@ -126,6 +127,7 @@ const LoginForm = (): JSX.Element => {
             id="password"
             placeholder="Password. Max 10 characters"
             onChange={handlePassword}
+            disabled={isLoading}
           />
         </div>
         <div className="mb-3 form-check">
