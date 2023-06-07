@@ -1,4 +1,4 @@
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";

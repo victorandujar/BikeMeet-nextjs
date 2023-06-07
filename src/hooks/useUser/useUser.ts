@@ -1,8 +1,7 @@
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 import {
   CustomTokenPayload,
   LoginApiResponse,
-  ResponseApiErrorStructure,
   UserCredentials,
   UserIsVerifiedEmailStructure,
   UserRegisterCredentials,
