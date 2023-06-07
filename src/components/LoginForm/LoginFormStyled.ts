@@ -94,6 +94,7 @@ const LoginFormStyled = styled.div`
     gap: 10px;
     align-items: center;
     justify-content: center;
+    border: none;
 
     &-accent {
       background-color: ${(props) => props.theme.colors.thirdColorText};
@@ -152,9 +153,21 @@ const LoginFormStyled = styled.div`
     }
   }
 
-  .form-check-label {
-    font-size: 12px;
-    color: ${(props) => props.theme.colors.mainColorText};
+  .form-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__label {
+      font-size: 12px;
+      color: ${(props) => props.theme.colors.mainColorText};
+    }
+
+    &__forgot {
+      color: ${(props) => props.theme.colors.thirdColorText};
+      font-size: 12px;
+      text-align: right;
+    }
   }
 
   .footer {

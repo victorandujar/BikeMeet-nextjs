@@ -6,7 +6,7 @@ import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
 import useUser from "@/hooks/useUser/useUser";
 import { useState } from "react";
 import { useSession, signIn } from "next-auth/react";
-import GoogleWelcomePage from "../AuthWelcomePage/AuthWelcomePage";
+
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
@@ -15,6 +15,7 @@ import {
   errorsCodeStatus,
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
+import GoogleWelcomePage from "@/pages/oauth2/[welcome]";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser, checkUserIsVerified } = useUser();
@@ -131,15 +132,23 @@ const LoginForm = (): JSX.Element => {
           />
         </div>
         <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-            onChange={toogleRememberUser}
-          />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Remember me
-          </label>
+          <div>
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="check"
+              onChange={toogleRememberUser}
+            />
+            <label className="form-check__label" htmlFor="check">
+              Remember me
+            </label>
+          </div>
+          <Link
+            href="/recovery-password/validate-email"
+            className="form-check__forgot"
+          >
+            Forgot password?
+          </Link>
         </div>
         <button
           type="submit"
