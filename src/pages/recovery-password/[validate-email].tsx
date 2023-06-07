@@ -23,7 +23,7 @@ const RecoveryPasswordEmailPage: NextPage = (): JSX.Element => {
           placeholder="Enter an email"
         />
         <Link
-          href="/recovery/email-confirmation"
+          href="/recovery-email/email-confirmation"
           type="submit"
           className="btn btn-primary btn-primary-accent"
         >

@@ -1,5 +1,5 @@
 import { mockSession } from "@/mocks/userMocks/userMocks";
-import GoogleWelcomePage from "@/pages/oauth2/[welcome]";
+import GoogleWelcomePage from "@/components/AuthWelcomePage/AuthWelcomePage";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 import { act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

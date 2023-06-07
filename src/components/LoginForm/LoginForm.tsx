@@ -15,7 +15,7 @@ import {
   errorsCodeStatus,
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
-import GoogleWelcomePage from "@/pages/oauth2/[welcome]";
+import GoogleWelcomePage from "@/components/AuthWelcomePage/AuthWelcomePage";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser, checkUserIsVerified } = useUser();
