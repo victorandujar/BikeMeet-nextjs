@@ -10,10 +10,7 @@ const LoginPage: NextPage = (): JSX.Element => {
         <div className="heading">
           <div className="heading__welcome">
             <h2 className={`heading__title ${secondaryFont.className}`}>
-              Welcome to
-            </h2>
-            <h2 className={`heading__title-blue ${secondaryFont.className}`}>
-              BikeMeet
+              Welcome
             </h2>
           </div>
           <span className={`heading__slogan  ${primaryFont.className}`}>

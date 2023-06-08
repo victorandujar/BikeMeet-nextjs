@@ -32,18 +32,10 @@ const HeaderStyled = styled.header`
     &__blue {
       font-size: 30px;
       color: ${(props) => props.theme.colors.thirdColorText};
-
-      @media (max-width: 460px) {
-        font-size: 20px;
-      }
     }
 
     &__black {
       font-size: 30px;
-
-      @media (max-width: 460px) {
-        font-size: 20px;
-      }
     }
   }
 `;
