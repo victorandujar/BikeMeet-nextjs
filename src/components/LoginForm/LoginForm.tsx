@@ -25,20 +25,20 @@ const LoginForm = (): JSX.Element => {
   const [isRemembered, setIsRemembered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUserVerified, setIsVerified] = useState(true);
-  const [isEmailIncorrect, setIsEmail] = useState(false);
-  const [isWrongCredentials, setWrongCredentials] = useState(false);
-  const [isNetworkFail, setIsNetworkFail] = useState(false);
+  const [isError, setIsError] = useState("");
 
   const handleEmail = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(value);
+    setIsError("");
   };
 
   const handlePassword = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(value);
+    setIsError("");
   };
 
   const toogleRememberUser = () => {
@@ -48,6 +48,7 @@ const LoginForm = (): JSX.Element => {
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setIsError("");
     setIsLoading(true);
 
     try {
@@ -66,16 +67,19 @@ const LoginForm = (): JSX.Element => {
       setIsLoading(false);
     } catch (error) {
       const { response, message } = error as AxiosError;
-      const checkEmailError = response?.status === errorsCodeStatus.notFound;
-      const checkWrongCredentialsError =
-        response?.status === errorsCodeStatus.wrongCredentials;
-      const checkNetworkFail = message === errorsMessages.networkFail;
+
+      if (
+        response?.status === errorsCodeStatus.notFound ||
+        response?.status === errorsCodeStatus.wrongCredentials
+      ) {
+        setIsError("Wrong credentials");
+      }
+
+      if (message === errorsMessages.networkFail) {
+        setIsError("Ooops. Something went wrong. Try again!");
+      }
 
       setIsLoading(false);
-
-      setIsNetworkFail(checkNetworkFail);
-      setIsEmail(checkEmailError);
-      setWrongCredentials(checkWrongCredentialsError);
     }
   };
 
@@ -170,30 +174,12 @@ const LoginForm = (): JSX.Element => {
                   email.
                 </span>
               )}
-              {isEmailIncorrect && (
-                <span
-                  className="modals-messages__error"
-                  hidden={!isEmailIncorrect || emailInputEmpty}
-                >
-                  Wrong credentials.
-                </span>
-              )}
-              {isWrongCredentials && (
-                <span
-                  className="modals-messages__error"
-                  hidden={!isWrongCredentials || emailInputEmpty}
-                >
-                  Wrong credentials.
-                </span>
-              )}
-              {isNetworkFail && (
-                <span
-                  className="modals-messages__error"
-                  hidden={!isNetworkFail}
-                >
-                  Ooops. Something went wrong. Try again!
-                </span>
-              )}
+              <span
+                className="modals-messages__error"
+                hidden={!isError || emailInputEmpty}
+              >
+                {isError}
+              </span>
             </div>
           </div>
           <button

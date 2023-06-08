@@ -33,6 +33,8 @@ const RegisterForm = (): JSX.Element => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+    setIsConflict(false);
+    setIsNetworkFail(false);
     setFormData({
       ...formData,
       [name]: value,
@@ -60,6 +62,8 @@ const RegisterForm = (): JSX.Element => {
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setIsConflict(false);
+    setIsNetworkFail(false);
     setIsLoading(true);
 
     try {
