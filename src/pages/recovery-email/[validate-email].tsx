@@ -76,11 +76,12 @@ const RecoveryPasswordEmailPage: NextPage = (): JSX.Element => {
           className="form-control"
           placeholder="Enter an email"
           onChange={handleEmail}
+          disabled={isLoading}
         />
         <button
           type="submit"
           className="btn btn-primary btn-primary-accent"
-          disabled={isEmailInputEmpty}
+          disabled={isEmailInputEmpty || isLoading}
         >
           Send recovery email
         </button>
