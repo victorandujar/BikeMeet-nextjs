@@ -6,8 +6,16 @@ export interface ErrorCodesStructure {
 
 export interface ErrorMessagesSturcutre {
   networkFail: string;
+  wrongCredentials: string;
+  notFoundEmail: string;
+  serverError: string;
 }
 
 export interface SuccessCodeStatusStructure {
   created: number;
+  found: number;
+}
+
+export interface SuccessMessagesStructure {
+  emailSent: string;
 }
