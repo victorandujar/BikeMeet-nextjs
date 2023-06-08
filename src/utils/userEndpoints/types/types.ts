@@ -4,4 +4,5 @@ export interface UserEndpointsStructure {
   register: string;
   verifyEmail: string;
   getUserIsVerified: string;
+  findUserEmail: string;
 }
