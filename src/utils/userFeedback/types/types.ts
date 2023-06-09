@@ -9,6 +9,7 @@ export interface ErrorMessagesSturcutre {
   wrongCredentials: string;
   notFoundEmail: string;
   serverError: string;
+  badRequestRestorPassword: string;
 }
 
 export interface SuccessCodeStatusStructure {
@@ -18,4 +19,5 @@ export interface SuccessCodeStatusStructure {
 
 export interface SuccessMessagesStructure {
   emailSent: string;
+  passwordRestore: strin;
 }

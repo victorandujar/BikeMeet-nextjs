@@ -10,4 +10,5 @@ export const sucessManagerStatusCodes: SuccessCodeStatusStructure = {
 
 export const successManagerMessages: SuccessMessagesStructure = {
   emailSent: "Email sent. Check your inbox email at",
+  passwordRestore: "Your password has been updated!",
 };

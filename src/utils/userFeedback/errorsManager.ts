@@ -11,4 +11,5 @@ export const errorsMessages: ErrorMessagesSturcutre = {
   notFoundEmail: "Email not found. Try again",
   wrongCredentials: "Wrong credentials",
   serverError: "Ooops. Something went wrong. Try again!",
+  badRequestRestorPassword: "We couldn't restore your password. Try again",
 };
