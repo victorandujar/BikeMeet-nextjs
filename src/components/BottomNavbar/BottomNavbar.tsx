@@ -33,7 +33,7 @@ const BottomNavbar = (): JSX.Element => {
         />
         <BottomNavigationAction label="Create" icon={<AddCircleIcon />} />
         <BottomNavigationAction
-          label="Favorites"
+          label="Favourites"
           icon={<FavoriteIcon />}
           LinkComponent={Link}
         />
