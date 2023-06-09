@@ -1,6 +1,6 @@
 import RestorePasswordPage from "@/pages/restore-password/[userId]";
 import renderWithProviders from "@/utils/testUtils/testUtils";
-import { act, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 const mockedUsedRouter = jest.fn();

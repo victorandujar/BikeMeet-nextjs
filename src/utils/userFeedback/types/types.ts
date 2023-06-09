@@ -19,5 +19,5 @@ export interface SuccessCodeStatusStructure {
 
 export interface SuccessMessagesStructure {
   emailSent: string;
-  passwordRestore: strin;
+  passwordRestore: string;
 }
