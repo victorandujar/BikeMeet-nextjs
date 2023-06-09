@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import BottomNavbar from "../BottomNavbar/BottomNavbar";
+import BottomNavbar from "./BottomNavbar";
 
 describe("Given a BottomNavbar component", () => {
   describe("When rendered", () => {
