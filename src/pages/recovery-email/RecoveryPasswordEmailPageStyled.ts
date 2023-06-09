@@ -80,6 +80,14 @@ const RecoveryPasswordEmailPageStyled = styled.main`
       font-weight: 900;
     }
   }
+
+  .btn-outline-dark {
+    width: 400px;
+
+    @media (max-width: 450px) {
+      width: 100%;
+    }
+  }
 `;
 
 export default RecoveryPasswordEmailPageStyled;
