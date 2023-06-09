@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "@/styles/Theme";
 import { SessionProvider } from "next-auth/react";
 import BottomNavbarWrapper from "@/components/BottomNavbarWrapper/BottomNavbarWrapper";
+import Layout from "@/components/Layout/Layout";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
@@ -22,10 +23,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <GlobalStyles />
-          <Header />
           <SessionProvider session={session}>
+            <Layout />
             <Component {...pageProps} />
-            <BottomNavbarWrapper />
           </SessionProvider>
         </Provider>
       </ThemeProvider>

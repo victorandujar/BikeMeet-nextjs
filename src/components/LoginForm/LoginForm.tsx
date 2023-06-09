@@ -15,10 +15,14 @@ import {
   errorsCodeStatus,
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
-import GoogleWelcomePage from "@/components/AuthWelcomePage/AuthWelcomePage";
+import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { loginUserActionCreator } from "@/store/features/usersSlice/usersSlice";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser, checkUserIsVerified } = useUser();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -84,9 +88,10 @@ const LoginForm = (): JSX.Element => {
   };
 
   const { data: session } = useSession();
+  console.log(session);
 
   if (session) {
-    return <GoogleWelcomePage session={session} />;
+    router.push("/home");
   }
 
   const areInputFieldsEmpty = email === "" || password === "";
