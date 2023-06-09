@@ -6,16 +6,6 @@ const HeaderStyled = styled.header`
   gap: 70px;
   color: ${(props) => props.theme.colors.mainColorText};
 
-  .navbar {
-    padding: 0;
-  }
-
-  .navbar-nav {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-  }
-
   .header-page {
     &__logo {
       display: flex;

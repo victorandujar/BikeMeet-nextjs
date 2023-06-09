@@ -8,6 +8,7 @@ import { store } from "@/store/store";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/Theme";
 import { SessionProvider } from "next-auth/react";
+import Navigation from "@/components/Navigation/Navigation";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
@@ -24,6 +25,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           <Header />
           <SessionProvider session={session}>
             <Component {...pageProps} />
+            <Navigation />
           </SessionProvider>
         </Provider>
       </ThemeProvider>
