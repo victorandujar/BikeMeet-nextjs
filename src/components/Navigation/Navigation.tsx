@@ -12,7 +12,7 @@ const Navigation = (): JSX.Element => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ maxWidth: "100%", position: "fixed", bottom: 0, left: 0 }}>
       <BottomNavigation
         showLabels
         value={value}
