@@ -214,7 +214,7 @@ const RegisterFormStyled = styled.div`
     }
 
     &__success {
-      color: green;
+      color: #03c403;
       font-size: 12px;
       font-weight: 900;
     }
