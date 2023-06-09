@@ -7,6 +7,7 @@ const userEndpoints: UserEndpointsStructure = {
   verifyEmail: "/verify-email",
   getUserIsVerified: "/user-verify",
   findUserEmail: "/recovery-password",
+  signup: "sign-up",
   restorePassword: "/restore-password/",
 };
 

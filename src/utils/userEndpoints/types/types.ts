@@ -5,5 +5,6 @@ export interface UserEndpointsStructure {
   verifyEmail: string;
   getUserIsVerified: string;
   findUserEmail: string;
+  signup: string;
   restorePassword: string;
 }
