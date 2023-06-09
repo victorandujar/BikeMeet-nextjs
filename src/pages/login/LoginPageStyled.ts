@@ -40,10 +40,7 @@ const LoginPageStyled = styled.main`
 
     &__title {
       font-weight: 900;
-    }
-
-    &__title-blue {
-      color: ${(props) => props.theme.colors.thirdColorText};
+      font-size: 30px;
     }
 
     &__slogan {

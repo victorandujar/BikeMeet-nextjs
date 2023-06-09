@@ -3,7 +3,7 @@ import {
   CustomTokenPayload,
   LoginApiResponse,
   UserCredentials,
-  UserIsVerifiedEmailStructure,
+  UserCheckEmailStructure,
   UserRegisterCredentials,
   UserVerifyEmailStructure,
   isUserVerifiedResponse,
@@ -69,7 +69,7 @@ const useUser = () => {
     );
   };
 
-  const checkUserIsVerified = async (email: UserIsVerifiedEmailStructure) => {
+  const checkUserIsVerified = async (email: UserCheckEmailStructure) => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.getUserIsVerified}`,
       email
@@ -80,7 +80,22 @@ const useUser = () => {
     return { isUserVerified };
   };
 
-  return { loginUser, registerUser, verifyEmail, checkUserIsVerified };
+  const checkUserEmail = async (email: UserCheckEmailStructure) => {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.findUserEmail}`,
+      email
+    );
+
+    return { response };
+  };
+
+  return {
+    loginUser,
+    registerUser,
+    verifyEmail,
+    checkUserIsVerified,
+    checkUserEmail,
+  };
 };
 
 export default useUser;

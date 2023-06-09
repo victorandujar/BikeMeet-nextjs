@@ -8,4 +8,7 @@ export const errorsCodeStatus: ErrorCodesStructure = {
 
 export const errorsMessages: ErrorMessagesSturcutre = {
   networkFail: "Network Error",
+  notFoundEmail: "Email not found. Try again",
+  wrongCredentials: "Wrong credentials",
+  serverError: "Ooops. Something went wrong. Try again!",
 };

@@ -72,11 +72,11 @@ const LoginForm = (): JSX.Element => {
         response?.status === errorsCodeStatus.notFound ||
         response?.status === errorsCodeStatus.wrongCredentials
       ) {
-        setIsError("Wrong credentials");
+        setIsError(errorsMessages.wrongCredentials);
       }
 
       if (message === errorsMessages.networkFail) {
-        setIsError("Ooops. Something went wrong. Try again!");
+        setIsError(errorsMessages.serverError);
       }
 
       setIsLoading(false);
@@ -148,7 +148,7 @@ const LoginForm = (): JSX.Element => {
             </label>
           </div>
           <Link
-            href="/recovery-password/validate-email"
+            href="/recovery-email/validate-email"
             className="form-check__forgot"
           >
             Forgot password?

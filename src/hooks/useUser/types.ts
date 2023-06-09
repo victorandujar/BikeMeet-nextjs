@@ -28,7 +28,7 @@ export interface UserVerifyEmailStructure {
   confirmationCode: string | string[];
 }
 
-export interface UserIsVerifiedEmailStructure {
+export interface UserCheckEmailStructure {
   email: string;
 }
 

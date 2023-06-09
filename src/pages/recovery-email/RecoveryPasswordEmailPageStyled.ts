@@ -4,6 +4,7 @@ const RecoveryPasswordEmailPageStyled = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: ${(props) => props.theme.colors.mainColorText};
   gap: 50px;
   padding: 70px 0;
@@ -14,6 +15,10 @@ const RecoveryPasswordEmailPageStyled = styled.main`
       flex-direction: column;
       align-items: center;
       gap: 10px;
+
+      @media (max-width: 450px) {
+        width: 100%;
+      }
     }
   }
 
@@ -36,6 +41,10 @@ const RecoveryPasswordEmailPageStyled = styled.main`
     width: 400px;
     font-size: 14px;
     font-weight: 500;
+
+    @media (max-width: 450px) {
+      width: 100%;
+    }
   }
 
   .btn-primary {
@@ -55,6 +64,20 @@ const RecoveryPasswordEmailPageStyled = styled.main`
     &-accent {
       background-color: ${(props) => props.theme.colors.thirdColorText};
       color: ${(props) => props.theme.colors.mainColorButton};
+    }
+  }
+
+  .modals-messages {
+    &__error {
+      color: #ff0202;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    &__success {
+      color: green;
+      font-size: 12px;
+      font-weight: 900;
     }
   }
 `;
