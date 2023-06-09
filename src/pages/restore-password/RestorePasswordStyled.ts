@@ -12,6 +12,7 @@ const RestorePasswordPageStyled = styled.main`
     &__form {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 10px;
       font-size: 14px;
     }
@@ -19,6 +20,7 @@ const RestorePasswordPageStyled = styled.main`
 
   .form-control {
     width: 300px;
+    font-size: 12px;
   }
 
   .heading {
@@ -58,6 +60,45 @@ const RestorePasswordPageStyled = styled.main`
 
   .btn-outline-dark {
     width: 300px;
+  }
+
+  .no-match {
+    color: red;
+    font-size: 11px;
+  }
+
+  .modals-messages {
+    display: flex;
+    flex-direction: column;
+    height: 25px;
+    padding-top: 2px;
+    font-weight: 800;
+
+    @media (max-width: 860px) {
+      padding-top: 5px;
+      height: 25px;
+    }
+
+    &__check {
+      color: ${(props) => props.theme.colors.mainColorText};
+      font-size: 10px;
+    }
+
+    &__error {
+      color: #ff0202;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    &__success {
+      color: #03c403;
+      font-size: 12px;
+      font-weight: 900;
+    }
+  }
+
+  .loader__container {
+    height: 40px;
   }
 `;
 

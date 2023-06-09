@@ -4,7 +4,7 @@ import {
   mockUserRegisterCredentialsForm,
 } from "@/mocks/userMocks/userMocks";
 import renderWithProviders from "@/utils/testUtils/testUtils";
-import { act, screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 const mockedUseRouter = {
@@ -69,12 +69,18 @@ describe("Given a RegisterForm component", () => {
       const passwordInput = screen.getByLabelText(passwordLabel);
       const repeatPasswordInput = screen.getByLabelText(repeatPasswordLabel);
 
-      await act(async () => await userEvent.type(nameInput, nameText));
-      await act(async () => await userEvent.type(surnameInput, surnameText));
-      await act(async () => await userEvent.type(usernameInput, usernameText));
-      await act(async () => await userEvent.type(emailInput, emailText));
-      await act(async () => await userEvent.type(passwordInput, passwordText));
-      await act(
+      await waitFor(async () => await userEvent.type(nameInput, nameText));
+      await waitFor(
+        async () => await userEvent.type(surnameInput, surnameText)
+      );
+      await waitFor(
+        async () => await userEvent.type(usernameInput, usernameText)
+      );
+      await waitFor(async () => await userEvent.type(emailInput, emailText));
+      await waitFor(
+        async () => await userEvent.type(passwordInput, passwordText)
+      );
+      await waitFor(
         async () =>
           await userEvent.type(repeatPasswordInput, repeatPasswordText)
       );
@@ -120,42 +126,42 @@ describe("Given a RegisterForm component", () => {
         name: buttonText,
       });
 
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(
             expectedNameInput,
             mockUserRegisterCredentialsForm.name
           )
       );
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(
             expectedSurnameInput,
             mockUserRegisterCredentialsForm.surname
           )
       );
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(
             expectedUsernameInput,
             mockUserRegisterCredentialsForm.username
           )
       );
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(
             expectedEmailInput,
             mockUserRegisterCredentialsForm.email
           )
       );
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(
             expectedPasswordInput,
             mockUserRegisterCredentialsForm.password
           )
       );
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(
             expectedRepeatPassswordInput,
@@ -163,7 +169,7 @@ describe("Given a RegisterForm component", () => {
           )
       );
 
-      await act(async () => await userEvent.click(expectedSubmitButton));
+      await waitFor(async () => await userEvent.click(expectedSubmitButton));
 
       expect(mockRegisterUser).toHaveBeenCalledWith(
         mockUserRegisterCredentials
