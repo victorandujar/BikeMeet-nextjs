@@ -1,6 +1,6 @@
 import RecoveryPasswordEmailPage from "@/pages/recovery-email/[validate-email]";
 import renderWithProviders from "@/utils/testUtils/testUtils";
-import { act, screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 const mockedUsedRouter = jest.fn();
@@ -38,7 +38,7 @@ describe("Given a RecoveryPasswordEmailPage page", () => {
 
       const emailInput = screen.getByPlaceholderText(emailPlaceHolderText);
 
-      await act(async () => await userEvent.type(emailInput, emailText));
+      await waitFor(async () => await userEvent.type(emailInput, emailText));
 
       expect(emailInput).toHaveValue(emailText);
     });
@@ -57,8 +57,8 @@ describe("Given a RecoveryPasswordEmailPage page", () => {
         name: buttonText,
       });
 
-      await act(async () => await userEvent.type(emailInput, emailText));
-      await act(async () => await userEvent.click(expectedSubmitButton));
+      await waitFor(async () => await userEvent.type(emailInput, emailText));
+      await waitFor(async () => await userEvent.click(expectedSubmitButton));
 
       expect(mockCheckEmail).toHaveBeenCalled();
     });

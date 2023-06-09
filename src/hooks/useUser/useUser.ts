@@ -89,12 +89,25 @@ const useUser = () => {
     return { response };
   };
 
+  const resetUserPassword = async (password: string, userId: string) => {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.restorePassword}${userId}`,
+      {
+        params: userId.toString(),
+        password,
+      }
+    );
+
+    return { response };
+  };
+
   return {
     loginUser,
     registerUser,
     verifyEmail,
     checkUserIsVerified,
     checkUserEmail,
+    resetUserPassword,
   };
 };
 

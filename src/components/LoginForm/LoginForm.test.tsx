@@ -1,4 +1,4 @@
-import { act, screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
 import { mockUserCredentials } from "@/mocks/userMocks/userMocks";
@@ -65,7 +65,7 @@ describe("Given a LoginForm component", () => {
 
       const emailInput = screen.getByLabelText(emailLabel);
 
-      await act(async () => await userEvent.type(emailInput, emailText));
+      await waitFor(async () => await userEvent.type(emailInput, emailText));
 
       expect(emailInput).toHaveValue(emailText);
     });
@@ -80,7 +80,9 @@ describe("Given a LoginForm component", () => {
 
       const passwordInput = screen.getByLabelText(passwordLabel);
 
-      await act(async () => await userEvent.type(passwordInput, passwordText));
+      await waitFor(
+        async () => await userEvent.type(passwordInput, passwordText)
+      );
 
       expect(passwordInput).toHaveValue(passwordText);
     });
@@ -104,12 +106,12 @@ describe("Given a LoginForm component", () => {
         name: buttonText,
       });
 
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(expectedEmailInput, mockUserCredentials.email)
       );
 
-      await act(
+      await waitFor(
         async () =>
           await userEvent.type(
             expectedPasswordInput,
@@ -117,7 +119,7 @@ describe("Given a LoginForm component", () => {
           )
       );
 
-      await act(async () => await userEvent.click(expectedSubmitButton));
+      await waitFor(async () => await userEvent.click(expectedSubmitButton));
 
       expect(mockCheckEmail).toHaveBeenCalled();
     });
