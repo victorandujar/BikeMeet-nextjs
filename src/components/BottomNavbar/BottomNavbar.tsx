@@ -13,10 +13,7 @@ const BottomNavbar = (): JSX.Element => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Paper
-      sx={{ maxWidth: "100%", position: "fixed", bottom: 0, left: 0 }}
-      elevation={8}
-    >
+    <Paper sx={{ width: "100%" }} elevation={8}>
       <BottomNavigation
         showLabels
         value={value}
