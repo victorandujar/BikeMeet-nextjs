@@ -16,13 +16,11 @@ import {
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
 import { useRouter } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { loginUserActionCreator } from "@/store/features/usersSlice/usersSlice";
+import { useAppDispatch } from "@/store/hooks";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser, checkUserIsVerified } = useUser();
   const router = useRouter();
-  const dispatch = useAppDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -88,7 +86,6 @@ const LoginForm = (): JSX.Element => {
   };
 
   const { data: session } = useSession();
-  console.log(session);
 
   if (session) {
     router.push("/home");
