@@ -68,6 +68,8 @@ const RecoveryPasswordEmailPageStyled = styled.main`
   }
 
   .modals-messages {
+    height: 40px;
+
     &__error {
       color: #ff0202;
       font-size: 12px;
