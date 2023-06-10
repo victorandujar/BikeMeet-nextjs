@@ -15,6 +15,7 @@ import {
   successManagerMessages,
   sucessManagerStatusCodes,
 } from "@/utils/userFeedback/successManager";
+import userEndpoints from "@/utils/userEndpoints/userEndpoints";
 
 const RestorePasswordPage: NextPage = (): JSX.Element => {
   const { resetUserPassword } = useUser();
@@ -176,7 +177,7 @@ const RestorePasswordPage: NextPage = (): JSX.Element => {
         <button
           type="button"
           className="btn btn-outline-dark"
-          onClick={() => path.push("/login")}
+          onClick={() => path.push(`${userEndpoints.login}`)}
         >
           Back to Log in
         </button>

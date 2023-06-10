@@ -7,4 +7,6 @@ export interface UserEndpointsStructure {
   findUserEmail: string;
   signup: string;
   restorePassword: string;
+  recoveryEmailPassword: string;
+  home: string;
 }
