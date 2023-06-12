@@ -13,9 +13,12 @@ import {
   sucessManagerStatusCodes,
 } from "@/utils/userFeedback/successManager";
 import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/navigation";
+import userEndpoints from "@/utils/userEndpoints/userEndpoints";
 
 const RecoveryPasswordEmailPage: NextPage = (): JSX.Element => {
   const { checkUserEmail } = useUser();
+  const route = useRouter();
 
   const [email, setEmail] = useState("");
   const [isError, setIsError] = useState("");
@@ -100,6 +103,13 @@ const RecoveryPasswordEmailPage: NextPage = (): JSX.Element => {
             {isSuccess}
           </span>
         </div>
+        <button
+          type="button"
+          className="btn btn-outline-dark"
+          onClick={() => route.push(`${userEndpoints.login}`)}
+        >
+          Back to Log in
+        </button>
       </form>
     </RecoveryPasswordEmailPageStyled>
   );

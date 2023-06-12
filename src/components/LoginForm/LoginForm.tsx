@@ -17,6 +17,7 @@ import {
 } from "@/utils/userFeedback/errorsManager";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/hooks";
+import userEndpoints from "@/utils/userEndpoints/userEndpoints";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser, checkUserIsVerified } = useUser();
@@ -88,7 +89,7 @@ const LoginForm = (): JSX.Element => {
   const { data: session } = useSession();
 
   if (session) {
-    router.push("/home");
+    router.push(`${userEndpoints.home}`);
   }
 
   const areInputFieldsEmpty = email === "" || password === "";
@@ -212,7 +213,7 @@ const LoginForm = (): JSX.Element => {
           </button>
           <div className="login-interface__signup signup">
             <span className="signup__text">Not a member?</span>
-            <Link href="/sign-up" className="signup__link">
+            <Link href={`${userEndpoints.signup}`} className="signup__link">
               Sign up
             </Link>
           </div>

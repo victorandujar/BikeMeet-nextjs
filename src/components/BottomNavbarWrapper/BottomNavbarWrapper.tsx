@@ -1,14 +1,14 @@
-import { useRouter } from "next/router";
 import BottomNavbar from "../BottomNavbar/BottomNavbar";
 import BottomNavbarWrapperStyled from "./BottomNavbarWrapperStyled";
-import userEndpoints from "@/utils/userEndpoints/userEndpoints";
+import { useAppSelector } from "@/store/hooks";
+import { useSession } from "next-auth/react";
 
 const BottomNavbarWrapper = (): JSX.Element => {
-  const route = useRouter();
-  if (
-    route.pathname === userEndpoints.login ||
-    route.pathname === userEndpoints.signup
-  ) {
+  const { isLogged } = useAppSelector((state) => state.user);
+  const { status } = useSession();
+  const isAuthenticated = status === "authenticated";
+
+  if (!isLogged && !isAuthenticated) {
     return <></>;
   }
 

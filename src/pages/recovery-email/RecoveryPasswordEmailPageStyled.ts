@@ -68,6 +68,8 @@ const RecoveryPasswordEmailPageStyled = styled.main`
   }
 
   .modals-messages {
+    height: 40px;
+
     &__error {
       color: #ff0202;
       font-size: 12px;
@@ -78,6 +80,14 @@ const RecoveryPasswordEmailPageStyled = styled.main`
       color: #03c403;
       font-size: 12px;
       font-weight: 900;
+    }
+  }
+
+  .btn-outline-dark {
+    width: 400px;
+
+    @media (max-width: 450px) {
+      width: 100%;
     }
   }
 `;
