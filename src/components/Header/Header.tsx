@@ -1,8 +1,15 @@
+import { useAppSelector } from "@/store/hooks";
+import { useSession } from "next-auth/react";
+import { secondaryFont } from "@/utils/fonts/fonts";
 import TopNavbar from "../TopNavbar/TopNavbar";
 import HeaderStyled from "./HeaderStyled";
-import { secondaryFont } from "@/utils/fonts/fonts";
 
 const Header = (): JSX.Element => {
+  const { isLogged } = useAppSelector((state) => state.user);
+
+  const { status } = useSession();
+  const isAuthenticated = status === "authenticated";
+
   return (
     <HeaderStyled className="header-page">
       <div className={`header-page__logo`}>
@@ -11,9 +18,11 @@ const Header = (): JSX.Element => {
           <h2 className={`title__blue ${secondaryFont.className}`}>Meet</h2>
         </div>
       </div>
-      <div className="navbar">
-        <TopNavbar />
-      </div>
+      {(isLogged || isAuthenticated) && (
+        <div className="navbar">
+          <TopNavbar />
+        </div>
+      )}
     </HeaderStyled>
   );
 };
