@@ -2,6 +2,12 @@ import Header from "@/components/Header/Header";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 import { screen } from "@testing-library/react";
 
+const mockedUseSession = jest.fn();
+jest.mock("next-auth/react", () => ({
+  ...jest.requireActual("next-auth/react"),
+  useSession: () => mockedUseSession,
+}));
+
 describe("Given a Header component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a heading with the text 'BikeMeet'", () => {

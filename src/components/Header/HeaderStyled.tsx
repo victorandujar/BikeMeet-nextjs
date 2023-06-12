@@ -28,6 +28,12 @@ const HeaderStyled = styled.header`
       font-size: 30px;
     }
   }
+
+  .navbar {
+    @media (max-width: 861px) {
+      display: none;
+    }
+  }
 `;
 
 export default HeaderStyled;

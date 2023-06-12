@@ -7,8 +7,6 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   background-color: #ffffff;
-  font-family: "Poppins";
-  
   color: #ffffff;
   padding: 20px;
 }
@@ -25,7 +23,7 @@ ol, ul, li {
   text-decoration: none;
 }
 
-button{
+button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -33,8 +31,8 @@ button{
 }
 
 a, :visited {
-text-decoration: none;
-color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 `;

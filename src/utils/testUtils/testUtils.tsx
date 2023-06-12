@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "@/styles/Theme";
 import GlobalStyles from "@/styles/GlobalStyles";
 import { render } from "@testing-library/react";
+import { SessionProvider } from "next-auth/react";
 
 const renderWithProviders = (
   ui: React.ReactElement,
