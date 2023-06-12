@@ -8,9 +8,13 @@ const BottomNavbarWrapper = (): JSX.Element => {
   const { status } = useSession();
   const isAuthenticated = status === "authenticated";
 
+  if (!isLogged && !isAuthenticated) {
+    return <></>;
+  }
+
   return (
     <BottomNavbarWrapperStyled>
-      {(isLogged || isAuthenticated) && <BottomNavbar />}
+      <BottomNavbar />
     </BottomNavbarWrapperStyled>
   );
 };
