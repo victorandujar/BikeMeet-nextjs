@@ -2,16 +2,17 @@ import GlobalStyles from "@/styles/GlobalStyles";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "bootstrap/dist/css/bootstrap.css";
-import Header from "@/components/Header/Header";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/Theme";
 import { SessionProvider } from "next-auth/react";
-import BottomNavbarWrapper from "@/components/BottomNavbarWrapper/BottomNavbarWrapper";
 import Layout from "@/components/Layout/Layout";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
+  const queryClient = new QueryClient();
+
   return (
     <>
       <Head>
@@ -21,13 +22,15 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
         <link rel="icon" href="/image/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <Provider store={store}>
-          <GlobalStyles />
-          <SessionProvider session={session}>
-            <Layout />
-            <Component {...pageProps} />
-          </SessionProvider>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <GlobalStyles />
+            <SessionProvider session={session}>
+              <Layout />
+              <Component {...pageProps} />
+            </SessionProvider>
+          </Provider>
+        </QueryClientProvider>
       </ThemeProvider>
     </>
   );
