@@ -1,11 +1,11 @@
 import { loginUserActionCreator } from "@/store/features/usersSlice/usersSlice";
 import { useAppDispatch } from "@/store/hooks";
 import decodeToken from "@/utils/decodeToken";
-import { useRouter } from "next/router";
 import { useCallback } from "react";
 
 interface useTokenStructure {
   getToken: () => Promise<void>;
+  removeToken: () => Promise<void>;
 }
 
 const useToken = (): useTokenStructure => {
@@ -21,7 +21,11 @@ const useToken = (): useTokenStructure => {
     }
   }, [dispatch]);
 
-  return { getToken };
+  const removeToken = async () => {
+    await localStorage.removeItem("token");
+  };
+
+  return { getToken, removeToken };
 };
 
 export default useToken;
