@@ -26,8 +26,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           <Provider store={store}>
             <GlobalStyles />
             <SessionProvider session={session}>
-              <Layout />
-              <Component {...pageProps} />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
             </SessionProvider>
           </Provider>
         </QueryClientProvider>
