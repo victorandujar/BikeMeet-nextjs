@@ -26,4 +26,5 @@ export interface RideStructureData {
   ridersLimit: number;
   image: string;
   owner: RiderProfileStructure;
+  id: string;
 }
