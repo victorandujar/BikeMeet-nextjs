@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "@/styles/Theme";
 import GlobalStyles from "@/styles/GlobalStyles";
 import { render } from "@testing-library/react";
-import { SessionProvider } from "next-auth/react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const renderWithProviders = (
   ui: React.ReactElement,
@@ -14,13 +14,17 @@ const renderWithProviders = (
 ) => {
   const testStore = preloadState ? setupStore(preloadState) : store;
 
+  const queryClient = new QueryClient();
+
   const Wrapper = ({ children }: PropsWithChildren) => {
     return (
       <ThemeProvider theme={theme}>
-        <Provider store={testStore}>
-          {children}
-          <GlobalStyles />
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={testStore}>
+            {children}
+            <GlobalStyles />
+          </Provider>
+        </QueryClientProvider>
       </ThemeProvider>
     );
   };

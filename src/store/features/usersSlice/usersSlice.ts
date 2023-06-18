@@ -5,7 +5,7 @@ const initialState: UserState = {
   email: "",
   id: "",
   token: "",
-  isLogged: true,
+  isLogged: false,
 };
 
 const usersSlice = createSlice({
