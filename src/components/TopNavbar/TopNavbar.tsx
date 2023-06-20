@@ -7,7 +7,7 @@ const TopNavbar = (): JSX.Element => {
     <TopNavbarStyled>
       <ul className={`navigation ${primaryFont.className}`}>
         <li>
-          <Link href={"/home"} className="navigation__link">
+          <Link href={"/dashboard"} className="navigation__link">
             Home
           </Link>
         </li>
