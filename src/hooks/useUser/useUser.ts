@@ -44,7 +44,7 @@ const useUser = () => {
       if (isRemembered) {
         localStorage.setItem("token", token);
       }
-      router.push("/home");
+      router.push(endpoints.dashboard);
     },
     [dispatch, router]
   );
