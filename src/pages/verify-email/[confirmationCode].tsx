@@ -7,7 +7,7 @@ import VerifyEmailStyled from "@/pages/verify-email/VerifyEmailStyled";
 import useUser from "@/hooks/useUser/useUser";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import userEndpoints from "@/utils/userEndpoints/userEndpoints";
+import endpoints from "@/utils/endpoints/endpoints";
 
 const VerifyEmailPage: NextPage = (): JSX.Element => {
   const { verifyEmail } = useUser();
@@ -44,7 +44,7 @@ const VerifyEmailPage: NextPage = (): JSX.Element => {
       </div>
       <button className="verify-page__login">
         <Link
-          href={`${userEndpoints.login}`}
+          href={`${endpoints.login}`}
           className={`${primaryFont.className}`}
         >
           Log in

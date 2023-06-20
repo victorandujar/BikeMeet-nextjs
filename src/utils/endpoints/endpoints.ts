@@ -1,6 +1,6 @@
-import { UserEndpointsStructure } from "./types/types";
+import { EndpointsStructure } from "./types/types";
 
-const userEndpoints: UserEndpointsStructure = {
+const endpoints: EndpointsStructure = {
   users: "/users",
   login: "/login",
   register: "/register",
@@ -10,7 +10,7 @@ const userEndpoints: UserEndpointsStructure = {
   signup: "/sign-up",
   restorePassword: "/restore-password/",
   recoveryEmailPassword: "/recovery-email/validate-email",
-  home: "/home",
+  dashboard: "/dashboard",
 };
 
-export default userEndpoints;
+export default endpoints;

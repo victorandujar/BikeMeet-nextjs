@@ -25,6 +25,7 @@ const BottomNavbar = (): JSX.Element => {
           label="Home"
           icon={<HomeIcon />}
           LinkComponent={Link}
+          href="/dashboard"
         />
         <BottomNavigationAction
           label="Nearby"

@@ -13,7 +13,7 @@ import {
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
 import { sucessManagerStatusCodes } from "@/utils/userFeedback/successManager";
-import userEndpoints from "@/utils/userEndpoints/userEndpoints";
+import endpoints from "@/utils/endpoints/endpoints";
 
 const RegisterForm = (): JSX.Element => {
   const { registerUser } = useUser();
@@ -253,7 +253,7 @@ const RegisterForm = (): JSX.Element => {
         </div>
         <div className="register-interface__login login">
           <span className="login__text">Already a member?</span>
-          <Link href={`${userEndpoints.login}`} className="login__link">
+          <Link href={`${endpoints.login}`} className="login__link">
             Log in
           </Link>
         </div>
