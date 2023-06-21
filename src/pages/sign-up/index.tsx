@@ -3,7 +3,7 @@ import RegisterPageStyled from "@/pages/sign-up/RegisterPageStyled";
 import { primaryFont, secondaryFont } from "@/utils/fonts/fonts";
 import { NextPage } from "next";
 
-const SignUpPage: NextPage = (): JSX.Element => {
+const SignUpPage: NextPage = (): React.ReactElement => {
   return (
     <RegisterPageStyled className="register-page">
       <div className="register-page__heading heading">

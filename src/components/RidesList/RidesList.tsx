@@ -6,7 +6,7 @@ interface RidesListProps {
   rides: RideStructureData[];
 }
 
-const RidesList = ({ rides }: RidesListProps): JSX.Element => {
+const RidesList = ({ rides }: RidesListProps): React.ReactElement => {
   return (
     <RidesListStyled>
       {rides.map((ride) => (

@@ -9,7 +9,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Paper } from "@mui/material";
 
-const BottomNavbar = (): JSX.Element => {
+const BottomNavbar = (): React.ReactElement => {
   const [value, setValue] = React.useState(0);
 
   return (

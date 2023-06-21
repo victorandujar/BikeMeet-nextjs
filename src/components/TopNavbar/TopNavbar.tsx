@@ -2,7 +2,7 @@ import Link from "next/link";
 import TopNavbarStyled from "./TopNavbarStyled";
 import { primaryFont } from "@/utils/fonts/fonts";
 
-const TopNavbar = (): JSX.Element => {
+const TopNavbar = (): React.ReactElement => {
   return (
     <TopNavbarStyled>
       <ul className={`navigation ${primaryFont.className}`}>

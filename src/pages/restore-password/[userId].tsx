@@ -17,7 +17,7 @@ import {
 } from "@/utils/userFeedback/successManager";
 import endpoints from "@/utils/endpoints/endpoints";
 
-const RestorePasswordPage: NextPage = (): JSX.Element => {
+const RestorePasswordPage: NextPage = (): React.ReactElement => {
   const { resetUserPassword } = useUser();
 
   const params = useRouter();

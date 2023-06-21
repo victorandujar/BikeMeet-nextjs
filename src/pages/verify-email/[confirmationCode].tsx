@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import endpoints from "@/utils/endpoints/endpoints";
 
-const VerifyEmailPage: NextPage = (): JSX.Element => {
+const VerifyEmailPage: NextPage = (): React.ReactElement => {
   const { verifyEmail } = useUser();
   const router = useRouter();
   const { confirmationCode } = router.query;

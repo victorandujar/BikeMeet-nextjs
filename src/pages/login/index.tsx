@@ -3,7 +3,7 @@ import LoginPageStyled from "@/pages/login/LoginPageStyled";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import { NextPage } from "next";
 
-const LoginPage: NextPage = (): JSX.Element => {
+const LoginPage: NextPage = (): React.ReactElement => {
   return (
     <LoginPageStyled className="login-page">
       <div className="login-page__heading">

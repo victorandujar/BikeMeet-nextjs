@@ -2,16 +2,16 @@ import { NextPage } from "next";
 import { useQuery } from "react-query";
 import RidesList from "@/components/RidesList/RidesList";
 import useRides from "@/hooks/useRides/useRides";
-import { getRidesApiResponse } from "@/api/types";
+import { GetRidesApiResponse } from "@/api/types";
 import { Skeleton, Typography } from "@mui/material";
 import DashboardStyled from "./DashboardStyled";
 
-const Dashboard: NextPage = (): JSX.Element => {
+const Dashboard: NextPage = (): React.ReactElement => {
   const { getRides } = useRides();
 
-  const result = useQuery("rides", getRides);
+  const rides = useQuery("rides", getRides);
 
-  if (result.isLoading) {
+  if (rides.isLoading) {
     return (
       <DashboardStyled>
         <div className="skeleton">
@@ -45,7 +45,7 @@ const Dashboard: NextPage = (): JSX.Element => {
     );
   }
 
-  if (result.isError) {
+  if (rides.isError) {
     return (
       <DashboardStyled>
         <Typography className="error-message">
@@ -57,8 +57,8 @@ const Dashboard: NextPage = (): JSX.Element => {
 
   return (
     <DashboardStyled>
-      {!result.isLoading && (
-        <RidesList rides={(result.data! as getRidesApiResponse).rides} />
+      {!rides.isLoading && (
+        <RidesList rides={(rides.data! as GetRidesApiResponse).rides} />
       )}
     </DashboardStyled>
   );

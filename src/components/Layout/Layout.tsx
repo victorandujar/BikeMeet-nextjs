@@ -4,10 +4,10 @@ import Header from "../Header/Header";
 import { useEffect } from "react";
 
 interface LayoutProps {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactElement | React.ReactElement[];
 }
 
-const Layout = ({ children }: LayoutProps): JSX.Element => {
+const Layout = ({ children }: LayoutProps): React.ReactElement => {
   const { getToken } = useToken();
 
   useEffect(() => {

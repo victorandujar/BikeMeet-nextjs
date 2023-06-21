@@ -16,7 +16,7 @@ import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 import endpoints from "@/utils/endpoints/endpoints";
 
-const RecoveryPasswordEmailPage: NextPage = (): JSX.Element => {
+const RecoveryPasswordEmailPage: NextPage = (): React.ReactElement => {
   const { checkUserEmail } = useUser();
   const route = useRouter();
 

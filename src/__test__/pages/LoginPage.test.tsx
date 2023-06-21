@@ -2,16 +2,16 @@ import LoginPage from "@/pages/login";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 import { screen } from "@testing-library/react";
 
-const mockedUsedRouter = jest.fn();
+const mockUsedRouter = jest.fn();
 jest.mock("next/navigation", () => ({
   ...jest.requireActual("next/navigation"),
-  useRouter: () => mockedUsedRouter,
+  useRouter: () => mockUsedRouter,
 }));
 
-const mockedUseSession = jest.fn();
+const mockUseSession = jest.fn();
 jest.mock("next-auth/react", () => ({
   ...jest.requireActual("next-auth/react"),
-  useSession: () => mockedUseSession,
+  useSession: () => mockUseSession,
 }));
 
 describe("Given a Login page component", () => {

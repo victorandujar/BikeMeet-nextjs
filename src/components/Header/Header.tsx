@@ -4,7 +4,7 @@ import { secondaryFont } from "@/utils/fonts/fonts";
 import TopNavbar from "../TopNavbar/TopNavbar";
 import HeaderStyled from "./HeaderStyled";
 
-const Header = (): JSX.Element => {
+const Header = (): React.ReactElement => {
   const { isLogged } = useAppSelector((state) => state.user);
 
   const { status } = useSession();

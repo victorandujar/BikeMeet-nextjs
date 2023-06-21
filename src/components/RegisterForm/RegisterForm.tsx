@@ -15,7 +15,7 @@ import {
 import { sucessManagerStatusCodes } from "@/utils/userFeedback/successManager";
 import endpoints from "@/utils/endpoints/endpoints";
 
-const RegisterForm = (): JSX.Element => {
+const RegisterForm = (): React.ReactElement => {
   const { registerUser } = useUser();
 
   const initialValues: UserRegisterCredentialsForm = {
