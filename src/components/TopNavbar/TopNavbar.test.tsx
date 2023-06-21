@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import TopNavbar from "./TopNavbar";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 

@@ -16,10 +16,9 @@ import {
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
 import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/store/hooks";
 import endpoints from "@/utils/endpoints/endpoints";
 
-const LoginForm = (): JSX.Element => {
+const LoginForm = (): React.ReactElement => {
   const { loginUser, checkUserIsVerified } = useUser();
   const router = useRouter();
 

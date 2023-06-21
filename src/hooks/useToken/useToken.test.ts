@@ -1,6 +1,5 @@
 import { useAppDispatch } from "@/store/hooks";
 import { CustomTokenPayload } from "../useUser/types";
-import decodeToken from "@/utils/decodeToken";
 import { renderHook } from "@testing-library/react";
 import useToken from "./useToken";
 import Wrapper from "@/mocks/Wrapper";

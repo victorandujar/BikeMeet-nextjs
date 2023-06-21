@@ -23,6 +23,8 @@ jest.mock("../../hooks/useUser/useUser", () => () => ({
   checkUserIsVerified: mockCheckEmail,
 }));
 
+const password = process.env.NEXT_PUBLIC_TEST_PASSWORD ?? "1234567890";
+
 describe("Given a LoginForm component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a button with the text 'Log in'", () => {
@@ -74,17 +76,14 @@ describe("Given a LoginForm component", () => {
   describe("When the user writes in the password input", () => {
     test("Then it changes the state of this input", async () => {
       const passwordLabel = "Password";
-      const passwordText = "12345678";
 
       renderWithProviders(<LoginForm />);
 
       const passwordInput = screen.getByLabelText(passwordLabel);
 
-      await waitFor(
-        async () => await userEvent.type(passwordInput, passwordText)
-      );
+      await waitFor(async () => await userEvent.type(passwordInput, password));
 
-      expect(passwordInput).toHaveValue(passwordText);
+      expect(passwordInput).toHaveValue(password);
     });
   });
 

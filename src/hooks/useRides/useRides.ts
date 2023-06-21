@@ -1,13 +1,13 @@
 import apiClient from "@/api/apiClient";
 import { ridesEndpoints } from "@/api/ridesEndpoints";
 
-interface useRidesStructure {
-  getRides: () => void;
+interface UseRidesStructure {
+  getRides: () => {};
 }
 
 const { getAllRides, rides } = ridesEndpoints;
 
-const useRides = (): useRidesStructure => {
+const useRides = (): UseRidesStructure => {
   const getRides = async () => {
     const response = await apiClient.get(`${rides}${getAllRides}`);
 

@@ -10,6 +10,8 @@ import {
 } from "@/store/features/usersSlice/types/types";
 import { Session } from "next-auth";
 
+const testPassword = process.env.NEXT_PUBLIC_TEST_PASSWORD ?? "Mrv27634_";
+
 export const mockInitialUserState: UserState = {
   email: "",
   id: "",
@@ -32,7 +34,7 @@ export const expectedUserState: UserState = {
 
 export const mockUserCredentials: UserCredentials = {
   email: "victor@andujar.org",
-  password: "12345678",
+  password: testPassword,
 };
 
 export const mockTokenPayload: CustomTokenPayload = {
@@ -63,8 +65,8 @@ export const mockUserRegisterCredentialsForm: UserRegisterCredentialsForm = {
   name: "Víctor",
   surname: "Andújar",
   username: "Ammavaru",
-  password: "Vik27634_",
-  repeat: "Vik27634_",
+  password: testPassword,
+  repeat: testPassword,
 };
 
 export const mockUserRegisterCredentials: UserRegisterCredentials = {
@@ -72,5 +74,5 @@ export const mockUserRegisterCredentials: UserRegisterCredentials = {
   surname: "Andújar",
   username: "Ammavaru",
   email: "victor@andujar.org",
-  password: "Vik27634_",
+  password: testPassword,
 };

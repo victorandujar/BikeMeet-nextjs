@@ -32,7 +32,7 @@ export interface UserCheckEmailStructure {
   email: string;
 }
 
-export interface isUserVerifiedResponse {
+export interface IsUserVerifiedResponse {
   isVerified: boolean;
 }
 

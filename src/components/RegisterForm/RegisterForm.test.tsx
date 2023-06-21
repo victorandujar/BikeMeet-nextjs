@@ -21,6 +21,8 @@ jest.mock("../../hooks/useUser/useUser", () => () => ({
   registerUser: mockRegisterUser,
 }));
 
+const password = process.env.NEXT_PUBLIC_TEST_PASSWORD ?? "1234567890";
+
 describe("Given a RegisterForm component", () => {
   describe("When it is rendered", () => {
     test("Then it should show an input with a placeholder text 'Enter your first name'", () => {
@@ -57,7 +59,6 @@ describe("Given a RegisterForm component", () => {
       const surnameText = mockUserRegisterCredentialsForm.surname;
       const usernameText = mockUserRegisterCredentialsForm.username;
       const emailText = mockUserRegisterCredentialsForm.email;
-      const passwordText = mockUserRegisterCredentialsForm.password;
       const repeatPasswordText = mockUserRegisterCredentialsForm.repeat;
 
       renderWithProviders(<RegisterForm />);
@@ -77,9 +78,7 @@ describe("Given a RegisterForm component", () => {
         async () => await userEvent.type(usernameInput, usernameText)
       );
       await waitFor(async () => await userEvent.type(emailInput, emailText));
-      await waitFor(
-        async () => await userEvent.type(passwordInput, passwordText)
-      );
+      await waitFor(async () => await userEvent.type(passwordInput, password));
       await waitFor(
         async () =>
           await userEvent.type(repeatPasswordInput, repeatPasswordText)
@@ -89,7 +88,7 @@ describe("Given a RegisterForm component", () => {
       expect(surnameInput).toHaveValue(surnameText);
       expect(usernameInput).toHaveValue(usernameText);
       expect(emailInput).toHaveValue(emailText);
-      expect(passwordInput).toHaveValue(passwordText);
+      expect(passwordInput).toHaveValue(password);
       expect(repeatPasswordInput).toHaveValue(repeatPasswordText);
     });
   });

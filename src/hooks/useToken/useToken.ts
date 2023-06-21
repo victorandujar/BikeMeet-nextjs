@@ -3,12 +3,12 @@ import { useAppDispatch } from "@/store/hooks";
 import decodeToken from "@/utils/decodeToken";
 import { useCallback } from "react";
 
-interface useTokenStructure {
+interface UseTokenStructure {
   getToken: () => Promise<void>;
   removeToken: () => Promise<void>;
 }
 
-const useToken = (): useTokenStructure => {
+const useToken = (): UseTokenStructure => {
   const dispatch = useAppDispatch();
 
   const getToken = useCallback(async () => {
@@ -22,7 +22,7 @@ const useToken = (): useTokenStructure => {
   }, [dispatch]);
 
   const removeToken = async () => {
-    await localStorage.removeItem("token");
+    localStorage.removeItem("token");
   };
 
   return { getToken, removeToken };

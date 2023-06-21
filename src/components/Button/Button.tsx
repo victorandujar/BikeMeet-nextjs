@@ -11,8 +11,7 @@ const Button = ({
   text,
   isDisabled,
   actionOnClick,
-  type,
-}: ButtonProps): JSX.Element => {
+}: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled
       disabled={isDisabled}

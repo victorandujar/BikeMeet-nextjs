@@ -1,5 +1,5 @@
 import { RideStructureData } from "@/components/Ride/types";
 
-export interface getRidesApiResponse {
+export interface GetRidesApiResponse {
   rides: RideStructureData[];
 }
