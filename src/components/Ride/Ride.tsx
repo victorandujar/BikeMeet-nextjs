@@ -35,7 +35,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
             </Avatar>
           }
           title={ride.owner.name}
-          subheader={`${ride.owner.valoration} / ${ride.owner.ridesCount} rides`}
+          subheader={`${ride.owner.rate} / ${ride.owner.rides} rides`}
           className="card__header"
         />
         <div className="card__image">

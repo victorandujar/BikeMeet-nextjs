@@ -10,7 +10,7 @@ export interface UserState extends UserStructure {
 
 export interface RiderProfileStructure {
   name: string;
-  valoration: number;
-  ridesCount: number;
-  avatar: string;
+  rate: number;
+  rides: number;
+  image: string;
 }
