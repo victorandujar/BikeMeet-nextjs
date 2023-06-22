@@ -7,10 +7,10 @@ import {
 export const ridesMocks: RideStructureData[] = [
   {
     owner: {
-      avatar: "htt",
+      image: "htt",
       name: "Arnau Rotger",
-      ridesCount: 50,
-      valoration: 4.7,
+      rides: 50,
+      rate: 4.7,
     },
     date: "2023-11-01 8.00 AM ",
     description:
@@ -29,10 +29,10 @@ export const ridesMocks: RideStructureData[] = [
   },
   {
     owner: {
-      avatar: "https",
+      image: "https",
       name: "Jèssica Olivo",
-      ridesCount: 24,
-      valoration: 4.7,
+      rides: 24,
+      rate: 4.7,
     },
     date: "2023-12-01 9.00 AM ",
     description:
