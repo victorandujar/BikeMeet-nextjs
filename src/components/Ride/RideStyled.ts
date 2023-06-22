@@ -2,17 +2,21 @@ import styled from "styled-components";
 
 const RideStyled = styled.article`
   position: relative;
+  width: 300px;
+  height: 400px;
 
   img {
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    height: 200px;
     margin-top: 0;
   }
 
   .card {
     &__header {
+      color: white;
       position: absolute;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
       margin-top: 0;
     }
 
@@ -24,6 +28,11 @@ const RideStyled = styled.article`
     &__footer  {
       justify-content: space-between;
     }
+  }
+
+  .MuiCardHeader-subheader {
+    color: white;
+    font-weight: 700;
   }
 
   .content {
