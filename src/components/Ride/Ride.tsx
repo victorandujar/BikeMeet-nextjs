@@ -25,6 +25,8 @@ interface RideProps {
 }
 
 const Ride = ({ ride }: RideProps): React.ReactElement => {
+  const localDateFormat = ride.date.toLocaleString().split("T")[0];
+
   return (
     <RideStyled>
       <Card sx={{ maxWidth: 345 }}>
@@ -60,7 +62,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               className={`${quaternaryFont.className} content__icons--first`}
             >
               <EventRoundedIcon />
-              {`${ride.date}`}
+              {localDateFormat}
             </Typography>
             <Typography
               variant="body1"
