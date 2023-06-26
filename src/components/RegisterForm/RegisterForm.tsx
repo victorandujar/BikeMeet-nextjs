@@ -13,7 +13,7 @@ import {
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
 import { sucessManagerStatusCodes } from "@/utils/userFeedback/successManager";
-import endpoints from "@/utils/endpoints/endpoints";
+import { userEndpoints } from "@/utils/endpoints/endpoints";
 
 const RegisterForm = (): React.ReactElement => {
   const { registerUser } = useUser();
@@ -253,7 +253,7 @@ const RegisterForm = (): React.ReactElement => {
         </div>
         <div className="register-interface__login login">
           <span className="login__text">Already a member?</span>
-          <Link href={`${endpoints.login}`} className="login__link">
+          <Link href={`${userEndpoints.login}`} className="login__link">
             Log in
           </Link>
         </div>

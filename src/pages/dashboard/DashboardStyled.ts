@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const DashboardStyled = styled.div`
+const DashboardStyled = styled.main`
+  padding: 50px 0;
+
   .error-message {
     color: ${(props) => props.theme.colors.mainColorText};
   }

@@ -16,7 +16,7 @@ import {
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
 import { useRouter } from "next/navigation";
-import endpoints from "@/utils/endpoints/endpoints";
+import { rideEndpoints, userEndpoints } from "@/utils/endpoints/endpoints";
 
 const LoginForm = (): React.ReactElement => {
   const { loginUser, checkUserIsVerified } = useUser();
@@ -88,7 +88,7 @@ const LoginForm = (): React.ReactElement => {
   const { data: session } = useSession();
 
   if (session) {
-    router.push(`${endpoints.dashboard}`);
+    router.push(`${rideEndpoints.dashboard}`);
   }
 
   const areInputFieldsEmpty = email === "" || password === "";
@@ -212,7 +212,7 @@ const LoginForm = (): React.ReactElement => {
           </button>
           <div className="login-interface__signup signup">
             <span className="signup__text">Not a member?</span>
-            <Link href={`${endpoints.signup}`} className="signup__link">
+            <Link href={`${userEndpoints.signup}`} className="signup__link">
               Sign up
             </Link>
           </div>

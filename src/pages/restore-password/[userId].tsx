@@ -15,7 +15,7 @@ import {
   successManagerMessages,
   sucessManagerStatusCodes,
 } from "@/utils/userFeedback/successManager";
-import endpoints from "@/utils/endpoints/endpoints";
+import { userEndpoints } from "@/utils/endpoints/endpoints";
 
 const RestorePasswordPage: NextPage = (): React.ReactElement => {
   const { resetUserPassword } = useUser();
@@ -177,7 +177,7 @@ const RestorePasswordPage: NextPage = (): React.ReactElement => {
         <button
           type="button"
           className="btn btn-outline-dark"
-          onClick={() => path.push(`${endpoints.login}`)}
+          onClick={() => path.push(`${userEndpoints.login}`)}
         >
           Back to Log in
         </button>

@@ -57,9 +57,11 @@ const Dashboard: NextPage = (): React.ReactElement => {
 
   return (
     <DashboardStyled>
-      {!rides.isLoading && (
-        <RidesList rides={(rides.data! as GetRidesApiResponse).rides} />
-      )}
+      <div>
+        {!rides.isLoading && (
+          <RidesList rides={(rides.data! as GetRidesApiResponse).rides} />
+        )}
+      </div>
     </DashboardStyled>
   );
 };

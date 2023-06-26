@@ -1,4 +1,4 @@
-export interface EndpointsStructure {
+export interface UserEndpointsStructure {
   users: string;
   login: string;
   register: string;
@@ -8,5 +8,9 @@ export interface EndpointsStructure {
   signup: string;
   restorePassword: string;
   recoveryEmailPassword: string;
+  getUser: string;
+}
+
+export interface RideEndpointsStructure {
   dashboard: string;
 }

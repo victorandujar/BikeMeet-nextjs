@@ -14,7 +14,7 @@ import {
 } from "@/utils/userFeedback/successManager";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
-import endpoints from "@/utils/endpoints/endpoints";
+import { userEndpoints } from "@/utils/endpoints/endpoints";
 
 const RecoveryPasswordEmailPage: NextPage = (): React.ReactElement => {
   const { checkUserEmail } = useUser();
@@ -106,7 +106,7 @@ const RecoveryPasswordEmailPage: NextPage = (): React.ReactElement => {
         <button
           type="button"
           className="btn btn-outline-dark"
-          onClick={() => route.push(`${endpoints.login}`)}
+          onClick={() => route.push(`${userEndpoints.login}`)}
         >
           Back to Log in
         </button>

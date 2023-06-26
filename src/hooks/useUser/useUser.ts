@@ -9,7 +9,7 @@ import {
   IsUserVerifiedResponse,
 } from "./types";
 import axios from "axios";
-import endpoints from "@/utils/endpoints/endpoints";
+import { rideEndpoints, userEndpoints } from "@/utils/endpoints/endpoints";
 import { useCallback } from "react";
 import decodeToken from "jwt-decode";
 import { UserStructure } from "@/store/features/usersSlice/types/types";
@@ -23,7 +23,7 @@ const useUser = () => {
   const loginUser = useCallback(
     async (user: UserCredentials, isRemembered: boolean) => {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.login}`,
+        `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.login}`,
         user
       );
 
@@ -44,7 +44,7 @@ const useUser = () => {
       if (isRemembered) {
         localStorage.setItem("token", token);
       }
-      router.push(endpoints.dashboard);
+      router.push(rideEndpoints.dashboard);
     },
     [dispatch, router]
   );
@@ -52,7 +52,7 @@ const useUser = () => {
   const registerUser = useCallback(
     async (userCredentials: UserRegisterCredentials) => {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.register}`,
+        `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.register}`,
         userCredentials
       );
       setTimeout(() => router.push("/login"), 2000);
@@ -64,14 +64,14 @@ const useUser = () => {
 
   const verifyEmail = async (confirmationCode: UserVerifyEmailStructure) => {
     await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.verifyEmail}`,
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.verifyEmail}`,
       confirmationCode
     );
   };
 
   const checkUserIsVerified = async (email: UserCheckEmailStructure) => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.getUserIsVerified}`,
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.getUserIsVerified}`,
       email
     );
 
@@ -82,7 +82,7 @@ const useUser = () => {
 
   const checkUserEmail = async (email: UserCheckEmailStructure) => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.findUserEmail}`,
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.findUserEmail}`,
       email
     );
 
@@ -91,7 +91,7 @@ const useUser = () => {
 
   const resetUserPassword = async (password: string, userId: string) => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.restorePassword}${userId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.restorePassword}${userId}`,
       {
         params: userId.toString(),
         password,
@@ -101,6 +101,13 @@ const useUser = () => {
     return { response };
   };
 
+  const getUser = async (email: string) => {
+    await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}${userEndpoints.users}${userEndpoints.getUser}`,
+      email
+    );
+  };
+
   return {
     loginUser,
     registerUser,
@@ -108,6 +115,7 @@ const useUser = () => {
     checkUserIsVerified,
     checkUserEmail,
     resetUserPassword,
+    getUser,
   };
 };
 

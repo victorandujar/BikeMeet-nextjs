@@ -5,7 +5,7 @@ import { useCallback } from "react";
 
 interface UseTokenStructure {
   getToken: () => Promise<void>;
-  removeToken: () => Promise<void>;
+  removeToken: () => {};
 }
 
 const useToken = (): UseTokenStructure => {
@@ -21,7 +21,7 @@ const useToken = (): UseTokenStructure => {
     }
   }, [dispatch]);
 
-  const removeToken = async () => {
+  const removeToken = () => {
     localStorage.removeItem("token");
   };
 
