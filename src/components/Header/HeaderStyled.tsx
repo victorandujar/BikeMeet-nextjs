@@ -13,6 +13,12 @@ const HeaderStyled = styled.header`
       gap: 10px;
       font-size: 40px;
     }
+
+    &__navigation {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
   }
 
   .title {
