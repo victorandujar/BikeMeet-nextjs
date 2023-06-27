@@ -6,7 +6,6 @@ import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
 import useUser from "@/hooks/useUser/useUser";
 import { useState } from "react";
 import { useSession, signIn } from "next-auth/react";
-
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";

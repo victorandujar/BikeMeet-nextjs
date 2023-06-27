@@ -1,3 +1,4 @@
+import { primaryFont } from "@/utils/fonts/fonts";
 import ButtonStyled from "./ButtonStyled";
 
 interface ButtonProps {
@@ -16,7 +17,7 @@ const Button = ({
     <ButtonStyled
       disabled={isDisabled}
       onClick={actionOnClick}
-      className="btn btn-outline-success"
+      className={`btn btn-outline-success ${primaryFont.className}`}
     >
       {text}
     </ButtonStyled>
