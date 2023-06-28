@@ -13,12 +13,21 @@ import endpoints from "@/utils/endpoints/endpoints";
 import { useCallback } from "react";
 import decodeToken from "jwt-decode";
 import { UserStructure } from "@/store/features/usersSlice/types/types";
-import { loginUserActionCreator } from "@/store/features/usersSlice/usersSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "@/store/features/usersSlice/usersSlice";
 import { useRouter } from "next/navigation";
+import useToken from "../useToken/useToken";
+import { useSession, signOut } from "next-auth/react";
 
 const useUser = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+
+  const { removeToken } = useToken();
+
+  const { data: session } = useSession();
 
   const loginUser = useCallback(
     async (user: UserCredentials, isRemembered: boolean) => {
@@ -101,6 +110,17 @@ const useUser = () => {
     return { response };
   };
 
+  const logoutUser = () => {
+    removeToken();
+    dispatch(logoutUserActionCreator());
+
+    if (session) {
+      signOut();
+    }
+
+    router.push(endpoints.login);
+  };
+
   return {
     loginUser,
     registerUser,
@@ -108,6 +128,7 @@ const useUser = () => {
     checkUserIsVerified,
     checkUserEmail,
     resetUserPassword,
+    logoutUser,
   };
 };
 

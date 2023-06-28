@@ -8,6 +8,12 @@ jest.mock("next-auth/react", () => ({
   useSession: () => mockedUseSession,
 }));
 
+const mockedUseRouter = jest.fn();
+jest.mock("next/navigation", () => ({
+  ...jest.requireActual("next/navigation"),
+  useRouter: () => mockedUseRouter,
+}));
+
 describe("Given a Header component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a heading with the text 'BikeMeet'", () => {

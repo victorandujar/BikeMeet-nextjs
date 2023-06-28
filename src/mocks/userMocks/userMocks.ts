@@ -76,3 +76,10 @@ export const mockUserRegisterCredentials: UserRegisterCredentials = {
   email: "victor@andujar.org",
   password: testPassword,
 };
+
+export const initialState: UserState = {
+  email: "",
+  isLogged: false,
+  token: "",
+  id: "",
+};
