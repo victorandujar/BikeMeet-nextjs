@@ -12,6 +12,9 @@ const RideStyled = styled.article`
   }
 
   .card {
+    &__location {
+      display: none;
+    }
     &__header {
       color: white;
       position: absolute;
@@ -57,6 +60,53 @@ const RideStyled = styled.article`
       &--fourth {
         grid-column: 2;
         grid-row: 2;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 575px;
+    height: 430px;
+    margin: 0 auto;
+
+    .card {
+      min-width: 100%;
+      min-height: 100%;
+
+      &__location {
+        display: inline;
+        align-self: flex-end;
+        margin: 25px 16px 0 0;
+      }
+
+      &__header {
+        color: black;
+        background-color: unset;
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+
+    .MuiCardHeader-subheader {
+      color: black;
+      font-weight: 700;
+    }
+
+    img {
+      object-fit: cover;
+      height: 210px;
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    .content {
+      &__title {
+        font-size: 1.25rem;
+      }
+
+      &__icons {
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
