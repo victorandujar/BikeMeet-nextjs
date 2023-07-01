@@ -3,7 +3,7 @@ import styled from "styled-components";
 const RideStyled = styled.article`
   position: relative;
   width: 300px;
-  height: 400px;
+  height: 370px;
 
   img {
     object-fit: cover;

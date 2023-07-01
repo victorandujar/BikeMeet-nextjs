@@ -9,7 +9,7 @@ const RidesListStyled = styled.ul`
   @media screen and (min-width: 1200px) {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     align-self: center;
   }
 `;

@@ -40,6 +40,11 @@ const Dashboard: NextPage = (): React.ReactElement => {
             animation="wave"
             className="skeleton__item"
           />
+          <Skeleton
+            variant="rounded"
+            animation="wave"
+            className="skeleton__item"
+          />
         </div>
       </DashboardStyled>
     );

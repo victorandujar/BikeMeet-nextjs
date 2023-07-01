@@ -8,16 +8,31 @@ const DashboardStyled = styled.main`
   }
 
   .skeleton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0 20px 0;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    justify-items: center;
 
     &__item {
       width: 100%;
-      max-width: 345px;
-      height: 400px;
+      max-width: 300px;
+      height: 362.69px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .skeleton {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+
+      &__item {
+        width: 100%;
+
+        max-width: 575px;
+        height: 430px;
+      }
     }
   }
 `;
