@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 const DashboardStyled = styled.main`
   padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
 
   .error-message {
     color: ${(props) => props.theme.colors.mainColorText};
@@ -33,6 +35,12 @@ const DashboardStyled = styled.main`
         max-width: 575px;
         height: 430px;
       }
+    }
+  }
+
+  .dashboard-page {
+    &__rides {
+      width: 950px;
     }
   }
 `;
