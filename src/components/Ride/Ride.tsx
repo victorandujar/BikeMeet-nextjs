@@ -19,6 +19,7 @@ import DirectionsBikeRoundedIcon from "@mui/icons-material/DirectionsBikeRounded
 import SpeedRoundedIcon from "@mui/icons-material/SpeedRounded";
 import RouteIcon from "@mui/icons-material/Route";
 import RideStyled from "./RideStyled";
+import PlaceIcon from "@mui/icons-material/Place";
 
 interface RideProps {
   ride: RideStructureData;
@@ -29,7 +30,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
 
   return (
     <RideStyled>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345 }} className="card">
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -40,16 +41,20 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
           subheader={`${ride.owner.rate} / ${ride.owner.rides} rides`}
           className="card__header"
         />
+        <div className="card__location">
+          {<PlaceIcon />}
+          {ride.location}
+        </div>
         <div className="card__image">
           <Image src={ride.image} alt="bikes" height={200} width={300} />
         </div>
 
-        <CardContent className="card__content">
+        <CardContent className="card__content content">
           <Typography
             variant="body1"
             color={`${(props: { theme: { colors: { mainColorText: any } } }) =>
               props.theme.colors.mainColorText}`}
-            className={`${tertyaryFont.className}`}
+            className={`${tertyaryFont.className} content__title`}
           >
             {ride.title}
           </Typography>
