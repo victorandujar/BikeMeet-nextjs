@@ -8,6 +8,10 @@ const ProfileCardStyled = styled.article`
   border-radius: 22% 2% 2% 2%;
   padding-top: 10px;
 
+  @media (max-width: 1000px) {
+    display: none;
+  }
+
   .user-profile {
     &__avatar {
       object-fit: cover;

@@ -11,6 +11,7 @@ const endpoints: EndpointsStructure = {
   restorePassword: "/restore-password/",
   recoveryEmailPassword: "/recovery-email/validate-email",
   dashboard: "/dashboard",
+  getUser: "/user",
 };
 
 export default endpoints;

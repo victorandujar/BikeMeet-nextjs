@@ -9,4 +9,5 @@ export interface EndpointsStructure {
   restorePassword: string;
   recoveryEmailPassword: string;
   dashboard: string;
+  getUser: string;
 }

@@ -32,9 +32,12 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {ride.owner.name.charAt(0)}
-            </Avatar>
+            <Avatar
+              sx={{ bgcolor: red[500] }}
+              aria-label="recipe"
+              src={ride.owner.image ?? ride.owner.name.charAt(0)}
+              className="ride__avatar"
+            />
           }
           title={ride.owner.name}
           subheader={`${ride.owner.rate} / ${ride.owner.rides} rides`}
