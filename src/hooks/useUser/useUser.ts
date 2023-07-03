@@ -121,6 +121,15 @@ const useUser = () => {
     router.push(endpoints.login);
   };
 
+  const getUser = async (email: UserCheckEmailStructure) => {
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.getUser}`,
+      email
+    );
+
+    return data;
+  };
+
   return {
     loginUser,
     registerUser,
@@ -129,6 +138,7 @@ const useUser = () => {
     checkUserEmail,
     resetUserPassword,
     logoutUser,
+    getUser,
   };
 };
 
