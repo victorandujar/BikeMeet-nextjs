@@ -1,3 +1,4 @@
+import { UserDataStructure } from "@/components/ProfileCard/types";
 import {
   CustomTokenPayload,
   UserCredentials,
@@ -82,4 +83,19 @@ export const initialState: UserState = {
   isLogged: false,
   token: "",
   id: "",
+};
+
+export const mockUserProfileData: UserDataStructure = {
+  user: {
+    email: "victor@andujar.org",
+    followers: [],
+    following: [],
+    image: "",
+    location: "",
+    name: "Víctor",
+    rate: 0,
+    rides: 0,
+    surname: "Andújar",
+    username: "Ammavaru",
+  },
 };
