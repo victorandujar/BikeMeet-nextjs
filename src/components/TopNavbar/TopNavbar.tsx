@@ -1,11 +1,11 @@
 import Link from "next/link";
 import TopNavbarStyled from "./TopNavbarStyled";
-import { primaryFont } from "@/utils/fonts/fonts";
+import { tertyaryFont } from "@/utils/fonts/fonts";
 
 const TopNavbar = (): React.ReactElement => {
   return (
     <TopNavbarStyled>
-      <ul className={`navigation ${primaryFont.className}`}>
+      <ul className={`navigation ${tertyaryFont.className}`}>
         <li>
           <Link href={"/dashboard"} className="navigation__link">
             Home

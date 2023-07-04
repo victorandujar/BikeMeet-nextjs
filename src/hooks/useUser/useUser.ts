@@ -30,7 +30,7 @@ const useUser = () => {
   const { data: session } = useSession();
 
   const loginUser = useCallback(
-    async (user: UserCredentials, isRemembered: boolean) => {
+    async (user: UserCredentials) => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.login}`,
         user
@@ -50,9 +50,8 @@ const useUser = () => {
 
       dispatch(loginUserActionCreator(userToLogin));
 
-      if (isRemembered) {
-        localStorage.setItem("token", token);
-      }
+      localStorage.setItem("token", token);
+
       router.push(endpoints.dashboard);
     },
     [dispatch, router]

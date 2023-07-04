@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const DashboardStyled = styled.main`
-  padding: 50px 0;
+  padding: 60px 0;
   display: flex;
-  justify-content: space-between;
+  gap: 40px;
 
   .error-message {
     color: ${(props) => props.theme.colors.mainColorText};
@@ -40,7 +40,7 @@ const DashboardStyled = styled.main`
 
   .dashboard-page {
     &__rides {
-      width: 950px;
+      width: 575px;
     }
   }
 `;

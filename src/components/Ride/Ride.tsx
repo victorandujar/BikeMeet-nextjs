@@ -69,7 +69,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               }) => props.theme.colors.mainColorText}`}
               className={`${quaternaryFont.className} content__icons--first`}
             >
-              <EventRoundedIcon />
+              <EventRoundedIcon className="content__icons-icon" />
               {localDateFormat}
             </Typography>
             <Typography
@@ -79,7 +79,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               }) => props.theme.colors.mainColorText}`}
               className={`${quaternaryFont.className} content__icons--second`}
             >
-              <SpeedRoundedIcon />
+              <SpeedRoundedIcon className="content__icons-icon" />
               {ride.difficulty}
             </Typography>
             <Typography
@@ -89,7 +89,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               }) => props.theme.colors.mainColorText}`}
               className={`${quaternaryFont.className} content__icons--third`}
             >
-              <DirectionsBikeRoundedIcon />
+              <DirectionsBikeRoundedIcon className="content__icons-icon" />
               {ride.surfaceType}
             </Typography>
             <Typography
@@ -99,7 +99,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               }) => props.theme.colors.mainColorText}`}
               className={`${quaternaryFont.className} content__icons--fourth`}
             >
-              <RouteIcon />
+              <RouteIcon className="content__icons-icon" />
               {ride.distance} km
             </Typography>
           </div>

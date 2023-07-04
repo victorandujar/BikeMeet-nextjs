@@ -2,6 +2,7 @@ import Image from "next/image";
 import { UserDataStructure } from "./types";
 import ProfileCardStyled from "./ProfileCardStyled";
 import { primaryFont } from "@/utils/fonts/fonts";
+import { useSession } from "next-auth/react";
 
 interface ProfileCardProps {
   user: UserDataStructure;
@@ -10,10 +11,14 @@ interface ProfileCardProps {
 const ProfileCard = ({
   user: { user },
 }: ProfileCardProps): React.ReactElement => {
+  const { data } = useSession();
+
+  const sessionUser = data?.user;
+
   return (
     <ProfileCardStyled className={`user-profile ${primaryFont.className}`}>
       <Image
-        src={user.image}
+        src={user.image || sessionUser?.image!}
         alt={`${user.name}'s profile image`}
         height={100}
         width={100}
@@ -21,7 +26,7 @@ const ProfileCard = ({
       />
       <div className="user-profile__user user">
         <h2 className="user__name">
-          {user.name} {user.surname}
+          {`${user.name} ${user.surname}` || `${sessionUser?.name}`}
         </h2>
         <span className="user__location">Barcelona, Spain</span>
       </div>

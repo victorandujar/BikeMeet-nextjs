@@ -16,6 +16,10 @@ const ButtonStyled = styled.button`
     color: ${(props) => props.theme.colors.secondaryColorText};
     border: 1px solid black;
   }
+
+  :active {
+    background-color: ${(props) => props.theme.colors.secondaryColorButton};
+  }
 `;
 
 export default ButtonStyled;

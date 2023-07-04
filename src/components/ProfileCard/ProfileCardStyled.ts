@@ -4,9 +4,9 @@ const ProfileCardStyled = styled.article`
   color: ${(props) => props.theme.colors.mainColorText};
   position: relative;
   width: 300px;
-  box-shadow: 5px 20px 30px gray;
   border-radius: 22% 2% 2% 2%;
   padding-top: 10px;
+  background-color: #fff;
 
   @media (max-width: 1000px) {
     display: none;
@@ -18,7 +18,8 @@ const ProfileCardStyled = styled.article`
       border-radius: 50%;
       position: absolute;
       z-index: 1;
-      top: 0px;
+      top: -15px;
+      left: -6px;
     }
   }
 
@@ -26,7 +27,7 @@ const ProfileCardStyled = styled.article`
     position: relative;
     padding-bottom: 10px;
     padding-left: 120px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
     &__name {
       font-size: 12px;
@@ -48,7 +49,7 @@ const ProfileCardStyled = styled.article`
     gap: 20px;
     padding: 10px 0;
 
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
 
     &__row2 {
       display: flex;
@@ -77,7 +78,7 @@ const ProfileCardStyled = styled.article`
       display: flex;
       padding: 8px;
       justify-content: space-between;
-      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     &__title {

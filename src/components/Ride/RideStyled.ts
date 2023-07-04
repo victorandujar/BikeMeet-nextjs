@@ -12,6 +12,8 @@ const RideStyled = styled.article`
   }
 
   .card {
+    border: none;
+
     &__location {
       display: none;
     }
@@ -45,22 +47,32 @@ const RideStyled = styled.article`
       &--first {
         grid-column: 1;
         grid-row: 1;
+        padding-top: 5px;
       }
 
       &--second {
         grid-column: 1;
         grid-row: 2;
+        padding-top: 5px;
       }
 
       &--third {
         grid-column: 2;
         grid-row: 1;
+        padding-top: 5px;
+        padding-left: 8px;
       }
 
       &--fourth {
         grid-column: 2;
         grid-row: 2;
+        padding-top: 5px;
+        padding-left: 8px;
       }
+    }
+
+    &__icons-icon {
+      padding-right: 5px;
     }
   }
 

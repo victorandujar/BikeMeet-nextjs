@@ -23,7 +23,6 @@ const LoginForm = (): React.ReactElement => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isRemembered, setIsRemembered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUserVerified, setIsVerified] = useState(true);
   const [isError, setIsError] = useState("");
@@ -40,10 +39,6 @@ const LoginForm = (): React.ReactElement => {
   }: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(value);
     setIsError("");
-  };
-
-  const toogleRememberUser = () => {
-    !isRemembered ? setIsRemembered(true) : setIsRemembered(false);
   };
 
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -63,7 +58,7 @@ const LoginForm = (): React.ReactElement => {
         throw new Error();
       }
 
-      await loginUser({ email, password }, isRemembered);
+      await loginUser({ email, password });
 
       setIsLoading(false);
     } catch (error) {
@@ -137,17 +132,6 @@ const LoginForm = (): React.ReactElement => {
           />
         </div>
         <div className="mb-3 form-check">
-          <div>
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="check"
-              onChange={toogleRememberUser}
-            />
-            <label className="form-check__label" htmlFor="check">
-              Remember me
-            </label>
-          </div>
           <Link
             href="/recovery-email/validate-email"
             className="form-check__forgot"
