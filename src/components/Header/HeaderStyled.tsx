@@ -5,6 +5,14 @@ const HeaderStyled = styled.header`
   justify-content: space-between;
   gap: 70px;
   color: ${(props) => props.theme.colors.mainColorText};
+  background-color: #fff;
+  padding: 5px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 2;
+  width: 100%;
 
   .header-page {
     &__logo {
@@ -28,10 +36,12 @@ const HeaderStyled = styled.header`
     &__blue {
       font-size: 30px;
       color: ${(props) => props.theme.colors.thirdColorText};
+      text-transform: uppercase;
     }
 
     &__black {
       font-size: 30px;
+      text-transform: uppercase;
     }
   }
 

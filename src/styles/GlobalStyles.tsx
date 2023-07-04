@@ -6,9 +6,17 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  background-color: #ffffff;
-  color: #ffffff;
+  background-color: #f1f1f1;
+  color: #fff;
   padding: 20px;
+
+  @media (min-width: 1200px){
+    padding: 20px 60px;
+  }
+
+  @media (min-width: 1400px){
+    padding: 20px 90px;
+  }
 }
 
 h1,h2{

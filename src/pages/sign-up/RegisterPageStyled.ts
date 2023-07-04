@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const RegisterPageStyled = styled.main`
   color: ${(props) => props.theme.colors.mainColorText};
-  padding: 10px 0 50px 0;
+  padding: 30px 0 20px 0;
 
   .register-page {
     height: 100%;

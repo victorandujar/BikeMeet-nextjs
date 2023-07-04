@@ -23,7 +23,6 @@ const LoginForm = (): React.ReactElement => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isRemembered, setIsRemembered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUserVerified, setIsVerified] = useState(true);
   const [isError, setIsError] = useState("");
@@ -40,10 +39,6 @@ const LoginForm = (): React.ReactElement => {
   }: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(value);
     setIsError("");
-  };
-
-  const toogleRememberUser = () => {
-    !isRemembered ? setIsRemembered(true) : setIsRemembered(false);
   };
 
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
