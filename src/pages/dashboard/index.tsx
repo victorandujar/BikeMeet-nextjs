@@ -9,6 +9,7 @@ import ProfileCard from "@/components/ProfileCard/ProfileCard";
 import useUser from "@/hooks/useUser/useUser";
 import { UserDataStructure } from "@/components/ProfileCard/types";
 import { useAppSelector } from "@/store/hooks";
+import { useSession } from "next-auth/react";
 
 const Dashboard: NextPage = (): React.ReactElement => {
   const { getRides } = useRides();
@@ -16,9 +17,14 @@ const Dashboard: NextPage = (): React.ReactElement => {
 
   const { email } = useAppSelector((state) => state.user);
 
+  const { data } = useSession();
+  const sessionEmail = data?.user?.email;
+
+  const userEmail = email || sessionEmail;
+
   const rides = useQuery("rides", getRides);
-  const user = useQuery("user", () => getUser({ email }), {
-    enabled: Boolean(email),
+  const user = useQuery("user", () => getUser({ email: userEmail! }), {
+    enabled: Boolean(userEmail),
   });
 
   if (rides.isLoading) {
