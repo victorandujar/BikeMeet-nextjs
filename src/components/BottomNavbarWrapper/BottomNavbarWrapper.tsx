@@ -1,6 +1,5 @@
 import BottomNavbar from "../BottomNavbar/BottomNavbar";
 import BottomNavbarWrapperStyled from "./BottomNavbarWrapperStyled";
-import { useAppSelector } from "@/store/hooks";
 import { useSession } from "next-auth/react";
 
 const BottomNavbarWrapper = (): React.ReactElement => {

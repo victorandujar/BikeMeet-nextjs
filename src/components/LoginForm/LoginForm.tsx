@@ -5,11 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
 import useUser from "@/hooks/useUser/useUser";
 import { useState } from "react";
-import { SignInResponse, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
-import { AxiosError } from "axios";
 import {
   errorsCodeStatus,
   errorsMessages,

@@ -1,7 +1,6 @@
-import { useSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getSession } from "next-auth/react";
 import endpoints from "@/utils/endpoints/endpoints";
 
 const ProtectedRoute = ({ children }: any): React.ReactElement => {

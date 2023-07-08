@@ -28,10 +28,6 @@ interface RideProps {
 const Ride = ({ ride }: RideProps): React.ReactElement => {
   const localDateFormat = ride.date.toLocaleString().split("T")[0];
 
-  if (!ride || !ride.owner) {
-    return <div>Upsss. Something went wrong. Try again rider!</div>;
-  }
-
   return (
     <RideStyled>
       <Card sx={{ maxWidth: 345 }} className="card">
@@ -40,20 +36,20 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
             <Avatar
               sx={{ bgcolor: red[500] }}
               aria-label="recipe"
-              src={ride.owner.image ?? ride.owner.name.charAt(0)}
+              src={ride?.owner?.image ?? ride?.owner?.name.charAt(0)}
               className="ride__avatar"
             />
           }
-          title={ride.owner.name}
-          subheader={`${ride.owner.rate} / ${ride.owner.rides} rides`}
+          title={ride?.owner?.name}
+          subheader={`${ride?.owner?.rate} / ${ride?.owner?.rides} rides`}
           className="card__header"
         />
         <div className="card__location">
           {<PlaceIcon />}
-          {ride.location}
+          {ride?.location}
         </div>
         <div className="card__image">
-          <Image src={ride.image} alt="bikes" height={200} width={300} />
+          <Image src={ride?.image} alt="bikes" height={200} width={300} />
         </div>
 
         <CardContent className="card__content content">
@@ -63,7 +59,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               props.theme.colors.mainColorText}`}
             className={`${tertyaryFont.className} content__title`}
           >
-            {ride.title}
+            {ride?.title}
           </Typography>
           <div className="content content__icons">
             <Typography
@@ -84,7 +80,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               className={`${quaternaryFont.className} content__icons--second`}
             >
               <SpeedRoundedIcon className="content__icons-icon" />
-              {ride.difficulty}
+              {ride?.difficulty}
             </Typography>
             <Typography
               variant="body1"
@@ -104,7 +100,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               className={`${quaternaryFont.className} content__icons--fourth`}
             >
               <RouteIcon className="content__icons-icon" />
-              {ride.distance} km
+              {ride?.distance} km
             </Typography>
           </div>
         </CardContent>
