@@ -14,6 +14,14 @@ const HeaderStyled = styled.header`
   z-index: 2;
   width: 100%;
 
+  @media (min-width: 1200px) {
+    padding: 5px 60px;
+  }
+
+  @media (min-width: 1400px) {
+    padding: 5px 160px;
+  }
+
   .header-page {
     &__logo {
       display: flex;

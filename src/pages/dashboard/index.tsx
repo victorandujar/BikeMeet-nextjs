@@ -8,23 +8,18 @@ import DashboardStyled from "./DashboardStyled";
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
 import useUser from "@/hooks/useUser/useUser";
 import { UserDataStructure } from "@/components/ProfileCard/types";
-import { useAppSelector } from "@/store/hooks";
 import { useSession } from "next-auth/react";
 
 const Dashboard: NextPage = (): React.ReactElement => {
   const { getRides } = useRides();
   const { getUser } = useUser();
 
-  const { email } = useAppSelector((state) => state.user);
-
-  const { data } = useSession();
-  const sessionEmail = data?.user?.email;
-
-  const userEmail = email || sessionEmail;
+  const { data: session } = useSession();
+  const sessionEmail = session?.user?.email;
 
   const rides = useQuery("rides", getRides);
-  const user = useQuery("user", () => getUser({ email: userEmail! }), {
-    enabled: Boolean(userEmail),
+  const user = useQuery("user", () => getUser({ email: sessionEmail! }), {
+    enabled: Boolean(sessionEmail),
   });
 
   if (rides.isLoading) {

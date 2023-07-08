@@ -28,6 +28,10 @@ interface RideProps {
 const Ride = ({ ride }: RideProps): React.ReactElement => {
   const localDateFormat = ride.date.toLocaleString().split("T")[0];
 
+  if (!ride || !ride.owner) {
+    return <div>Upsss. Something went wrong. Try again rider!</div>;
+  }
+
   return (
     <RideStyled>
       <Card sx={{ maxWidth: 345 }} className="card">

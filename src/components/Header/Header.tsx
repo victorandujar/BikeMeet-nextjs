@@ -1,15 +1,11 @@
-import { useAppSelector } from "@/store/hooks";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { secondaryFont } from "@/utils/fonts/fonts";
 import TopNavbar from "../TopNavbar/TopNavbar";
 import HeaderStyled from "./HeaderStyled";
 import Button from "../Button/Button";
-import useUser from "@/hooks/useUser/useUser";
+import endpoints from "@/utils/endpoints/endpoints";
 
 const Header = (): React.ReactElement => {
-  const { isLogged } = useAppSelector((state) => state.user);
-  const { logoutUser } = useUser();
-
   const { status } = useSession();
   const isAuthenticated = status === "authenticated";
 
@@ -22,15 +18,20 @@ const Header = (): React.ReactElement => {
         </div>
       </div>
       <div className="header-page__navigation">
-        {(isLogged || isAuthenticated) && (
+        {isAuthenticated && (
           <div className="navbar">
             <TopNavbar />
           </div>
         )}
-        {(isLogged || isAuthenticated) && (
+        {isAuthenticated && (
           <Button
             text="Log out"
-            actionOnClick={logoutUser}
+            actionOnClick={() =>
+              signOut({
+                redirect: true,
+                callbackUrl: endpoints.login,
+              })
+            }
             isDisabled={false}
           />
         )}

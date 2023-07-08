@@ -47,26 +47,26 @@ const RideStyled = styled.article`
       &--first {
         grid-column: 1;
         grid-row: 1;
-        padding-top: 5px;
+        padding-top: 15px;
       }
 
       &--second {
         grid-column: 1;
         grid-row: 2;
-        padding-top: 5px;
+        padding-top: 15px;
       }
 
       &--third {
         grid-column: 2;
         grid-row: 1;
-        padding-top: 5px;
+        padding-top: 15px;
         padding-left: 8px;
       }
 
       &--fourth {
         grid-column: 2;
         grid-row: 2;
-        padding-top: 5px;
+        padding-top: 15px;
         padding-left: 8px;
       }
     }
