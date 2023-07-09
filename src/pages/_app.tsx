@@ -9,6 +9,7 @@ import theme from "@/styles/Theme";
 import { SessionProvider } from "next-auth/react";
 import Layout from "@/components/Layout/Layout";
 import { QueryClient, QueryClientProvider } from "react-query";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient();
@@ -27,7 +28,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
             <GlobalStyles />
             <SessionProvider session={session}>
               <Layout>
-                <Component {...pageProps} />
+                <ProtectedRoute>
+                  <Component {...pageProps} />
+                </ProtectedRoute>
               </Layout>
             </SessionProvider>
           </Provider>

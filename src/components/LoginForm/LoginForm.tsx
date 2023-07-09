@@ -5,20 +5,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faStrava } from "@fortawesome/free-brands-svg-icons";
 import useUser from "@/hooks/useUser/useUser";
 import { useState } from "react";
-import { useSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { secondaryFont, primaryFont } from "@/utils/fonts/fonts";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
-import { AxiosError } from "axios";
 import {
   errorsCodeStatus,
   errorsMessages,
 } from "@/utils/userFeedback/errorsManager";
-import { useRouter } from "next/navigation";
 import endpoints from "@/utils/endpoints/endpoints";
+import { useRouter } from "next/router";
 
 const LoginForm = (): React.ReactElement => {
-  const { loginUser, checkUserIsVerified } = useUser();
+  const { checkUserIsVerified } = useUser();
+
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -58,32 +58,32 @@ const LoginForm = (): React.ReactElement => {
         throw new Error();
       }
 
-      await loginUser({ email, password });
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      }).then((response) => {
+        if (response!.ok) {
+          router.push(endpoints.dashboard);
+        } else {
+          if (
+            response!.status === errorsCodeStatus.notFound ||
+            response!.status === errorsCodeStatus.wrongCredentials
+          ) {
+            setIsError(errorsMessages.wrongCredentials);
+          }
+
+          if (response?.error === errorsMessages.networkFail) {
+            setIsError(errorsMessages.serverError);
+          }
+        }
+      });
 
       setIsLoading(false);
     } catch (error) {
-      const { response, message } = error as AxiosError;
-
-      if (
-        response?.status === errorsCodeStatus.notFound ||
-        response?.status === errorsCodeStatus.wrongCredentials
-      ) {
-        setIsError(errorsMessages.wrongCredentials);
-      }
-
-      if (message === errorsMessages.networkFail) {
-        setIsError(errorsMessages.serverError);
-      }
-
       setIsLoading(false);
     }
   };
-
-  const { data: session } = useSession();
-
-  if (session) {
-    router.push(`${endpoints.dashboard}`);
-  }
 
   const areInputFieldsEmpty = email === "" || password === "";
   const emailInputEmpty = email === "";
@@ -133,7 +133,7 @@ const LoginForm = (): React.ReactElement => {
         </div>
         <div className="mb-3 form-check">
           <Link
-            href="/recovery-email/validate-email"
+            href={endpoints.recoveryEmailPassword}
             className="form-check__forgot"
           >
             Forgot password?

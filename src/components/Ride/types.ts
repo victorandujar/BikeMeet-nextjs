@@ -1,4 +1,4 @@
-import { RiderProfileStructure } from "@/store/features/usersSlice/types/types";
+import { RiderProfileStructure } from "../ProfileCard/types";
 
 export enum DifficultyOption {
   Easy = "easy",

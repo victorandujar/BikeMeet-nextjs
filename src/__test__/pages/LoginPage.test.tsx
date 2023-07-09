@@ -2,9 +2,15 @@ import LoginPage from "@/pages/login";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 import { screen } from "@testing-library/react";
 
-const mockUsedRouter = jest.fn();
+const mockedUsedRouter = jest.fn();
 jest.mock("next/navigation", () => ({
   ...jest.requireActual("next/navigation"),
+  useRouter: () => mockedUsedRouter,
+}));
+
+const mockUsedRouter = jest.fn();
+jest.mock("next/router", () => ({
+  ...jest.requireActual("next/router"),
   useRouter: () => mockUsedRouter,
 }));
 

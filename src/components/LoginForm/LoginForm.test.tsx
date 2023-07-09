@@ -10,6 +10,12 @@ jest.mock("next/navigation", () => ({
   useRouter: () => mockedUsedRouter,
 }));
 
+const mockUsedRouter = jest.fn();
+jest.mock("next/router", () => ({
+  ...jest.requireActual("next/router"),
+  useRouter: () => mockUsedRouter,
+}));
+
 const mockedUseSession = jest.fn();
 jest.mock("next-auth/react", () => ({
   ...jest.requireActual("next-auth/react"),

@@ -1,8 +1,4 @@
-import { useAppDispatch } from "@/store/hooks";
 import {
-  CustomTokenPayload,
-  LoginApiResponse,
-  UserCredentials,
   UserCheckEmailStructure,
   UserRegisterCredentials,
   UserVerifyEmailStructure,
@@ -11,51 +7,10 @@ import {
 import axios from "axios";
 import endpoints from "@/utils/endpoints/endpoints";
 import { useCallback } from "react";
-import decodeToken from "jwt-decode";
-import { UserStructure } from "@/store/features/usersSlice/types/types";
-import {
-  loginUserActionCreator,
-  logoutUserActionCreator,
-} from "@/store/features/usersSlice/usersSlice";
 import { useRouter } from "next/navigation";
-import useToken from "../useToken/useToken";
-import { useSession, signOut } from "next-auth/react";
 
 const useUser = () => {
-  const dispatch = useAppDispatch();
   const router = useRouter();
-
-  const { removeToken } = useToken();
-
-  const { data: session } = useSession();
-
-  const loginUser = useCallback(
-    async (user: UserCredentials) => {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.login}`,
-        user
-      );
-
-      const { token } = response.data as LoginApiResponse;
-
-      const tokenPayload: CustomTokenPayload = decodeToken(token);
-
-      const { sub: id, email } = tokenPayload;
-
-      const userToLogin: UserStructure = {
-        email,
-        id,
-        token,
-      };
-
-      dispatch(loginUserActionCreator(userToLogin));
-
-      localStorage.setItem("token", token);
-
-      router.push(endpoints.dashboard);
-    },
-    [dispatch, router]
-  );
 
   const registerUser = useCallback(
     async (userCredentials: UserRegisterCredentials) => {
@@ -109,17 +64,6 @@ const useUser = () => {
     return { response };
   };
 
-  const logoutUser = () => {
-    removeToken();
-    dispatch(logoutUserActionCreator());
-
-    if (session) {
-      signOut();
-    }
-
-    router.push(endpoints.login);
-  };
-
   const getUser = async (email: UserCheckEmailStructure) => {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.getUser}`,
@@ -130,13 +74,11 @@ const useUser = () => {
   };
 
   return {
-    loginUser,
     registerUser,
     verifyEmail,
     checkUserIsVerified,
     checkUserEmail,
     resetUserPassword,
-    logoutUser,
     getUser,
   };
 };
