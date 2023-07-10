@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  background-color: #f5f3f3;
+  background-color: #f5f5f5;
   color: #fff;
   padding: 20px;
 

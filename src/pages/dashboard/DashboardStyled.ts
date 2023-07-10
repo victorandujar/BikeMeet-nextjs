@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 const DashboardStyled = styled.main`
-  padding: 80px 0;
+  padding: 100px 0;
   display: flex;
   gap: 40px;
 
   @media (max-width: 970px) {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -47,6 +48,10 @@ const DashboardStyled = styled.main`
   .dashboard-page {
     &__rides {
       width: 575px;
+
+      @media (max-width: 500px) {
+        width: 300px;
+      }
     }
   }
 `;
