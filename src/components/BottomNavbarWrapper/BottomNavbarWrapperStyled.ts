@@ -6,7 +6,7 @@ const BottomNavbarWrapperStyled = styled.div`
   left: 0;
   width: 100%;
 
-  @media (min-width: 861px) {
+  @media (min-width: 950px) {
     display: none;
   }
 `;

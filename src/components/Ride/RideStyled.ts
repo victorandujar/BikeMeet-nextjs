@@ -30,7 +30,7 @@ const RideStyled = styled.article`
       flex-direction: column;
     }
 
-    &__footer  {
+    &__footer {
       justify-content: space-between;
     }
   }
@@ -88,7 +88,7 @@ const RideStyled = styled.article`
       &__location {
         display: flex;
         align-self: flex-end;
-        justify-content: flex-start;
+        gap: 5px;
         margin: 25px 16px 0 0;
       }
 

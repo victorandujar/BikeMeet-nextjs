@@ -92,6 +92,7 @@ const LoginForm = (): React.ReactElement => {
 
   const areInputFieldsEmpty = email === "" || password === "";
   const emailInputEmpty = email === "";
+  const passwordInputEmpty = password === "";
 
   return (
     <LoginFormStyled className={`login-interface ${primaryFont.className}`}>
@@ -136,7 +137,12 @@ const LoginForm = (): React.ReactElement => {
               onChange={handlePassword}
               disabled={isLoading}
             />
-            <button className="show-button" type="button" onClick={toggleShown}>
+            <button
+              className="show-button"
+              type="button"
+              onClick={toggleShown}
+              disabled={passwordInputEmpty}
+            >
               {!shown ? (
                 <VisibilityOffIcon className="visibility-icon" />
               ) : (
