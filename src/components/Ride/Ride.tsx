@@ -6,7 +6,6 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Image from "next/image";
 import { RideStructureData } from "./types";
@@ -33,10 +32,11 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
         <CardHeader
           avatar={
             <Avatar
-              sx={{ bgcolor: red[500] }}
-              aria-label="recipe"
+              sx={{
+                width: 45,
+                height: 45,
+              }}
               src={ride?.owner?.image ?? ride?.owner?.name.charAt(0)}
-              className="ride__avatar"
             />
           }
           title={ride?.owner?.name}
@@ -57,7 +57,7 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
             color={`${(props: { theme: { colors: { mainColorText: any } } }) =>
               props.theme.colors.mainColorText}`}
             fontWeight={"bold"}
-            className={` content__title`}
+            className={`content__title`}
           >
             {ride?.title}
           </Typography>

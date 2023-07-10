@@ -22,15 +22,15 @@ const TopNavbarStyled = styled.nav`
 
   .new-ride {
     background-color: ${(props) => props.theme.colors.thirdColorText};
-    width: 130px;
+    width: 125px;
     color: ${(props) => props.theme.colors.secondaryColorText};
     font-size: 14px;
     border-radius: 30px;
-    height: 40px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 10px;
+    padding: 0 5px;
 
     &__icon {
       opacity: 80%;
