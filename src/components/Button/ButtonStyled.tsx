@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const ButtonStyled = styled.button`
   color: ${(props) => props.theme.colors.mainColorText};
-  font-size: 11px;
-  border: 1px solid black;
+  font-size: 15px;
+  border: none;
   height: 20px;
   width: 60px;
   text-align: center;
@@ -12,13 +12,14 @@ const ButtonStyled = styled.button`
   margin: 0;
 
   :hover {
-    background-color: ${(props) => props.theme.colors.secondaryColorButton};
-    color: ${(props) => props.theme.colors.secondaryColorText};
-    border: 1px solid black;
+    background-color: transparent;
+    color: ${(props) => props.theme.colors.thirdColorText};
+    font-weight: bold;
+    border: none;
   }
 
   :active {
-    background-color: ${(props) => props.theme.colors.secondaryColorButton};
+    color: ${(props) => props.theme.colors.secondaryColorButton};
   }
 `;
 

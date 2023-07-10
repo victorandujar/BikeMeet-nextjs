@@ -5,7 +5,7 @@ const TopNavbarStyled = styled.nav`
 
   .navigation {
     display: flex;
-    gap: 30px;
+    gap: 50px;
     align-items: center;
     justify-content: center;
   }

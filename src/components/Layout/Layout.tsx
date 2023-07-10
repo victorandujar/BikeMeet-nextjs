@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import { useSession } from "next-auth/react";
 import { useQuery } from "react-query";
 import { useAppDispatch } from "@/store/hooks";
-import { getUserDataActionCreator } from "@/store/features/userSlice";
+import { getUserDataActionCreator } from "@/store/features/usersSlice/userSlice";
 import { useEffect } from "react";
 
 interface LayoutProps {

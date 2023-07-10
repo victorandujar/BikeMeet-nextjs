@@ -3,7 +3,6 @@ import styled from "styled-components";
 const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
-  gap: 70px;
   color: ${(props) => props.theme.colors.mainColorText};
   background-color: #fff;
   padding: 5px 20px;
@@ -13,6 +12,7 @@ const HeaderStyled = styled.header`
   margin: 0;
   z-index: 2;
   width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   @media (min-width: 1200px) {
     padding: 5px 60px;
@@ -32,7 +32,7 @@ const HeaderStyled = styled.header`
 
     &__navigation {
       display: flex;
-      gap: 40px;
+      gap: 100px;
       align-items: center;
     }
   }
@@ -54,6 +54,9 @@ const HeaderStyled = styled.header`
   }
 
   .navbar {
+    display: flex;
+    gap: 40px;
+
     @media (max-width: 861px) {
       display: none;
     }
