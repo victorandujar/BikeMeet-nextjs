@@ -129,6 +129,22 @@ const LoginFormStyled = styled.div`
         font-size: 10px;
       }
     }
+
+    &__show-password {
+      position: relative;
+    }
+  }
+
+  .show-button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .visibility-icon {
+    opacity: 50%;
   }
 
   .email {

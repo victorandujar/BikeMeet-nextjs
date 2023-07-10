@@ -33,20 +33,22 @@ const Header = (): React.ReactElement => {
             </div>
           </Link>
         </div>
-        <div className="header-page__search">
-          <button
-            type="button"
-            onClick={handleClik}
-            className="header-page__searchButton"
-          >
-            <FontAwesomeIcon
-              icon={faMagnifyingGlass}
-              className="arrow"
-              width={20}
-            />
-          </button>
-          {click && <SearchBar />}
-        </div>
+        {isAuthenticated && (
+          <div className="header-page__search">
+            <button
+              type="button"
+              onClick={handleClik}
+              className="header-page__searchButton"
+            >
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className="arrow"
+                width={20}
+              />
+            </button>
+            {click && <SearchBar />}
+          </div>
+        )}
       </div>
       <div className="header-page__navigation">
         {isAuthenticated && (
