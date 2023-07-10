@@ -1,29 +1,27 @@
 import Link from "next/link";
 import TopNavbarStyled from "./TopNavbarStyled";
-import { quaternaryFont } from "@/utils/fonts/fonts";
+import { tertyaryFont } from "@/utils/fonts/fonts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const TopNavbar = (): React.ReactElement => {
   return (
     <TopNavbarStyled>
-      <ul className={`navigation ${quaternaryFont.className}`}>
-        <li>
-          <Link href={"/dashboard"} className="navigation__link">
-            Home
-          </Link>
-        </li>
+      <ul className={`navigation ${tertyaryFont.className}`}>
         <li>
           <Link href={"/nearby"} className="navigation__link">
-            Nearby
+            Explore
+            <FontAwesomeIcon icon={faAngleDown} className="arrow" width={20} />
           </Link>
         </li>
         <li>
           <Link href={"/create"} className="navigation__link">
-            Create
+            New ride
           </Link>
         </li>
         <li>
           <Link href={"/favourites"} className="navigation__link">
-            Favourites
+            Rides to go
           </Link>
         </li>
       </ul>

@@ -4,8 +4,8 @@ import renderWithProviders from "@/utils/testUtils/testUtils";
 
 describe("Given a TopNavbar component", () => {
   describe("When rendered", () => {
-    test("Then it should show a text with the labels `Home`, `Nearby`, `Create`, `Favourites` and `Profile`", () => {
-      const labels = ["Home", "Nearby", "Create", "Favourites"];
+    test("Then it should show a text with the labels `Explore`, `New ride` and `Rides to go`", () => {
+      const labels = ["Explore", "New ride", "Rides to go"];
 
       renderWithProviders(<TopNavbar />);
 

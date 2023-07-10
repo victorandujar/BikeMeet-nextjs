@@ -13,7 +13,9 @@ import Button from "../Button/Button";
 import { signOut } from "next-auth/react";
 import endpoints from "@/utils/endpoints/endpoints";
 import { useAppSelector } from "@/store/hooks";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import ProfileDropDownNavbarStyled from "./ProfileDropDownNavbarStyled";
 
 const ProfileDropDownNavbar = (): React.ReactElement => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -28,7 +30,7 @@ const ProfileDropDownNavbar = (): React.ReactElement => {
   const { user } = useAppSelector((state) => state.user);
 
   return (
-    <React.Fragment>
+    <ProfileDropDownNavbarStyled>
       <Box
         sx={{
           display: "flex",
@@ -44,11 +46,16 @@ const ProfileDropDownNavbar = (): React.ReactElement => {
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
+            className="profile-button"
           >
             <Avatar sx={{ width: 32, height: 32 }} src={user.image}>
               {user.name.charAt(0)}
             </Avatar>
-            <ArrowDropDownIcon />
+            <FontAwesomeIcon
+              icon={faAngleDown}
+              className="profile-arrow"
+              width={20}
+            />
           </IconButton>
         </Tooltip>
       </Box>
@@ -82,7 +89,8 @@ const ProfileDropDownNavbar = (): React.ReactElement => {
             },
             display: "flex",
             flexDirection: "column",
-            gap: "30px",
+            gap: 50,
+            width: 200,
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
@@ -114,7 +122,7 @@ const ProfileDropDownNavbar = (): React.ReactElement => {
           />
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </ProfileDropDownNavbarStyled>
   );
 };
 
