@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
 const DashboardStyled = styled.main`
-  padding: 60px 0;
+  padding: 80px 0;
   display: flex;
   gap: 40px;
+
+  @media (max-width: 970px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .error-message {
     color: ${(props) => props.theme.colors.mainColorText};
