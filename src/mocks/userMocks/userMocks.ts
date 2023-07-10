@@ -1,37 +1,14 @@
-import { UserDataStructure } from "@/components/ProfileCard/types";
+import { User, UserDataStructure } from "@/components/ProfileCard/types";
 import {
   CustomTokenPayload,
   UserCredentials,
   UserRegisterCredentials,
   UserRegisterCredentialsForm,
 } from "@/hooks/useUser/types";
-import {
-  UserState,
-  UserStructure,
-} from "@/store/features/usersSlice/types/types";
+import { UserStructure } from "@/store/features/usersSlice/types/types";
 import { Session } from "next-auth";
 
 const testPassword = process.env.NEXT_PUBLIC_TEST_PASSWORD ?? "Mrv27634_";
-
-export const mockInitialUserState: UserState = {
-  email: "",
-  id: "",
-  token: "",
-  isLogged: false,
-};
-
-export const mockUser: UserStructure = {
-  email: "victor@andujar.org",
-  id: "dsfhjnasdjkfhdsk",
-  token: "vik27634fvj",
-};
-
-export const expectedUserState: UserState = {
-  email: "victor@andujar.org",
-  id: "dsfhjnasdjkfhdsk",
-  token: "vik27634fvj",
-  isLogged: true,
-};
 
 export const mockUserCredentials: UserCredentials = {
   email: "victor@andujar.org",
@@ -78,14 +55,7 @@ export const mockUserRegisterCredentials: UserRegisterCredentials = {
   password: testPassword,
 };
 
-export const initialState: UserState = {
-  email: "",
-  isLogged: false,
-  token: "",
-  id: "",
-};
-
-export const mockUserProfileData: UserDataStructure = {
+export const mockUserProfileData: User = {
   user: {
     email: "victor@andujar.org",
     followers: [],
