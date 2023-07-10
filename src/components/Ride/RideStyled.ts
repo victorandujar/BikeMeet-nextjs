@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const RideStyled = styled.article`
   position: relative;
-  width: 300px;
+  width: 100%;
   height: 370px;
 
   img {
@@ -76,7 +76,7 @@ const RideStyled = styled.article`
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 690px) {
     width: 575px;
     height: 430px;
     margin: 0 auto;
@@ -86,8 +86,9 @@ const RideStyled = styled.article`
       min-height: 100%;
 
       &__location {
-        display: inline;
+        display: flex;
         align-self: flex-end;
+        justify-content: flex-start;
         margin: 25px 16px 0 0;
       }
 

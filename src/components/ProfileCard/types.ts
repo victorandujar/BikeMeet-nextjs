@@ -1,17 +1,18 @@
 export interface UserDataStructure {
-  user: UserData;
-}
-export interface UserData {
-  name: string;
-  surname: string;
-  username: string;
   email: string;
   followers: string[];
   following: string[];
-  rides: number;
-  rate: number;
   image: string;
   location: string;
+  name: string;
+  rate: number;
+  rides: number;
+  surname: string;
+  username: string;
+}
+
+export interface User {
+  user: UserDataStructure;
 }
 
 export interface RiderProfileStructure {

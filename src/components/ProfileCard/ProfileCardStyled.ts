@@ -8,7 +8,7 @@ const ProfileCardStyled = styled.article`
   padding-top: 10px;
   background-color: #fff;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 970px) {
     display: none;
   }
 

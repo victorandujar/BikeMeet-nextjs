@@ -57,7 +57,8 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
             variant="body1"
             color={`${(props: { theme: { colors: { mainColorText: any } } }) =>
               props.theme.colors.mainColorText}`}
-            className={`${tertyaryFont.className} content__title`}
+            fontWeight={"bold"}
+            className={` content__title`}
           >
             {ride?.title}
           </Typography>
@@ -67,7 +68,8 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               color={`${(props: {
                 theme: { colors: { mainColorText: any } };
               }) => props.theme.colors.mainColorText}`}
-              className={`${quaternaryFont.className} content__icons--first`}
+              display={"flex"}
+              className={` content__icons--first`}
             >
               <EventRoundedIcon className="content__icons-icon" />
               {localDateFormat}
@@ -77,7 +79,8 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               color={`${(props: {
                 theme: { colors: { mainColorText: any } };
               }) => props.theme.colors.mainColorText}`}
-              className={`${quaternaryFont.className} content__icons--second`}
+              display={"flex"}
+              className={`content__icons--second`}
             >
               <SpeedRoundedIcon className="content__icons-icon" />
               {ride?.difficulty}
@@ -87,7 +90,8 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               color={`${(props: {
                 theme: { colors: { mainColorText: any } };
               }) => props.theme.colors.mainColorText}`}
-              className={`${quaternaryFont.className} content__icons--third`}
+              display={"flex"}
+              className={`content__icons--third`}
             >
               <DirectionsBikeRoundedIcon className="content__icons-icon" />
               {ride.surfaceType}
@@ -97,7 +101,8 @@ const Ride = ({ ride }: RideProps): React.ReactElement => {
               color={`${(props: {
                 theme: { colors: { mainColorText: any } };
               }) => props.theme.colors.mainColorText}`}
-              className={`${quaternaryFont.className} content__icons--fourth`}
+              display={"flex"}
+              className={`content__icons--fourth`}
             >
               <RouteIcon className="content__icons-icon" />
               {ride?.distance} km
