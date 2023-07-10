@@ -1,6 +1,6 @@
 import Link from "next/link";
 import TopNavbarStyled from "./TopNavbarStyled";
-import { quaternaryFont, tertyaryFont } from "@/utils/fonts/fonts";
+import { tertyaryFont } from "@/utils/fonts/fonts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 

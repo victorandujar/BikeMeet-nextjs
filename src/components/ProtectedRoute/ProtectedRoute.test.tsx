@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import ProtectedRoute from "./ProtectedRoute";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 
@@ -16,7 +16,7 @@ jest.mock("next-auth/react", () => ({
 
 describe("Given a ProtectedRoute component", () => {
   describe("When it is rendered", () => {
-    test("Then it should render children when user is authenticated and path is allowed", () => {
+    test("Then it should render children when user is authenticated and path is allowed", async () => {
       const useSessionMock = {
         data: {},
         status: "authenticated",
@@ -36,10 +36,12 @@ describe("Given a ProtectedRoute component", () => {
         </ProtectedRoute>
       );
 
-      expect(getSessionMock).not.toHaveBeenCalled();
+      await waitFor(() => {
+        expect(getSessionMock).not.toHaveBeenCalled();
+      });
     });
 
-    test("Then it should redirect to login page when user is not authenticated and path is not allowed", () => {
+    test("Then it should redirect to login page when user is not authenticated and path is not allowed", async () => {
       const useSessionMock = {
         data: null,
         status: "unauthenticated",
@@ -59,11 +61,13 @@ describe("Given a ProtectedRoute component", () => {
         </ProtectedRoute>
       );
 
-      expect(getSessionMock).not.toHaveBeenCalled();
-      expect(screen.queryByTestId("protected-content")).toBeNull();
+      await waitFor(() => {
+        expect(getSessionMock).not.toHaveBeenCalled();
+        expect(screen.queryByTestId("protected-content")).toBeNull();
+      });
     });
 
-    test("Then it should redirect to dashboard when user is authenticated and on login/signup page", () => {
+    test("Then it should redirect to dashboard when user is authenticated and on login/signup page", async () => {
       const useSessionMock = {
         data: {},
         status: "authenticated",
@@ -83,8 +87,10 @@ describe("Given a ProtectedRoute component", () => {
         </ProtectedRoute>
       );
 
-      expect(getSessionMock).not.toHaveBeenCalled();
-      expect(screen.queryByTestId("protected-content")).toBeNull();
+      await waitFor(() => {
+        expect(getSessionMock).not.toHaveBeenCalled();
+        expect(screen.queryByTestId("protected-content")).toBeNull();
+      });
     });
   });
 });
