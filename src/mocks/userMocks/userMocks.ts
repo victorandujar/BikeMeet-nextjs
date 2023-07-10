@@ -1,4 +1,4 @@
-import { User, UserDataStructure } from "@/components/ProfileCard/types";
+import { User } from "@/components/ProfileCard/types";
 import {
   CustomTokenPayload,
   UserCredentials,

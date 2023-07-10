@@ -10,7 +10,6 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Image from "next/image";
 import { RideStructureData } from "./types";
-import { quaternaryFont, tertyaryFont } from "@/utils/fonts/fonts";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
