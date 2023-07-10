@@ -26,6 +26,7 @@ const HeaderStyled = styled.header`
     &__logo {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       font-size: 40px;
     }
@@ -34,6 +35,18 @@ const HeaderStyled = styled.header`
       display: flex;
       gap: 100px;
       align-items: center;
+    }
+
+    &__user-actions {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+    }
+
+    &__search {
+      display: flex;
+      align-items: center;
+      gap: 30px;
     }
   }
 
@@ -59,6 +72,12 @@ const HeaderStyled = styled.header`
 
     @media (max-width: 861px) {
       display: none;
+    }
+  }
+
+  .arrow {
+    :hover {
+      color: ${(props) => props.theme.colors.thirdColorText};
     }
   }
 `;
