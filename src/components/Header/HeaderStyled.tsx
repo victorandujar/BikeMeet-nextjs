@@ -48,6 +48,22 @@ const HeaderStyled = styled.header`
       align-items: center;
       gap: 30px;
     }
+
+    &__interactive {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      @media (max-width: 950px) {
+        display: none;
+      }
+    }
+
+    &__icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
   }
 
   .title {
@@ -70,15 +86,20 @@ const HeaderStyled = styled.header`
     display: flex;
     gap: 40px;
 
-    @media (max-width: 861px) {
+    @media (max-width: 950px) {
       display: none;
     }
   }
 
   .arrow {
+    font-size: 20px;
     :hover {
       color: ${(props) => props.theme.colors.thirdColorText};
     }
+  }
+
+  .icon {
+    font-size: 25px;
   }
 `;
 

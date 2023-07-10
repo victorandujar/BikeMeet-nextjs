@@ -2,22 +2,23 @@ import { useSession } from "next-auth/react";
 import { secondaryFont } from "@/utils/fonts/fonts";
 import TopNavbar from "../TopNavbar/TopNavbar";
 import HeaderStyled from "./HeaderStyled";
-import ProfileDropDownNavbar from "../ProfileDropDownNavbar/ProfileDropDownNavbar";
 import endpoints from "@/utils/endpoints/endpoints";
 import Link from "next/link";
 import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import ForumIcon from "@mui/icons-material/Forum";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
 const Header = (): React.ReactElement => {
   const { status } = useSession();
   const isAuthenticated = status === "authenticated";
 
-  const [click, setClick] = useState(false);
+  const [searchClick, setSearchClick] = useState(false);
 
   const handleClik = () => {
-    setClick(!click);
+    setSearchClick(!searchClick);
   };
 
   return (
@@ -34,19 +35,25 @@ const Header = (): React.ReactElement => {
           </Link>
         </div>
         {isAuthenticated && (
-          <div className="header-page__search">
-            <button
-              type="button"
-              onClick={handleClik}
-              className="header-page__searchButton"
-            >
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                className="arrow"
-                width={20}
-              />
-            </button>
-            {click && <SearchBar />}
+          <div className="header-page__interactive">
+            <div className="header-page__search">
+              <button
+                type="button"
+                onClick={handleClik}
+                className="header-page__searchButton"
+              >
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="arrow"
+                  width={20}
+                />
+              </button>
+              {searchClick && <SearchBar />}
+            </div>
+            <div className="header-page__icons" hidden={searchClick}>
+              <NotificationsNoneIcon className="icon" />
+              <ForumIcon className="icon" />
+            </div>
           </div>
         )}
       </div>
@@ -54,7 +61,6 @@ const Header = (): React.ReactElement => {
         {isAuthenticated && (
           <div className="navbar">
             <TopNavbar />
-            <ProfileDropDownNavbar />
           </div>
         )}
       </div>
