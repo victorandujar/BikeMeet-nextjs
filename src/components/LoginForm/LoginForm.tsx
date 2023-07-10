@@ -15,6 +15,8 @@ import {
 } from "@/utils/userFeedback/errorsManager";
 import endpoints from "@/utils/endpoints/endpoints";
 import { useRouter } from "next/router";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const LoginForm = (): React.ReactElement => {
   const { checkUserIsVerified } = useUser();
@@ -26,6 +28,7 @@ const LoginForm = (): React.ReactElement => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUserVerified, setIsVerified] = useState(true);
   const [isError, setIsError] = useState("");
+  const [shown, setShown] = useState(false);
 
   const handleEmail = ({
     target: { value },
@@ -85,6 +88,8 @@ const LoginForm = (): React.ReactElement => {
     }
   };
 
+  const toggleShown = () => setShown(!shown);
+
   const areInputFieldsEmpty = email === "" || password === "";
   const emailInputEmpty = email === "";
 
@@ -122,14 +127,23 @@ const LoginForm = (): React.ReactElement => {
           <label htmlFor="password" className="form-label">
             Password
           </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Password. Max 10 characters"
-            onChange={handlePassword}
-            disabled={isLoading}
-          />
+          <div className="form__show-password">
+            <input
+              type={shown ? "text" : "password"}
+              className="form-control password"
+              id="password"
+              placeholder="Password. Max 10 characters"
+              onChange={handlePassword}
+              disabled={isLoading}
+            />
+            <button className="show-button" type="button" onClick={toggleShown}>
+              {!shown ? (
+                <VisibilityOffIcon className="visibility-icon" />
+              ) : (
+                <VisibilityIcon className="visibility-icon" />
+              )}
+            </button>
+          </div>
         </div>
         <div className="mb-3 form-check">
           <Link
