@@ -6,21 +6,15 @@ import { GetRidesApiResponse } from "@/api/types";
 import { Skeleton, Typography } from "@mui/material";
 import DashboardStyled from "./DashboardStyled";
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
-import useUser from "@/hooks/useUser/useUser";
-import { UserDataStructure } from "@/components/ProfileCard/types";
-import { useSession } from "next-auth/react";
+import { User } from "@/components/ProfileCard/types";
+import { useAppSelector } from "@/store/hooks";
 
 const Dashboard: NextPage = (): React.ReactElement => {
   const { getRides } = useRides();
-  const { getUser } = useUser();
 
-  const { data: session } = useSession();
-  const sessionEmail = session?.user?.email;
+  const user = useAppSelector((state) => state.user);
 
   const rides = useQuery("rides", getRides);
-  const user = useQuery("user", () => getUser({ email: sessionEmail! }), {
-    enabled: Boolean(sessionEmail),
-  });
 
   if (rides.isLoading) {
     return (
@@ -74,9 +68,7 @@ const Dashboard: NextPage = (): React.ReactElement => {
   return (
     <DashboardStyled className="dashboard-page">
       <div>
-        {!user.isLoading && (
-          <ProfileCard user={user.data as UserDataStructure} />
-        )}
+        <ProfileCard user={user as unknown as User} />
       </div>
       <div className="dashboard-page__rides">
         {!rides.isLoading && (

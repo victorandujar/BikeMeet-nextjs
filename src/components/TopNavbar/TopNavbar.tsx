@@ -26,11 +26,6 @@ const TopNavbar = (): React.ReactElement => {
             Favourites
           </Link>
         </li>
-        <li>
-          <Link href={"/profile"} className="navigation__link">
-            Profile
-          </Link>
-        </li>
       </ul>
     </TopNavbarStyled>
   );

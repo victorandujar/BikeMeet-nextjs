@@ -1,9 +1,8 @@
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { secondaryFont } from "@/utils/fonts/fonts";
 import TopNavbar from "../TopNavbar/TopNavbar";
 import HeaderStyled from "./HeaderStyled";
-import Button from "../Button/Button";
-import endpoints from "@/utils/endpoints/endpoints";
+import ProfileDropDownNavbar from "../ProfileDropDownNavbar/ProfileDropDownNavbar";
 
 const Header = (): React.ReactElement => {
   const { status } = useSession();
@@ -21,19 +20,8 @@ const Header = (): React.ReactElement => {
         {isAuthenticated && (
           <div className="navbar">
             <TopNavbar />
+            <ProfileDropDownNavbar />
           </div>
-        )}
-        {isAuthenticated && (
-          <Button
-            text="Log out"
-            actionOnClick={() =>
-              signOut({
-                redirect: true,
-                callbackUrl: endpoints.login,
-              })
-            }
-            isDisabled={false}
-          />
         )}
       </div>
     </HeaderStyled>

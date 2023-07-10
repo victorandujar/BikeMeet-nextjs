@@ -1,4 +1,6 @@
 import { DefaultTheme } from "styled-components";
+import { createTheme } from "@mui/material";
+import { quaternaryFont } from "@/utils/fonts/fonts";
 
 const theme: DefaultTheme = {
   colors: {
@@ -15,5 +17,11 @@ const theme: DefaultTheme = {
     secondaryBackGround: "#000",
   },
 };
+
+export const muiTheme = createTheme({
+  typography: {
+    fontFamily: `${quaternaryFont.style.fontFamily}`,
+  },
+});
 
 export default theme;
