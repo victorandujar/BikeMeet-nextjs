@@ -23,7 +23,7 @@ const TopNavbar = (): React.ReactElement => {
         </li>
         <ProfileDropDownNavbar />
         <li>
-          <Link href={"/create"} className="navigation__link new-ride">
+          <Link href={"/new-ride"} className="navigation__link new-ride">
             <AddCircleOutlineIcon className="new-ride__icon" />
             New ride
           </Link>

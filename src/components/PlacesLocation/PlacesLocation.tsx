@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { StandaloneSearchBox, LoadScriptNext } from "@react-google-maps/api";
 import TextField from "@mui/material/TextField";
 
-const PlacesLocation = (): React.ReactElement => {
-  const inputRef = React.useRef();
-  const [location, setLocation] = useState("");
+interface PlacesLocationProps {
+  onLoad: (ref: any) => any;
+  location: string;
+  setLocation: (event: any) => void;
+  handlePlaceChanged: () => void;
+}
 
-  const handlePlaceChanged = () => {
-    const selectedPlace = (inputRef.current as any).getPlaces()[0];
-    if (selectedPlace) {
-      setLocation(selectedPlace.formatted_address);
-    }
-  };
-
+const PlacesLocation = ({
+  onLoad,
+  location,
+  setLocation,
+  handlePlaceChanged,
+}: PlacesLocationProps): React.ReactElement => {
   return (
     <LoadScriptNext
       googleMapsApiKey={process.env.NEXT_PUBLIC_LOCATION_KEY!}
       libraries={["places"]}
     >
-      <StandaloneSearchBox
-        onLoad={(ref) => ((inputRef.current as any) = ref)}
-        onPlacesChanged={handlePlaceChanged}
-      >
+      <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={handlePlaceChanged}>
         <TextField
           type="text"
           placeholder="Where is the meeting"
@@ -31,7 +30,7 @@ const PlacesLocation = (): React.ReactElement => {
             "& > :not(style)": { width: "400px" },
           }}
           value={location}
-          onChange={(event) => setLocation(event.target.value)}
+          onChange={setLocation}
         />
       </StandaloneSearchBox>
     </LoadScriptNext>
