@@ -19,7 +19,7 @@ const HeaderStyled = styled.header`
   }
 
   @media (min-width: 1400px) {
-    padding: 5px 160px;
+    padding: 5px 200px;
   }
 
   .header-page {
