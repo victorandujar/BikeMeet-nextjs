@@ -15,7 +15,7 @@ const CreateFormStyled = styled.div`
       height: 56px;
       width: 400px;
       border-radius: 5px;
-      padding: 0 15px;
+      padding: 13px 15px;
 
       ::placeholder {
       }

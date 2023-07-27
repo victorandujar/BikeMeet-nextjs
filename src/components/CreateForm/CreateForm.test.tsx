@@ -1,7 +1,7 @@
 import { ridesMocks } from "@/mocks/ridesMocks/ridesMocks";
 import renderWithProviders from "@/utils/testUtils/testUtils";
 import CreateForm from "./CreateForm";
-import { screen, waitFor } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("Given a CreateForm component", () => {
@@ -14,9 +14,7 @@ describe("Given a CreateForm component", () => {
 
       const rideNameInput = screen.getByLabelText(rideNameLabel);
 
-      await waitFor(
-        async () => await userEvent.type(rideNameInput, rideNameText)
-      );
+      await act(async () => await userEvent.type(rideNameInput, rideNameText));
 
       expect(rideNameInput).toHaveValue(rideNameText);
     });
