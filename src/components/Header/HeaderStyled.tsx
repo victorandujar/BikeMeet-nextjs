@@ -14,7 +14,7 @@ const HeaderStyled = styled.header`
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  @media (min-width: 1200px) {
+  @media (min-width: 950px) {
     padding: 5px 60px;
   }
 
@@ -54,7 +54,7 @@ const HeaderStyled = styled.header`
       align-items: center;
       gap: 20px;
 
-      @media (max-width: 950px) {
+      @media (max-width: 1200px) {
         display: none;
       }
     }

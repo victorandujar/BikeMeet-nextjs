@@ -14,6 +14,7 @@ declare module "styled-components" {
     backgroundColors: {
       mainBackGround: string;
       secondaryBackGround: string;
+      tertiaryBackGround: string;
     };
   }
 }

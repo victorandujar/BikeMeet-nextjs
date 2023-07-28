@@ -15,6 +15,7 @@ const theme: DefaultTheme = {
   backgroundColors: {
     mainBackGround: "#fff",
     secondaryBackGround: "#000",
+    tertiaryBackGround: "#f5f5f5",
   },
 };
 
