@@ -58,11 +58,7 @@ const Header = (): React.ReactElement => {
         )}
       </div>
       <div className="header-page__navigation">
-        {isAuthenticated && (
-          <div className="navbar">
-            <TopNavbar />
-          </div>
-        )}
+        {isAuthenticated && <TopNavbar />}
       </div>
     </HeaderStyled>
   );

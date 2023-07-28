@@ -3,8 +3,8 @@ import BottomNavbar from "./BottomNavbar";
 
 describe("Given a BottomNavbar component", () => {
   describe("When rendered", () => {
-    test("Then it should show a text with the labels `Home`, `Nearby`, `Create`, `Favourites` and `Profile`", () => {
-      const labels = ["Home", "Nearby", "Create", "Profile", "Favourites"];
+    test("Then it should show a text with the labels `Home`, `Nearby`, `Create & `Favourites`", () => {
+      const labels = ["Home", "Nearby", "Create", "Favourites"];
 
       render(<BottomNavbar />);
 

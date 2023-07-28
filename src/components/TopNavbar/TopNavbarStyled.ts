@@ -9,13 +9,29 @@ const TopNavbarStyled = styled.nav`
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 950px) {
+      display: flex;
+      align-items: flex-end;
+      width: 150px;
+    }
+
     &__link {
       display: flex;
       gap: 10px;
       align-items: center;
 
+      @media (max-width: 950px) {
+        display: none;
+      }
+
       :hover {
         color: ${(props) => props.theme.colors.thirdColorText};
+      }
+    }
+
+    &__profile {
+      @media (max-width: 950px) {
+        width: 72px;
       }
     }
   }
@@ -31,6 +47,10 @@ const TopNavbarStyled = styled.nav`
     align-items: center;
     justify-content: flex-start;
     padding: 0 5px;
+
+    @media (max-width: 950px) {
+      display: none;
+    }
 
     &__icon {
       opacity: 80%;

@@ -21,7 +21,9 @@ const TopNavbar = (): React.ReactElement => {
             Rides to go
           </Link>
         </li>
-        <ProfileDropDownNavbar />
+        <div className="navigation__profile">
+          <ProfileDropDownNavbar />
+        </div>
         <li>
           <Link href={"/new-ride"} className="navigation__link new-ride">
             <AddCircleOutlineIcon className="new-ride__icon" />
