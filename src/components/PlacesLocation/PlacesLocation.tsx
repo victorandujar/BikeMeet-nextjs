@@ -1,12 +1,14 @@
 import React from "react";
 import { StandaloneSearchBox, LoadScriptNext } from "@react-google-maps/api";
 import TextField from "@mui/material/TextField";
+import libraries from "@/utils/googleLibraries/googleLibraries";
 
 interface PlacesLocationProps {
   onLoad: (ref: any) => any;
   location: string;
   setLocation: (event: any) => void;
   handlePlaceChanged: () => void;
+  className: string;
 }
 
 const PlacesLocation = ({
@@ -14,21 +16,19 @@ const PlacesLocation = ({
   location,
   setLocation,
   handlePlaceChanged,
+  className,
 }: PlacesLocationProps): React.ReactElement => {
   return (
     <LoadScriptNext
       googleMapsApiKey={process.env.NEXT_PUBLIC_LOCATION_KEY!}
-      libraries={["places"]}
+      libraries={libraries}
     >
       <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={handlePlaceChanged}>
         <TextField
           type="text"
           placeholder="Where is the meeting"
-          className="location__field"
+          className={className}
           label="Where to start?"
-          sx={{
-            "& > :not(style)": { width: "400px" },
-          }}
           value={location}
           onChange={setLocation}
         />
