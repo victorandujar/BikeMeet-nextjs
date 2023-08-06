@@ -48,7 +48,7 @@ const CreateForm = () => {
     };
 
   const handleSurfaceTypeChange = (event: SelectChangeEvent) => {
-    setSurfaceType(event.target.value as string);
+    setSurfaceType(event.target.value);
   };
 
   const handleImage = ({
@@ -336,6 +336,7 @@ const CreateForm = () => {
               multiline
               maxRows={10}
               className="create-form__field"
+              value={description}
               onChange={handleInputStringChange(setDescription)}
             />
           </InputLabel>
