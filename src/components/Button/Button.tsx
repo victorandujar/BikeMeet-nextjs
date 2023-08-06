@@ -17,7 +17,7 @@ const Button = ({
     <ButtonStyled
       disabled={isDisabled}
       onClick={actionOnClick}
-      className={`btn btn-outline-success ${primaryFont.className}`}
+      className={`btn btn-outline-primary ${primaryFont.className}`}
     >
       {text}
     </ButtonStyled>

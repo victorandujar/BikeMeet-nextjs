@@ -20,6 +20,7 @@ const ButtonStyled = styled.button`
 
   :active {
     color: ${(props) => props.theme.colors.secondaryColorButton};
+    background-color: ${(props) => props.theme.colors.mainColorButton};
   }
 `;
 

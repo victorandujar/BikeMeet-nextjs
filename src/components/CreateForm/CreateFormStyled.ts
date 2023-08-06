@@ -67,6 +67,7 @@ const CreateFormStyled = styled.div`
 
     &__field {
       width: 400px;
+      color: #000;
 
       @media (max-width: 420px) {
         width: 350px;
@@ -106,13 +107,34 @@ const CreateFormStyled = styled.div`
         border: 1px solid rgba(0, 0, 0, 1);
       }
     }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      width: 100%;
+
+      @media (max-width: 480px) {
+        width: 400px;
+      }
+
+      @media (max-width: 420px) {
+        width: 350px;
+      }
+
+      @media (max-width: 370px) {
+        width: 300px;
+      }
+
+      @media (max-width: 310px) {
+        width: 280px;
+      }
+    }
   }
 
   .btn-primary {
     background-color: ${(props) => props.theme.colors.secondaryColorButton};
-    --bs-btn-border-color: ${(props) =>
-      props.theme.colors.secondaryColorButton};
-    width: 400px;
+    width: 180px;
     height: 40px;
     color: ${(props) => props.theme.colors.secondaryColorText};
     font-size: 14px;
@@ -125,20 +147,47 @@ const CreateFormStyled = styled.div`
     border: none;
 
     @media (max-width: 420px) {
-      width: 350px;
+      width: 160px;
     }
 
     @media (max-width: 370px) {
-      width: 300px;
+      width: 140px;
     }
 
     @media (max-width: 310px) {
-      width: 280px;
+      width: 120px;
     }
 
     &-accent {
       background-color: ${(props) => props.theme.colors.thirdColorText};
       color: ${(props) => props.theme.colors.mainColorButton};
+    }
+  }
+
+  .btn-outline-primary {
+    background-color: ${(props) => props.theme.colors.mainColorButton};
+    border: 1px solid ${(props) => props.theme.colors.thirdColorText};
+    width: 180px;
+    height: 40px;
+    color: ${(props) => props.theme.colors.thirdColorText};
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+
+    @media (max-width: 420px) {
+      width: 160px;
+    }
+
+    @media (max-width: 370px) {
+      width: 140px;
+    }
+
+    @media (max-width: 310px) {
+      width: 120px;
     }
   }
 `;
