@@ -1,7 +1,13 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { MenuItem, Select, Typography } from "@mui/material";
+import {
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
 import CreateFormStyled from "./CreateFormStyled";
 import PlacesLocation from "../PlacesLocation/PlacesLocation";
 import surfaceTypes from "@/utils/surfaceTypes/surfaceTypes";
@@ -17,6 +23,8 @@ const CreateForm = () => {
   const [surfaceType, setSurfaceType] = React.useState("");
   const [ridersLimit, setRidersLimit] = React.useState(0);
   const [step, setStep] = React.useState(0);
+  const [image, setImage] = React.useState<File | string>("");
+  const [description, setDescription] = React.useState("");
 
   const inputRef = React.useRef();
 
@@ -39,12 +47,30 @@ const CreateForm = () => {
       setState(+value);
     };
 
-  const handleStepForm = () => {
+  const handleSurfaceTypeChange = (event: SelectChangeEvent) => {
+    setSurfaceType(event.target.value as string);
+  };
+
+  const handleImage = ({
+    target: { files },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setImage(files?.[0]!);
+  };
+
+  const handleStepForwardForm = () => {
     if (step === 3) {
       return;
     }
 
     setStep(step + 1);
+  };
+
+  const handleStepBackForm = () => {
+    if (step === 0) {
+      return;
+    }
+
+    setStep(step - 1);
   };
 
   return (
@@ -73,9 +99,13 @@ const CreateForm = () => {
           >
             Basic information
           </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Ride name
             <TextField
@@ -87,10 +117,14 @@ const CreateForm = () => {
               sx={{ opacity: 1 }}
               className="create-form__field"
             />
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          </InputLabel>
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Meeting point
             <PlacesLocation
@@ -100,10 +134,14 @@ const CreateForm = () => {
               onLoad={(ref) => ((inputRef.current as any) = ref)}
               className="create-form__field"
             />
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          </InputLabel>
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Date to ride
             <input
@@ -112,7 +150,7 @@ const CreateForm = () => {
               value={date}
               onChange={handleInputStringChange(setDate)}
             />
-          </Typography>
+          </InputLabel>
         </Box>
         <Box
           component="form"
@@ -130,9 +168,13 @@ const CreateForm = () => {
           <Typography variant="h4" borderBottom={1} paddingBottom={2}>
             Ride metrics
           </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Distance
             <TextField
@@ -145,10 +187,14 @@ const CreateForm = () => {
               sx={{ opacity: 1 }}
               className="create-form__field"
             />
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          </InputLabel>
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Pace
             <TextField
@@ -161,10 +207,14 @@ const CreateForm = () => {
               sx={{ opacity: 1 }}
               className="create-form__field"
             />
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          </InputLabel>
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Elevation gain
             <TextField
@@ -177,7 +227,7 @@ const CreateForm = () => {
               sx={{ opacity: 1 }}
               className="create-form__field"
             />
-          </Typography>
+          </InputLabel>
         </Box>
         <Box
           component="form"
@@ -195,17 +245,21 @@ const CreateForm = () => {
           <Typography variant="h4" borderBottom={1} paddingBottom={2}>
             Riders, surface & image
           </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          <InputLabel
+            id="demo-simple-select-label"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Surface type
             <Select
               value={surfaceType}
-              label="Surface"
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              onChange={() => handleInputStringChange(setSurfaceType)}
+              onChange={handleSurfaceTypeChange}
               className="create-form__field"
             >
               {surfaceTypes.map((surface) => (
@@ -214,10 +268,14 @@ const CreateForm = () => {
                 </MenuItem>
               ))}
             </Select>
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          </InputLabel>
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Riders limit
             <TextField
@@ -230,14 +288,22 @@ const CreateForm = () => {
               sx={{ opacity: 1 }}
               className="create-form__field"
             />
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          </InputLabel>
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Image
-            <input type="file" className="create-form__custom-input" />
-          </Typography>
+            <input
+              type="file"
+              className="create-form__custom-input"
+              onChange={handleImage}
+            />
+          </InputLabel>
         </Box>
         <Box
           component="form"
@@ -255,9 +321,13 @@ const CreateForm = () => {
           <Typography variant="h4" borderBottom={1} paddingBottom={2}>
             Description & submit
           </Typography>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}
+          <InputLabel
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.2,
+              fontSize: 13,
+            }}
           >
             Ride description
             <TextField
@@ -266,16 +336,27 @@ const CreateForm = () => {
               multiline
               maxRows={10}
               className="create-form__field"
+              onChange={handleInputStringChange(setDescription)}
             />
-          </Typography>
+          </InputLabel>
         </Box>
-        <button
-          type={step === 3 ? "submit" : "button"}
-          className="btn btn-primary btn-primary-accent"
-          onClick={handleStepForm}
-        >
-          {step === 3 ? "Submit" : "Continue"}
-        </button>
+        <div className="create-form__buttons">
+          <button
+            type={step === 3 ? "submit" : "button"}
+            className="btn btn-primary btn-primary-accent"
+            onClick={handleStepForwardForm}
+          >
+            {step === 3 ? "Submit" : "Continue"}
+          </button>
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            disabled={step === 0}
+            onClick={handleStepBackForm}
+          >
+            Back
+          </button>
+        </div>
       </div>
     </CreateFormStyled>
   );
