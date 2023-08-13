@@ -67,5 +67,6 @@ export const mockUserProfileData: User = {
     rides: 0,
     surname: "Andújar",
     username: "Ammavaru",
+    id: "123872389273dfjk",
   },
 };

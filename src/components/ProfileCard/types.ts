@@ -9,6 +9,7 @@ export interface UserDataStructure {
   rides: number;
   surname: string;
   username: string;
+  id: string;
 }
 
 export interface User {

@@ -13,6 +13,7 @@ const initialState: User = {
     rides: 0,
     surname: "",
     username: "",
+    id: "",
   },
 };
 
@@ -33,6 +34,7 @@ const usersSlice = createSlice({
         rides: action.payload.user.rides,
         surname: action.payload.user.surname,
         username: action.payload.user.username,
+        id: action.payload.user.id,
       },
     }),
   },

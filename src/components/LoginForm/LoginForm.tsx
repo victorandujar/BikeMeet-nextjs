@@ -51,13 +51,16 @@ const LoginForm = (): React.ReactElement => {
     setIsLoading(true);
 
     try {
-      const { isUserVerified } = await checkUserIsVerified({
+      const { response } = await checkUserIsVerified({
         email,
       });
 
-      setIsVerified(isUserVerified.isVerified);
+      const { isVerified } = response.data;
+      const status = response.status;
 
-      if (!isUserVerified.isVerified) {
+      setIsVerified(isVerified);
+
+      if (!isVerified || status === errorsCodeStatus.notFound) {
         throw new Error();
       }
 
@@ -85,6 +88,7 @@ const LoginForm = (): React.ReactElement => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
+      setIsError(errorsMessages.notFoundEmail);
     }
   };
 

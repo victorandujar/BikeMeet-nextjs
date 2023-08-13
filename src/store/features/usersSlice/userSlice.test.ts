@@ -14,6 +14,7 @@ const initialState: User = {
     rides: 0,
     surname: "",
     username: "",
+    id: "",
   },
 };
 

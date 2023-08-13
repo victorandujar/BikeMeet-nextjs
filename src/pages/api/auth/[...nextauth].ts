@@ -26,7 +26,6 @@ const authOptions: NextAuthOptions = NextAuth({
       credentials: {},
       authorize: async (credentials) => {
         const { email, password } = credentials as UserCredentials;
-
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}${endpoints.users}${endpoints.login}`,
           { email, password }
