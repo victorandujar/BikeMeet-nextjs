@@ -9,6 +9,8 @@ interface PlacesLocationProps {
   setLocation: (event: any) => void;
   handlePlaceChanged: () => void;
   className: string;
+  label: string;
+  ariaLabel: string;
 }
 
 const PlacesLocation = ({
@@ -17,6 +19,8 @@ const PlacesLocation = ({
   setLocation,
   handlePlaceChanged,
   className,
+  label,
+  ariaLabel,
 }: PlacesLocationProps): React.ReactElement => {
   return (
     <LoadScriptNext
@@ -28,9 +32,10 @@ const PlacesLocation = ({
           type="text"
           placeholder="Where is the meeting"
           className={className}
-          label="Where to start?"
+          label={label}
           value={location}
           onChange={setLocation}
+          aria-label={ariaLabel}
         />
       </StandaloneSearchBox>
     </LoadScriptNext>

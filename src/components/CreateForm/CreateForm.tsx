@@ -12,19 +12,27 @@ import CreateFormStyled from "./CreateFormStyled";
 import PlacesLocation from "../PlacesLocation/PlacesLocation";
 import surfaceTypes from "@/utils/surfaceTypes/surfaceTypes";
 import StepperCreateForm from "../StepperCreateForm/StepperCreateForm";
+import useRides from "@/hooks/useRides/useRides";
+import { useAppSelector } from "@/store/hooks";
+import { RideFormData } from "@/hooks/useRides/types";
+import { DifficultyOption, SurfaceTypeOptions } from "../Ride/types";
 
 const CreateForm = () => {
-  const [name, setName] = React.useState("");
+  const [title, setTitle] = React.useState("");
   const [date, setDate] = React.useState("");
   const [location, setLocation] = React.useState("");
-  const [distance, setDistance] = React.useState(0);
-  const [pace, setPace] = React.useState(0);
-  const [elevationGain, setElevationGain] = React.useState(0);
+  const [distance, setDistance] = React.useState<number | string>("");
+  const [pace, setPace] = React.useState<number | string>("");
+  const [elevationGain, setElevationGain] = React.useState<number | string>("");
   const [surfaceType, setSurfaceType] = React.useState("");
-  const [ridersLimit, setRidersLimit] = React.useState(0);
+  const [ridersLimit, setRidersLimit] = React.useState<number | string>("");
   const [step, setStep] = React.useState(0);
   const [image, setImage] = React.useState<File | string>("");
   const [description, setDescription] = React.useState("");
+  const [difficulty, setDifficulty] = React.useState("");
+
+  const { createRide } = useRides();
+  const { id } = useAppSelector((state) => state.user.user);
 
   const inputRef = React.useRef();
 
@@ -42,9 +50,10 @@ const CreateForm = () => {
     };
 
   const handleInputNumberChange =
-    (setState: React.Dispatch<React.SetStateAction<number>>) =>
+    (setState: React.Dispatch<React.SetStateAction<number | string>>) =>
     ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
-      setState(+value);
+      const numericValue = value !== "" ? +value : null;
+      setState(numericValue!);
     };
 
   const handleSurfaceTypeChange = (event: SelectChangeEvent) => {
@@ -73,17 +82,62 @@ const CreateForm = () => {
     setStep(step - 1);
   };
 
+  React.useEffect(() => {
+    if (+pace < 15 || +elevationGain < 500 || +distance < 30) {
+      setDifficulty(DifficultyOption.Begginner);
+    }
+    if (
+      (+pace < 20 && +pace > 15) ||
+      (+elevationGain < 1000 && +elevationGain > 500) ||
+      (+distance < 50 && +distance > 30)
+    ) {
+      setDifficulty(DifficultyOption.Easy);
+    }
+    if (
+      (+pace < 25 && +pace > 20) ||
+      (+elevationGain < 1500 && +elevationGain > 1000) ||
+      (+distance < 100 && +distance > 50)
+    ) {
+      setDifficulty(DifficultyOption.Intermediate);
+    }
+    if (+pace > 25 || +elevationGain > 1500 || +distance > 100) {
+      setDifficulty(DifficultyOption.Hard);
+    }
+  }, [pace, elevationGain, distance]);
+
+  const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newRide: RideFormData = {
+      date,
+      description,
+      distance: distance?.toString()!,
+      elevationGain: elevationGain?.toString()!,
+      image,
+      location,
+      owner: id,
+      pace: pace?.toString()!,
+      ridersLimit: ridersLimit?.toString()!,
+      surfaceType: surfaceType as SurfaceTypeOptions,
+      title,
+      difficulty: difficulty as DifficultyOption,
+      ridersJoined: [],
+    };
+
+    try {
+      await createRide(newRide);
+    } catch (error) {}
+  };
+
   return (
     <CreateFormStyled className="create-form">
       <div className="create-form__stepper">
         <StepperCreateForm currentStep={step} />
       </div>
 
-      <div className="form-container">
+      <form className="form-container" onSubmit={onSubmitHandler}>
         <Box
-          component="form"
-          noValidate
-          autoComplete="off"
+          component="div"
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}
@@ -111,11 +165,12 @@ const CreateForm = () => {
             <TextField
               label="Name your next adventure"
               variant="outlined"
-              value={name}
+              value={title}
               name="name"
-              onChange={handleInputStringChange(setName)}
+              onChange={handleInputStringChange(setTitle)}
               sx={{ opacity: 1 }}
               className="create-form__field"
+              aria-label="Ride title"
             />
           </InputLabel>
           <InputLabel
@@ -133,6 +188,8 @@ const CreateForm = () => {
               setLocation={(event) => setLocation(event.target.value)}
               onLoad={(ref) => ((inputRef.current as any) = ref)}
               className="create-form__field"
+              label="Where to start?"
+              ariaLabel="Starting loctation"
             />
           </InputLabel>
           <InputLabel
@@ -149,23 +206,26 @@ const CreateForm = () => {
               className="create-form__custom-input"
               value={date}
               onChange={handleInputStringChange(setDate)}
+              name="date"
+              aria-label="Date to ride"
             />
           </InputLabel>
         </Box>
         <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { width: "400px" },
-          }}
-          noValidate
-          autoComplete="off"
+          component="div"
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}
           gap={5}
           hidden={step !== 1}
+          className="form-container__block"
         >
-          <Typography variant="h4" borderBottom={1} paddingBottom={2}>
+          <Typography
+            variant="h4"
+            borderBottom={1}
+            paddingBottom={2}
+            className="form-container__title"
+          >
             Ride metrics
           </Typography>
           <InputLabel
@@ -176,16 +236,18 @@ const CreateForm = () => {
               fontSize: 13,
             }}
           >
-            Distance
+            Distance (km)
             <TextField
               id="outlined-basic"
               label="How far do you want to go?"
               variant="outlined"
               value={distance}
-              name="name"
+              name="distance"
               onChange={handleInputNumberChange(setDistance)}
               sx={{ opacity: 1 }}
               className="create-form__field"
+              type="number"
+              aria-label="Distance field"
             />
           </InputLabel>
           <InputLabel
@@ -196,16 +258,18 @@ const CreateForm = () => {
               fontSize: 13,
             }}
           >
-            Pace
+            Pace (km/h)
             <TextField
               id="outlined-basic"
               label="Are you fast enough?"
               variant="outlined"
               value={pace}
-              name="name"
+              name="pace"
               onChange={handleInputNumberChange(setPace)}
               sx={{ opacity: 1 }}
               className="create-form__field"
+              type="number"
+              aria-label="Pace field"
             />
           </InputLabel>
           <InputLabel
@@ -216,33 +280,36 @@ const CreateForm = () => {
               fontSize: 13,
             }}
           >
-            Elevation gain
+            Elevation gain (m)
             <TextField
               id="outlined-basic"
               label="The more you climb, the more you cry"
               variant="outlined"
               value={elevationGain}
-              name="name"
+              name="Elevation gain"
               onChange={handleInputNumberChange(setElevationGain)}
               sx={{ opacity: 1 }}
               className="create-form__field"
+              type="number"
+              aria-label="Elevation gain field"
             />
           </InputLabel>
         </Box>
         <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { width: "400px" },
-          }}
-          noValidate
-          autoComplete="off"
+          component="div"
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}
           gap={5}
           hidden={step !== 2}
+          className="form-container__block"
         >
-          <Typography variant="h4" borderBottom={1} paddingBottom={2}>
+          <Typography
+            variant="h4"
+            borderBottom={1}
+            paddingBottom={2}
+            className="form-container__title"
+          >
             Riders, surface & image
           </Typography>
           <InputLabel
@@ -261,6 +328,7 @@ const CreateForm = () => {
               id="demo-simple-select"
               onChange={handleSurfaceTypeChange}
               className="create-form__field"
+              aria-label="Surface type select"
             >
               {surfaceTypes.map((surface) => (
                 <MenuItem value={surface.type} key={surface.key}>
@@ -283,10 +351,12 @@ const CreateForm = () => {
               label="Not too big, not too small"
               variant="outlined"
               value={ridersLimit}
-              name="name"
+              name="Riders limit"
               onChange={handleInputNumberChange(setRidersLimit)}
               sx={{ opacity: 1 }}
               className="create-form__field"
+              type="number"
+              aria-label="Riders limit field"
             />
           </InputLabel>
           <InputLabel
@@ -302,23 +372,26 @@ const CreateForm = () => {
               type="file"
               className="create-form__custom-input"
               onChange={handleImage}
+              name="image"
+              aria-label="Image ride upload"
             />
           </InputLabel>
         </Box>
         <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { width: "400px" },
-          }}
-          noValidate
-          autoComplete="off"
+          component="div"
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}
           gap={7}
           hidden={step !== 3}
+          className="form-container__block"
         >
-          <Typography variant="h4" borderBottom={1} paddingBottom={2}>
+          <Typography
+            variant="h4"
+            borderBottom={1}
+            paddingBottom={2}
+            className="form-container__title"
+          >
             Description & submit
           </Typography>
           <InputLabel
@@ -338,16 +411,27 @@ const CreateForm = () => {
               className="create-form__field"
               value={description}
               onChange={handleInputStringChange(setDescription)}
+              name="Ride description"
+              aria-label="Ride description field"
             />
           </InputLabel>
         </Box>
         <div className="create-form__buttons">
           <button
-            type={step === 3 ? "submit" : "button"}
+            type={"submit"}
             className="btn btn-primary btn-primary-accent"
             onClick={handleStepForwardForm}
+            hidden={step !== 3}
           >
-            {step === 3 ? "Submit" : "Continue"}
+            Submit
+          </button>
+          <button
+            type={"button"}
+            className="btn btn-primary btn-primary-accent"
+            onClick={handleStepForwardForm}
+            hidden={step === 3}
+          >
+            Continue
           </button>
           <button
             type="button"
@@ -358,7 +442,7 @@ const CreateForm = () => {
             Back
           </button>
         </div>
-      </div>
+      </form>
     </CreateFormStyled>
   );
 };
