@@ -2,7 +2,6 @@ import {
   UserCheckEmailStructure,
   UserRegisterCredentials,
   UserVerifyEmailStructure,
-  IsUserVerifiedResponse,
 } from "./types";
 import axios from "axios";
 import endpoints from "@/utils/endpoints/endpoints";
@@ -38,9 +37,7 @@ const useUser = () => {
       email
     );
 
-    const isUserVerified = response.data as IsUserVerifiedResponse;
-
-    return { isUserVerified };
+    return { response };
   };
 
   const checkUserEmail = async (email: UserCheckEmailStructure) => {

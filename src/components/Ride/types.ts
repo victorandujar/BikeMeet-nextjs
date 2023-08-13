@@ -1,16 +1,16 @@
 import { RiderProfileStructure } from "../ProfileCard/types";
 
 export enum DifficultyOption {
-  Easy = "easy",
-  Intermediate = "intermediate",
-  Hard = "hard",
-  Expert = "expert",
+  Easy = "Easy",
+  Intermediate = "Intermediate",
+  Hard = "Hard",
+  Begginer = "Beginner",
 }
 
 export enum SurfaceTypeOptions {
-  Gravel = "gravel",
-  Road = "road",
-  MTB = "mountain",
+  Gravel = "Gravel",
+  Road = "Road",
+  MTB = "Mountain",
 }
 
 export interface RideStructureData {
@@ -27,4 +27,5 @@ export interface RideStructureData {
   image: string;
   owner: RiderProfileStructure;
   id: string;
+  elevationGain: number;
 }

@@ -26,6 +26,7 @@ export const ridesMocks: RideStructureData[] = [
     ridersJoined: ["Róman", "Víctor", "Marc"],
     ridersLimit: 10,
     id: "123",
+    elevationGain: 1234,
   },
   {
     owner: {
@@ -48,5 +49,6 @@ export const ridesMocks: RideStructureData[] = [
     ridersJoined: ["Róman", "Víctor", "Marc"],
     ridersLimit: 10,
     id: "456",
+    elevationGain: 1234,
   },
 ];
